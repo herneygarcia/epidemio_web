@@ -1,0 +1,123 @@
+site_name: Epidemiología e Investigación — Especialización en Urología
+site_description: >
+  Microcurrículo de aprendizaje activo para residentes de especialización médica.
+  Transforma la duda clínica en evidencia publicable en 4 meses.
+site_author: Herney Andrés García Perdomo MD MSc EdD PhD
+site_url: https://herneygarcia.github.io/epidemio-web/
+
+# ── Personalización por institución ─────────────────────────────────────────
+# Edita estas variables para adaptar el sitio a tu programa:
+#   especialidad: Urología
+#   institucion: Universidad del Valle
+#   profesor: Herney Andres Garcia-Perdomo MD MSc EdD PhD FACS
+#   año: 2026-2
+# ────────────────────────────────────────────────────────────────────────────
+
+extra:
+  generator: false
+  especialidad: Urología
+  institucion: Universidad del Valle
+  instructor: Herney Andrés García Perdomo MD MSc EdD PhD FACS
+  año: "2026"
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/herneygarcia
+
+theme:
+  name: material
+  language: es
+  custom_dir: overrides
+  logo: assets/images/univalle.png
+  favicon: assets/images/univalle.png
+  font:
+    text: Roboto
+    code: Roboto Mono
+  palette:
+    - scheme: default
+      primary: red
+      accent: deep orange
+      toggle:
+        icon: material/brightness-7
+        name: Cambiar a modo oscuro
+    - scheme: slate
+      primary: red
+      accent: deep orange
+      toggle:
+        icon: material/brightness-4
+        name: Cambiar a modo claro
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.highlight
+    - search.suggest
+    - content.code.copy
+    - toc.follow
+
+extra_css:
+  - assets/stylesheets/extra.css
+
+plugins:
+  - search:
+      lang: es
+  - minify:
+      minify_html: true
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - tables
+  - toc:
+      permalink: true
+
+nav:
+  - Inicio: index.md
+  - Sesiones:
+      - Mes 1 — La Pregunta y el Paisaje:
+          - "Sesión 1: La Duda que Cambia Todo": sesiones/sesion-01.md
+          - "Sesión 2: Anatomía de la Evidencia": sesiones/sesion-02.md
+          - "Sesión 3: Hablar el Idioma de los Números": sesiones/sesion-03.md
+          - "Sesión 4: Mapeando el Territorio": sesiones/sesion-04.md
+      - Mes 2 — Los Instrumentos:
+          - "Sesión 5: Autopsia de un Artículo (Observacionales)": sesiones/sesion-05.md
+          - "Sesión 6: El Experimento Perfecto (y Sus Límites)": sesiones/sesion-06.md
+          - "Sesión 7: Ver sin Tocar — Diagnóstico y Pronóstico": sesiones/sesion-07.md
+          - "Sesión 8: La Síntesis — RS y Meta-análisis": sesiones/sesion-08.md
+      - Mes 3 — Construyendo el Mapa:
+          - "Sesión 9: Decisión del Producto + Sprint": sesiones/sesion-09.md
+          - "Sesión 10: R para Especialistas — Análisis en Vivo": sesiones/sesion-10.md
+          - "Sesión 11: Calidad de Evidencia GRADE": sesiones/sesion-11.md
+          - "Sesión 12: Escritura Científica I — Intro y Métodos": sesiones/sesion-12.md
+      - Mes 4 — Publicando el Mapa:
+          - "Sesión 13: Escritura Científica II — Resultados y Discusión": sesiones/sesion-13.md
+          - "Sesión 14: Simulación de Arbitraje Científico": sesiones/sesion-14.md
+          - "Sesión 15: Ética e Integridad en Investigación": sesiones/sesion-15.md
+          - "Sesión 16: Simposio de Investigación": sesiones/sesion-16.md
+  - Plantillas:
+      - Protocolo de Investigación: plantillas/protocolo.md
+      - Appraisal Crítico: plantillas/appraisal.md
+      - Diario de Expedición: plantillas/diario-expedicion.md
+      - Banco de Preguntas PICO: plantillas/banco-preguntas.md
+      - Reflexión Semanal: plantillas/reflexion-semanal.md
+      - Revisión entre Pares: plantillas/revision-pares.md
+  - Rúbricas:
+      - Portafolio PICO (15%): rubricas/portafolio-pico.md
+      - Dossier de Appraisal (20%): rubricas/dossier-appraisal.md
+      - Análisis en R (20%): rubricas/analisis-r.md
+      - Producto Final (35%): rubricas/producto-final.md
+      - Docencia entre Pares (10%): rubricas/docencia-pares.md
+  - Recursos:
+      - Stack Tecnológico: recursos/herramientas.md
+      - Scripts de R: recursos/scripts-r.md
+      - Videos (Guiones Loom): recursos/videos.md
+      - Guía de Uso de IA: recursos/guia-ia.md
+      - Workspace Notion: recursos/notion-workspace.md
+  - Guía de Implementación: implementacion.md
