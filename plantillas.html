@@ -2,16 +2,27 @@
 <html lang="es">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Epidemiología e Investigación — Especialización en Urología UniValle</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plantillas Notion — Epidemiología e Investigación | UniValle</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Source+Sans+3:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
-    rel="stylesheet" />
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Sans+3:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
   <style>
-    /* ── RESET & VARIABLES ── */
+    :root {
+      --navy: #002855;
+      --red: #C8102E;
+      --parch: #F5F0E8;
+      --dark: #1A2A40;
+      --teal: #2A7F8C;
+      --gold: #C4902E;
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body: 'Source Sans 3', system-ui, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
     *,
     *::before,
     *::after {
@@ -20,1121 +31,277 @@
       padding: 0;
     }
 
-    :root {
-      --navy: #002855;
-      --red: #C8102E;
-      --parch: #F5F0E8;
-      --dark: #1A2A40;
-      --teal: #2A7F8C;
-      --gold: #C4902E;
-      --white: #FEFCF8;
-      --muted: #6B7A8D;
-      --border: #DDD5C4;
-
-      --m1: #2A7F8C;
-      /* Mes 1 — teal */
-      --m2: #C4902E;
-      /* Mes 2 — gold */
-      --m3: #C8102E;
-      /* Mes 3 — red */
-      --m4: #002855;
-      /* Mes 4 — navy */
-
-      --font-display: 'Playfair Display', Georgia, serif;
-      --font-body: 'Source Sans 3', system-ui, sans-serif;
-      --font-mono: 'JetBrains Mono', 'Courier New', monospace;
-    }
-
     html {
       scroll-behavior: smooth;
     }
 
     body {
       font-family: var(--font-body);
-      background: var(--parch);
+      background: #E8F4F6;
       color: var(--dark);
+      font-size: 16px;
       line-height: 1.65;
-      font-size: 18px;
-    }
-
-    /* ── PARCHMENT TEXTURE ── */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image:
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    body>* {
-      position: relative;
-      z-index: 1;
-    }
-
-    /* ── UTILITY ── */
-    .container {
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    .section-label {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 8px;
-    }
-
-    .section-title {
-      font-family: var(--font-display);
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
-      font-weight: 700;
-      color: var(--navy);
-      line-height: 1.15;
-      margin-bottom: 16px;
-    }
-
-    .section-intro {
-      font-size: 1.05rem;
-      color: var(--muted);
-      max-width: 660px;
-      margin-bottom: 48px;
-    }
-
-    .tag {
-      display: inline-block;
-      font-family: var(--font-mono);
-      font-size: 11px;
-      letter-spacing: 0.08em;
-      padding: 3px 10px;
-      border-radius: 20px;
-      font-weight: 500;
-    }
-
-    .tag-teal {
-      background: #E6F3F5;
-      color: var(--teal);
-    }
-
-    .tag-gold {
-      background: #FBF3E3;
-      color: var(--gold);
-    }
-
-    .tag-red {
-      background: #FBEAED;
-      color: var(--red);
-    }
-
-    .tag-navy {
-      background: #E5EBF2;
-      color: var(--navy);
-    }
-
-    .tag-grey {
-      background: #EEE;
-      color: var(--muted);
-    }
-
-    /* ── HEADER ── */
-    #site-header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: #C8102E;
-      border-bottom: 2px solid rgba(255, 255, 255, 0.15);
-    }
-
-    .header-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 10px 24px;
-      max-width: 1180px;
-      margin: 0 auto;
-      gap: 16px;
-    }
-
-    .header-brand {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      text-decoration: none;
-      flex-shrink: 0;
-    }
-
-    .header-brand img {
-      height: 44px;
-      width: auto;
-      object-fit: contain;
-      background: #fff;
-      border-radius: 6px;
-      padding: 4px 6px;
-    }
-
-    .header-brand-text {
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
     }
 
-    .header-brand-text .course-code {
-      font-family: var(--font-mono);
-      font-size: 12px;
-      color: rgba(255, 255, 255, 0.65);
-      letter-spacing: 0.12em;
+    /* ── PAGE HEADER ── */
+    #page-header {
+      background: var(--red);
+      padding: 36px 24px 28px;
     }
 
-    .header-brand-text .course-name {
-      font-family: var(--font-display);
-      font-size: 1.15rem;
-      color: #fff;
-      font-weight: 700;
-      line-height: 1.2;
-    }
-
-    nav {
-      display: flex;
-      gap: 4px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
-
-    nav a {
-      font-size: 14.5px;
-      font-weight: 600;
-      color: rgba(255, 255, 255, 0.85);
-      text-decoration: none;
-      padding: 5px 11px;
-      border-radius: 4px;
-      letter-spacing: 0.04em;
-      transition: background 0.2s, color 0.2s;
-    }
-
-    nav a:hover,
-    nav a.active {
-      background: rgba(255, 255, 255, 0.2);
-      color: #fff;
-    }
-
-    /* ── HERO ── */
-    #hero {
-      background: linear-gradient(135deg, #001a3a 0%, #002855 55%, #003f73 100%);
-      color: #fff;
-      padding: 48px 24px 40px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    #hero::before {
-      content: '';
-      position: absolute;
-      right: -80px;
-      top: -60px;
-      width: 500px;
-      height: 500px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(200, 16, 46, 0.15) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    #hero::after {
-      content: '';
-      position: absolute;
-      left: 40%;
-      bottom: -100px;
-      width: 300px;
-      height: 300px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(42, 127, 140, 0.12) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .hero-inner {
-      max-width: 1180px;
+    .ph-inner {
+      max-width: 840px;
       margin: 0 auto;
     }
 
-    .hero-eyebrow {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--red);
-      margin-bottom: 20px;
-    }
-
-    .hero-title {
-      font-family: var(--font-display);
-      font-size: clamp(2.4rem, 6vw, 4.2rem);
-      font-weight: 900;
-      line-height: 1.05;
-      margin-bottom: 16px;
-      max-width: 780px;
-    }
-
-    .hero-subtitle {
-      font-family: var(--font-display);
-      font-size: clamp(1.1rem, 2.5vw, 1.55rem);
-      font-style: italic;
-      color: rgba(255, 255, 255, 0.65);
-      margin-bottom: 40px;
-      max-width: 620px;
-    }
-
-    .hero-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .hero-pill {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      border-radius: 6px;
-      padding: 8px 16px;
-      font-size: 13.5px;
-    }
-
-    .hero-pill .pill-icon {
-      font-size: 16px;
-    }
-
-    .hero-pill .pill-label {
-      color: rgba(255, 255, 255, 0.5);
-      font-size: 11px;
-      display: block;
-    }
-
-    .hero-pill .pill-value {
-      color: #fff;
-      font-weight: 600;
-    }
-
-    /* ── SECTION PADDING ── */
-    section {
-      padding: 80px 0;
-    }
-
-    section:nth-child(even) {
-      background: var(--white);
-    }
-
-    /* ── ACERCA ── */
-    #acerca .acerca-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 48px;
-      align-items: center;
-    }
-
-    .acerca-img-col {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .acerca-epi-img {
-      width: 100%;
-      max-width: 520px;
-      height: auto;
-      border-radius: 12px;
-      margin-top: -40px;
-    }
-
-    #acerca .narrative {
-      font-size: 1.05rem;
-      line-height: 1.8;
-      color: var(--dark);
-    }
-
-    #acerca .narrative strong {
-      color: var(--navy);
-    }
-
-    #acerca .info-card {
-      background: var(--navy);
-      color: #fff;
-      border-radius: 12px;
-      padding: 32px;
-    }
-
-    #acerca .info-card h3 {
-      font-family: var(--font-display);
-      font-size: 1.2rem;
-      margin-bottom: 20px;
-      color: rgba(255, 255, 255, 0.7);
-      font-weight: 400;
-      letter-spacing: 0.02em;
-    }
-
-    .info-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      padding: 10px 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      gap: 12px;
-    }
-
-    .info-row:last-child {
-      border-bottom: none;
-    }
-
-    .info-row .info-key {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      color: rgba(255, 255, 255, 0.45);
-      letter-spacing: 0.08em;
-      flex-shrink: 0;
-    }
-
-    .info-row .info-val {
-      font-size: 13.5px;
-      color: #fff;
-      font-weight: 600;
-      text-align: right;
-    }
-
-    /* ── OBJETIVOS ── */
-    #objetivos {
-      background: var(--parch);
-    }
-
-    .objectives-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 20px;
-      margin-top: 40px;
-    }
-
-    .obj-card {
-      background: var(--white);
-      border-radius: 10px;
-      padding: 24px;
-      border-left: 4px solid var(--teal);
-      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
-    }
-
-    .obj-num {
-      font-family: var(--font-display);
-      font-size: 2rem;
-      font-weight: 900;
-      color: rgba(42, 127, 140, 0.2);
-      line-height: 1;
-      margin-bottom: 8px;
-    }
-
-    .obj-card p {
-      font-size: 17px;
-      line-height: 1.6;
-    }
-
-    /* ── ESTRATEGIAS ── */
-    #estrategias {
-      background: var(--white);
-    }
-
-    .strat-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 20px;
-      margin-top: 40px;
-    }
-
-    .strat-card {
-      background: var(--parch);
-      border-radius: 10px;
-      padding: 28px 24px;
-      text-align: center;
-    }
-
-    .strat-icon {
-      font-size: 2rem;
-      margin-bottom: 12px;
-    }
-
-    .strat-card h4 {
-      font-family: var(--font-display);
-      font-size: 1rem;
-      margin-bottom: 8px;
-      color: var(--navy);
-    }
-
-    .strat-card p {
-      font-size: 17px;
-      color: var(--muted);
-      line-height: 1.55;
-    }
-
-    /* ── EXPERIENCIA / ARCOS MENSUALES ── */
-    #experiencia {
-      background: var(--navy);
-      color: #fff;
-    }
-
-    #experiencia .section-label {
-      color: rgba(255, 255, 255, 0.4);
-    }
-
-    #experiencia .section-title {
-      color: #fff;
-    }
-
-    #experiencia .section-intro {
-      color: rgba(255, 255, 255, 0.55);
-      max-width: 680px;
-    }
-
-    .arcos-track {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0;
-      margin-top: 40px;
-      position: relative;
-    }
-
-    .arcos-track::before {
-      content: '';
-      position: absolute;
-      top: 44px;
-      left: 12.5%;
-      right: 12.5%;
-      height: 2px;
-      background: linear-gradient(90deg, var(--m1), var(--m2), var(--m3), var(--m4));
-      z-index: 0;
-    }
-
-    .arco {
-      position: relative;
-      padding: 0 16px 32px;
-      z-index: 1;
-    }
-
-    .arco-dot {
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      border: 3px solid var(--parch);
-      margin: 33px auto 20px;
-      position: relative;
-    }
-
-    .arco:nth-child(1) .arco-dot {
-      background: var(--m1);
-    }
-
-    .arco:nth-child(2) .arco-dot {
-      background: var(--m2);
-    }
-
-    .arco:nth-child(3) .arco-dot {
-      background: var(--m3);
-    }
-
-    .arco:nth-child(4) .arco-dot {
-      background: var(--m4);
-    }
-
-    .arco-mes {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      text-align: center;
-      margin-bottom: 8px;
-    }
-
-    .arco:nth-child(1) .arco-mes {
-      color: var(--m1);
-    }
-
-    .arco:nth-child(2) .arco-mes {
-      color: var(--m2);
-    }
-
-    .arco:nth-child(3) .arco-mes {
-      color: var(--m3);
-    }
-
-    .arco:nth-child(4) .arco-mes {
-      color: rgba(255, 255, 255, 0.6);
-    }
-
-    .arco-title {
-      font-family: var(--font-display);
-      font-size: 1.05rem;
-      font-weight: 700;
-      text-align: center;
-      color: #fff;
-      margin-bottom: 16px;
-    }
-
-    .arco-sessions {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .arco-session-item {
-      background: rgba(255, 255, 255, 0.06);
-      border-radius: 6px;
-      padding: 10px 12px;
-      font-size: 12.5px;
-      border-left: 3px solid transparent;
-      transition: background 0.2s;
-    }
-
-    .arco-session-item:hover {
-      background: rgba(255, 255, 255, 0.1);
-    }
-
-    .arco:nth-child(1) .arco-session-item {
-      border-color: var(--m1);
-    }
-
-    .arco:nth-child(2) .arco-session-item {
-      border-color: var(--m2);
-    }
-
-    .arco:nth-child(3) .arco-session-item {
-      border-color: var(--m3);
-    }
-
-    .arco:nth-child(4) .arco-session-item {
-      border-color: rgba(255, 255, 255, 0.3);
-    }
-
-    .arco-session-item .sn {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      color: rgba(255, 255, 255, 0.4);
-      display: block;
-      margin-bottom: 2px;
-    }
-
-    .arco-session-item .st {
-      color: rgba(255, 255, 255, 0.85);
-      line-height: 1.3;
-    }
-
-    /* ── SESIONES ── */
-    #sesiones {
-      background: var(--parch);
-    }
-
-    .sesiones-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 20px;
-      margin-top: 40px;
-    }
-
-    .sesion-card {
-      background: var(--white);
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
-      transition: box-shadow 0.2s, transform 0.2s;
-    }
-
-    .sesion-card:hover {
-      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
-      transform: translateY(-2px);
-    }
-
-    .sesion-header {
-      padding: 20px 22px 16px;
-      cursor: pointer;
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-    }
-
-    .sesion-num {
-      font-family: var(--font-display);
-      font-size: 2.2rem;
-      font-weight: 900;
-      line-height: 1;
-      flex-shrink: 0;
-      min-width: 48px;
-    }
-
-    .s-m1 .sesion-num {
-      color: rgba(42, 127, 140, 0.25);
-    }
-
-    .s-m2 .sesion-num {
-      color: rgba(196, 144, 46, 0.3);
-    }
-
-    .s-m3 .sesion-num {
-      color: rgba(200, 16, 46, 0.2);
-    }
-
-    .s-m4 .sesion-num {
-      color: rgba(0, 40, 85, 0.2);
-    }
-
-    .sesion-meta {
-      flex: 1;
-    }
-
-    .sesion-title {
-      font-family: var(--font-display);
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: var(--dark);
-      line-height: 1.25;
-      margin-bottom: 8px;
-    }
-
-    .sesion-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-
-    .sesion-chevron {
-      font-size: 12px;
-      color: var(--muted);
-      flex-shrink: 0;
-      padding-top: 4px;
-      transition: transform 0.25s;
-    }
-
-    .sesion-card.open .sesion-chevron {
-      transform: rotate(180deg);
-    }
-
-    .sesion-stripe {
-      height: 3px;
-    }
-
-    .s-m1 .sesion-stripe {
-      background: var(--m1);
-    }
-
-    .s-m2 .sesion-stripe {
-      background: var(--m2);
-    }
-
-    .s-m3 .sesion-stripe {
-      background: var(--m3);
-    }
-
-    .s-m4 .sesion-stripe {
-      background: var(--m4);
-    }
-
-    .sesion-body {
-      display: none;
-      padding: 0 22px 22px;
-    }
-
-    .sesion-card.open .sesion-body {
-      display: block;
-    }
-
-    .sesion-body h5 {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin: 16px 0 8px;
-    }
-
-    .sesion-body ul {
-      padding-left: 18px;
-    }
-
-    .sesion-body ul li {
-      font-size: 16px;
-      margin-bottom: 5px;
-      line-height: 1.5;
-      color: var(--dark);
-    }
-
-    .ia-note {
-      margin-top: 14px;
-      padding: 10px 14px;
-      background: #E6F3F5;
-      border-radius: 6px;
-      font-size: 15px;
-      color: var(--teal);
-    }
-
-    .ia-note strong {
-      font-family: var(--font-mono);
-    }
-
-
-    .sesion-link {
+    .ph-back {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      margin-top: 14px;
-      padding: 8px 16px;
-      background: transparent;
-      border: 1.5px solid var(--teal);
-      color: var(--teal);
-      border-radius: 6px;
-      font-size: 13px;
       font-family: var(--font-mono);
-      font-weight: 500;
+      font-size: 11px;
+      color: rgba(255, 255, 255, .7);
       text-decoration: none;
-      letter-spacing: 0.04em;
-      transition: background 0.15s, color 0.15s;
+      border: 1px solid rgba(255, 255, 255, .25);
+      border-radius: 4px;
+      padding: 5px 10px;
+      margin-bottom: 20px;
+      transition: all .15s;
     }
 
-    .sesion-link:hover {
-      background: var(--teal);
+    .ph-back:hover {
       color: #fff;
+      border-color: rgba(255, 255, 255, .6);
     }
 
-    .s-m2 .sesion-link {
-      border-color: var(--gold);
-      color: var(--gold);
-    }
-
-    .s-m2 .sesion-link:hover {
-      background: var(--gold);
-      color: #fff;
-    }
-
-    .s-m3 .sesion-link {
-      border-color: var(--red);
-      color: var(--red);
-    }
-
-    .s-m3 .sesion-link:hover {
-      background: var(--red);
-      color: #fff;
-    }
-
-    .s-m4 .sesion-link {
-      border-color: var(--navy);
-      color: var(--navy);
-    }
-
-    .s-m4 .sesion-link:hover {
-      background: var(--navy);
-      color: #fff;
-    }
-
-    /* ── EVALUACIÓN ── */
-    #evaluacion {
-      background: var(--white);
-    }
-
-    .eval-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-      gap: 20px;
-      margin-top: 40px;
-    }
-
-    .eval-card {
-      background: var(--parch);
-      border-radius: 12px;
-      padding: 28px;
-      position: relative;
-    }
-
-    .eval-pct {
+    #page-header h1 {
       font-family: var(--font-display);
-      font-size: 3rem;
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
       font-weight: 900;
-      color: var(--navy);
-      line-height: 1;
-      margin-bottom: 4px;
-    }
-
-    .eval-pct span {
-      font-size: 1.2rem;
-      font-weight: 400;
-    }
-
-    .eval-title {
-      font-family: var(--font-display);
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--dark);
-      margin-bottom: 12px;
-    }
-
-    .eval-bar {
-      height: 4px;
-      background: var(--border);
-      border-radius: 4px;
-      margin-bottom: 16px;
-      overflow: hidden;
-    }
-
-    .eval-fill {
-      height: 100%;
-      border-radius: 4px;
-      background: linear-gradient(90deg, var(--teal), var(--navy));
-    }
-
-    .eval-card p {
-      font-size: 13.5px;
-      color: var(--muted);
-      line-height: 1.6;
-      margin-bottom: 12px;
-    }
-
-    .eval-rubric {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      color: var(--teal);
-    }
-
-    .eval-rubric-detail {
-      margin-top: 12px;
-      border-top: 1px solid var(--border);
-      padding-top: 12px;
-    }
-
-    .eval-rubric-detail h5 {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--muted);
+      color: #fff;
+      letter-spacing: -.02em;
       margin-bottom: 8px;
     }
 
-    .rubric-row {
-      display: flex;
-      justify-content: space-between;
-      font-size: 12.5px;
-      padding: 4px 0;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .rubric-row:last-child {
-      border-bottom: none;
-    }
-
-    .rubric-row .rr-pts {
+    #page-header p {
       font-family: var(--font-mono);
-      font-size: 11px;
-      color: var(--navy);
-      font-weight: 600;
+      font-size: 12px;
+      color: rgba(255, 255, 255, .65);
+      letter-spacing: .07em;
+      text-transform: uppercase;
     }
 
-    /* ── HERRAMIENTAS IA ── */
-    #herramientas {
-      background: var(--parch);
+    /* ── JUMP NAV ── */
+    #jump-nav {
+      background: #fff;
+      border-bottom: 2px solid #D4EAED;
+      padding: 0 24px;
+      overflow-x: auto;
     }
 
-    .ia-principle {
-      background: var(--navy);
-      color: #fff;
-      border-radius: 12px;
-      padding: 28px 32px;
-      margin-bottom: 40px;
+    .jump-nav-inner {
+      max-width: 840px;
+      margin: 0 auto;
       display: flex;
-      align-items: center;
-      gap: 20px;
+      gap: 0;
     }
 
-    .ia-principle-icon {
-      font-size: 2.5rem;
+    .jump-link {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      letter-spacing: .04em;
+      color: #555;
+      text-decoration: none;
+      padding: 12px 14px;
+      border-bottom: 3px solid transparent;
+      white-space: nowrap;
+      transition: all .15s;
+    }
+
+    .jump-link:hover {
+      color: var(--teal);
+      border-bottom-color: var(--teal);
+    }
+
+    /* ── MAIN ── */
+    #content {
+      flex: 1;
+      max-width: 840px;
+      margin: 0 auto;
+      padding: 48px 24px 72px;
+      width: 100%;
+    }
+
+    /* ── TEMPLATE CARD ── */
+    .tmpl-card {
+      margin-bottom: 40px;
+      filter: drop-shadow(0 2px 10px rgba(0, 0, 0, .10));
+    }
+
+    .tmpl-tab {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 22px 9px 16px;
+      border-radius: 6px 6px 0 0;
+      min-width: 260px;
+      max-width: 100%;
+    }
+
+    .tmpl-icon {
+      font-size: 16px;
+      color: rgba(255, 255, 255, .85);
       flex-shrink: 0;
     }
 
-    .ia-principle-text h3 {
+    .tmpl-tab-title {
       font-family: var(--font-display);
-      font-size: 1.2rem;
-      margin-bottom: 6px;
-    }
-
-    .ia-principle-text p {
-      font-size: 14px;
-      color: rgba(255, 255, 255, 0.7);
-    }
-
-    .tools-table {
-      width: 100%;
-      border-collapse: collapse;
-      background: var(--white);
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
-      margin-bottom: 40px;
-    }
-
-    .tools-table thead {
-      background: var(--navy);
+      font-size: 1rem;
+      font-weight: 700;
       color: #fff;
+      letter-spacing: -.01em;
     }
 
-    .tools-table th {
+    .tmpl-body {
+      background: #fff;
+      border-radius: 0 8px 8px 8px;
+      padding: 28px 32px 24px;
+      border: 1px solid #D4EAED;
+      border-top: none;
+    }
+
+    .tmpl-subtitle {
       font-family: var(--font-mono);
       font-size: 11px;
-      letter-spacing: 0.1em;
+      letter-spacing: .07em;
       text-transform: uppercase;
-      padding: 14px 18px;
-      text-align: left;
-    }
-
-    .tools-table td {
-      padding: 14px 18px;
-      font-size: 13.5px;
-      border-bottom: 1px solid var(--border);
-      vertical-align: top;
-    }
-
-    .tools-table tr:last-child td {
-      border-bottom: none;
-    }
-
-    .tools-table tr:nth-child(even) {
-      background: var(--parch);
-    }
-
-    .tool-name {
-      font-family: var(--font-mono);
-      font-size: 13px;
-      font-weight: 500;
       color: var(--teal);
+      margin-bottom: 10px;
     }
 
-    .tool-name a {
-      color: inherit;
-      text-decoration: none;
-      border-bottom: 1px dashed currentColor;
+    .tmpl-desc {
+      font-size: 15px;
+      color: #3a3a3a;
+      margin-bottom: 22px;
+      max-width: 680px;
     }
 
-    .tool-name a:hover {
-      opacity: 0.75;
+    /* ── STRUCTURE OUTLINE ── */
+    .tmpl-structure {
+      background: #F4FAFB;
+      border: 1px solid #C8E8EC;
+      border-radius: 6px;
+      padding: 16px 20px;
+      margin-bottom: 18px;
     }
 
-    .tool-limit {
-      font-size: 12px;
-      color: var(--red);
-    }
-
-    .ia-sessions-title {
-      font-family: var(--font-display);
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: var(--navy);
-      margin-bottom: 20px;
-    }
-
-    .ia-session-table {
-      width: 100%;
-      border-collapse: collapse;
-      background: var(--white);
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
-    }
-
-    .ia-session-table th {
-      background: var(--teal);
-      color: #fff;
+    .struct-label {
       font-family: var(--font-mono);
-      font-size: 11px;
-      letter-spacing: 0.1em;
+      font-size: 10px;
+      letter-spacing: .1em;
       text-transform: uppercase;
-      padding: 12px 16px;
-      text-align: left;
+      color: var(--teal);
+      margin-bottom: 12px;
+      opacity: .8;
     }
 
-    .ia-session-table td {
-      padding: 10px 16px;
-      font-size: 13px;
-      border-bottom: 1px solid var(--border);
-      vertical-align: top;
-    }
-
-    .ia-session-table tr:last-child td {
-      border-bottom: none;
-    }
-
-    .ia-session-table tr:nth-child(even) {
-      background: #F7FAF7;
-    }
-
-    .ia-session-num {
-      font-family: var(--font-mono);
-      font-weight: 600;
-      color: var(--muted);
-      width: 40px;
-    }
-
-    /* ── RECURSOS ── */
-    #recursos {
-      background: var(--white);
-    }
-
-    .recursos-cols {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-      gap: 32px;
-      margin-top: 40px;
-    }
-
-    .resource-group h3 {
-      font-family: var(--font-display);
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: var(--navy);
-      margin-bottom: 16px;
-      padding-bottom: 8px;
-      border-bottom: 2px solid var(--gold);
-    }
-
-    .resource-list {
+    .sec-list {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 8px;
     }
 
-    .resource-item {
-      background: var(--parch);
-      border-radius: 8px;
-      padding: 14px 16px;
-      display: flex;
-      align-items: flex-start;
+    .sec-row {
+      display: grid;
+      grid-template-columns: 200px 1fr;
       gap: 12px;
+      align-items: baseline;
     }
 
-    .resource-item-icon {
-      font-size: 1.3rem;
-      flex-shrink: 0;
-      margin-top: 1px;
-    }
-
-    .resource-item-text h5 {
-      font-size: 13.5px;
-      font-weight: 700;
+    .sec-label {
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      font-weight: 500;
       color: var(--dark);
-      margin-bottom: 3px;
     }
 
-    .resource-item-text p {
-      font-size: 12px;
-      color: var(--muted);
+    .sec-desc {
+      font-size: 13px;
+      color: #555;
       line-height: 1.45;
     }
 
-    .resource-item-text .ri-meta {
+    /* ── CARD FOOTER ROW ── */
+    .tmpl-footer-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding-top: 14px;
+      border-top: 1px solid #E8F4F6;
+    }
+
+    .tmpl-sessions {
       font-family: var(--font-mono);
-      font-size: 10.5px;
-      color: var(--teal);
-      margin-top: 4px;
+      font-size: 11px;
+      color: #666;
+      letter-spacing: .03em;
+    }
+
+    .tmpl-peso {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      color: #fff;
+      background: var(--gold);
+      padding: 3px 10px;
+      border-radius: 20px;
+    }
+
+    /* ── HOVER LIFT ── */
+    .tmpl-card {
+      transition: filter .2s;
+    }
+
+    .tmpl-card:hover {
+      filter: drop-shadow(0 6px 20px rgba(0, 0, 0, .14));
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .tmpl-body {
+        padding: 20px 18px 18px;
+      }
+
+      .sec-row {
+        grid-template-columns: 1fr;
+        gap: 2px;
+      }
+
+      .sec-desc {
+        padding-left: 8px;
+        border-left: 2px solid #C8E8EC;
+      }
+
+      .tmpl-tab {
+        min-width: 0;
+        width: 100%;
+      }
+
+      .jump-link {
+        padding: 10px 10px;
+        font-size: 10px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .tmpl-card {
+        transition: none;
+      }
     }
 
     /* ── FOOTER ── */
@@ -1208,1376 +375,291 @@
       padding: 4px 6px;
     }
 
-    /* ── REDUCED MOTION ── */
-    @media (prefers-reduced-motion: reduce) {
-      * {
-        transition: none !important;
-        animation: none !important;
-      }
-    }
-
-    .resource-item h5 a {
-      color: inherit;
-      text-decoration: none;
-      border-bottom: 1.5px dashed currentColor;
-    }
-
-    .resource-item h5 a:hover {
-      opacity: 0.75;
-    }
   </style>
 </head>
 
 <body>
 
-  <!-- ══════════════════════════════════════════════════════════
-     HEADER
-══════════════════════════════════════════════════════════ -->
-  <header id="site-header">
-    <div class="header-inner">
-      <a href="#hero" class="header-brand">
-        <img
-          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABmCAYAAABoS9cBAAAAAXNSR0IArs4c6QAAAIRlWElmTU0AKgAAAAgABQESAAMAAAABAAEAAAEaAAUAAAABAAAASgEbAAUAAAABAAAAUgEoAAMAAAABAAIAAIdpAAQAAAABAAAAWgAAAAAAAACQAAAAAQAAAJAAAAABAAOgAQADAAAAAQABAACgAgAEAAAAAQAAAEigAwAEAAAAAQAAAGYAAAAA/Pg2HwAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAFMlJREFUeAHtXQl8lNUR/79vA4RwQ7gRgYICcgW5VBQIYBGvqhTbipUKttoDrQioiKDSelZKEfAAQeWQIggihxxy34IUuSEkEEI4wg0BQvZ7/c/7siHHbpJNdkO2ZX4u2X3fO+bNm5k3M2/ep0qZOlpjyVJAIUSAiBYvxk+J4OKrNazuv0CYWrEaYZ/Ngv2z2iRSEafSpcuwYg8FlzAZercj6yAMLgu67o3Qq1dAhRXP8LgIfv1xC9Cxa+EhZlkkEEEpF6zwMoDL/Cw8BPwdKby0vy0KXN8yPRR10fJM8xpoAIdAHgSu/81GgdAiEHeWwobQIlBhU4fjhRaBroGuDC0CXeegXChwXQflQqBr8Di0ROy6DroGLJLLkKHFQblMJtCPFTf5kCJQYXsaGnZoEaiw7WjFINl1DspBLjXcoUWgwuegYqFFoMLXQamhRSBdyJa0AgOJOYhgkXtU+BwUYrtYYR8qyC4WvCC0uAXFA3kIQBXNA4bCBK3sIBLoSCL0u2868/GmOzxbUm5yk7HekWOFenynL13wEMiDRQDXR4iybTuwew/0LTcD4SUL3Lm2bagudxW4n9w6UJu3Qp08DVWsJA8OreLQ2m0+AZW4KlWhnn0O+i9/hnrwIagevwYH8X04mZXLfHnunnpZn/sq91DD89zzO2t7Kec5mN61DXj6zwAJJL/DVKXqwOUUfi4BYQE8zpXBGjeGjmoK19ad0I9Sf5Qt50GvaP7lcbZ66xuogwcNfsIwFipUhEpxA0knfK9uPqej6jWA1esp6G+/AebMCXj/+UTLezPFBd2wBli+Erhw0dTRoKHoLh8OXEmBPngAmqseUHCT8C2aAne2h163BvrI4YB2H9DOLpMoX00Hdu5I79YYilr2hUuXoLZSMVmu9IcB+0Iuwv0PACuXQ63lCtkkWhEEvXED1JJlUBepbtLgarjjIqm3aRPgvuJ5Fri/7lTojh2gbm0NPXMGcPRY4PoOVE9nzkDNm08moYLOAo5Mpbqhdu6FjttvNHeWOgX+qarVBLrfB/XDj9CbNxYtLuLupv/zIzBvLhnEzjbXq0rnMPXDooXcyYIgZqKLfv5z6qMWwIh/QF1IzobINSs4yc1p/jyoXXu9opBOIHXiJNSi74HjFAFvNoLX5n4UlikL++k+3EIToBfO86NhEKvS8NTbfoL6N5WzD1s5nUCgmGHTZiL/XXB8HrKydWc00KQp1HMvQPlAKIjkyN71+XPA119BJRzN/iyt5CqBWKDiE6BmzYJOOBgcLmKilnvUe8YwTZn4Pk354j4RC/oD0T0xe6AmTs5xqEwEMjXnLoCazt0mNTXHhvl7qOGq1wT2Ha1Q/JlXqBSv4ZYvrse770Fdurqte5tTNgKZBuPHwV62JDi7DV0aPW0aUDIc7kHPwi4RQPfG2wy9lYlBvHEt1Exa97lANgJJfbVzH6wRI6C3bA4CkaiLylSG7t0Lro8+h4rbFxxxzmniV65Avzo4T6ETrwQyRFq8nCz4DvQOGk/0UwIKYta/PxJ2hdLQLw8q3ORR7tB67iyo5RvyNKUcZ259PRfqFeqKDWuBYkzeDiQw2qgH9Ydr3lLoVUtpoAbB/vKG72nGeYYMyxP3SPMcCSQV1ALqIonrfDzWxIwkRhIQIJtbj/eBrhkJjBxJTAph33e5oCd9CrU7Js9TyNNs1eb/QA17A/jLnxy9FMZQdiCMyfAI4G9vQ61ZD3v6lKC4OemUENFKjIea8EV6UV6+5IlA0pE6ehzWpGlQffrAfnUg9P49zoTyo5+4kqANpNethJ7AFT2WBOubBYwqUDcFC0RFfPAB1P4DeR7B/+wO3pVQ23bB9d5oqOiuZifSi+dDpzIKUIIxZ7lgIpMXMRTCyUe+hxG5Eow7sY59klbrJx/BvrM1rPsehjWXlrtI18JFwMSJwVHYxEHv3gn1LcdKzvsiyNm8/8c+YmClXIFK5AnDlK8AfnREGOxWdETbtoJqHAVdqxrtHBJMM8h+8gwQEwu9dQus1evg2htnVpBkzATqxCn6RdugLzD0EF4q07MC/6ADrt9/l9yTd90jY0rI1X8CecFWJafCteIHQD4FgS+nQrckoX/Xl75agJS26B6GUq31m3O1mrOibkKuWQuv5W91NpkKezWQEB84NC6yz4mTaPzu9rtP/3WQ30P438D6cgaNOBqpAfHT6JCupw23hqFemhX+Alvnbgf522mB61O/6RmMzxw9QiXAeHlB4PQpKmYau9uuBuL96a7IZpipuYxsruPK87Ql3yA6bAMD8QtoPtj512fcg4semGDaW29CnbuQf+ROHIdexG19X2y++yiaIpY2HcXT2NQFjEvlZzejeQE5xpo+02coNS9UK7Ii5kHe1W8QmIHiP9AhxUyGUo8c979thhZXz8UyFBalr+pcMtzvvUYLnVZ4XkE4bh9jTOM+z2sLn/Wcs3mfj4vGA9ewdygmfihrRiztf9IBDgD6Rc5Q9DonMoT9zO/y9iIBsZo3bYQ1Y77XrvwtDJkkTtcE+nx7duYeDpFQ6uAXA8I9Qswir4PSV1ys4AH9c45qCvfMmQnXui3pzQLxpUjaQd4mplYxqLboW3JR1jgAawtxGAXAK4O9NS1QWcgQCGfPwRo1lgopNfuEJcI5ehSsmITszwpYEjoEovOqNvAYahK3bwnKeYBBOUnMUhMme0oC+jd0CCTTTkoCFkhUkGfqHmAoVQ8fyvN1ZqcEAUKLQJK/s2w57M8mMIzrHBzoQzFwfbfcnPcHgT5FMNyRyywlNGut+wE6ibHtYi6o/gOBtKzUXJrm63FAQq75Gjm/jWg4Sroc2rWDbhUFtX0XEy3c+e0t13ahRyCZ0ulz0CuWAnNnQ+3Zm+skC1IhNAkkodBZzCkUx9RLXmFBCJK1bYgSiNMIolhlJFKYKl0KukFd6EK+apQRiSL5nfmLqFAOyp14UKu4eOhAxAeK5Ezzj5SqWZMBu0vJTLa/Th1fZHR0kCg7Md/lNYFyVcBzmuCtzFdPfEuBTT/J4vWqQgGJOwvektedNSwrCy75AFLHn1xL044kYbeQfAOCY0nLId03vJFTgp0OHeoEp1jZnvwpUKUS9N9ZlkNGqmSr2kMHwIoo75yKStJCMIH9q9dfB8qVMakzWSVAsnTd0a2Ap/owsSKP0UjO15gMd90F3ecJ4JzjzmTaxVSqrIpDQJmfDuNKyDaawo9Ql8e4hrrF2Eyy5YXDIiKo4Englq2Bx89AlykFJSl2snLhjCVLeEK+X77MBSB3ycry8oz5CAewvcn8kNVOYR2pLwpS6pQt65ywnufxj3C2tI1gUoT4X1EtOd4T0FUrO0sh7enxS1vFsRQPIOU8jIEQ4sxnktUh9+IszoMJpOYGpDET2O8F9i/VpJ2hAeunQSYCeQqz/xU1ZcH98QfGYVQNG0PNZdpLxQpQTzwBtG5rAuu6tKS/MNPju9nA2nVAr16wmrWFXrsKejaPcH71GHBDbViSZrx8GefMa1i3tYWr52PQlcip89nu3FmoU2cBJpCqEWOBpd/zpHUaUSIOZSoCPXoAnaINt+tSJYkXCcrF02tWQo1l/YvMor21OdR5R0REDPU2HgFNmQrsj+WVL3JKp45A7yedxRDcpk6BOnMWumFDM37GkKRfsqBonLnGjHcufnDlrXkLeXrA33IZb91qWGMnQJ1m+kpkDfMdX0wm8vxv1VpYX82GxVMK9eFoYNAgoGJFWNVrwfXOSIowxYXEUqvWQL39LvvnzRvOT59gik1visnxI1CyCIcTgAkToI8eglq/gWN8wuQrHu0kMtzxZF9ml/BO2g01eO3qB77zlXWFrOdJ7PGfQPM6FurUJhfx6le//rA3rGI71nnpZV6DWuFw8fp1vCpxwLTz/JNHDkqrLuxZoyYw7HXoalWhXxgAxMZyxXkOlcGOspq3Yu5hNVibfnIy0XZwBbt2AW7iDcSXBlN0ifiD95MIZG9659bGrXDzJFQx0Unxof7909DR0STQEZki7ZEK0FWYOtzzIT6ng1qMnCqiKK9WpZjbC+fAlXQK7iEDoAYNY+Ce3PtLcpqA6MM7eKGvQT1y741mbMxbBGzfQZFijGn3XuCPTwNvDCcu3wP9nnfapf3LEdKAc3eArMwvWhShWwSTPzLeAAonctVrUA9wIqIkRY5NJae1/KvlGfOg1XSKzOKFUBs3EQnmN4pI8v6YXAO1F8/jbpkK1YbiUJq6hqIlYLcgm7dsDqtiZahKlWG/PBDWHIrz66/BKlEa6BzNRK12rJmGsOjGxENG9+gHusO6chk6ku1o/JI0XASOEZcAe/UyEqi6o9NYbnTRaY4pOrAW7R3Rb3XrApGV5Gk6SB+szD/lynJizMSK3Qc76QgJRGX3E9PWkqmM+bbgdBB6GIKYL+nF6QhLCZWo6v4gOYDn45M+h64cCd2sCVREGbNDaip71zN/hdXvBYAX7dAyisSINP3qklTkxENwkiC8TrnA7LC3YfEgUN9/LzDt39RLS1g3jUCSmNC4KReRa/01U2fIXerMOahdMYIJ74Lxgs7USUAUF+K5gVAdOpty0VuoVpk6i/0nHDKGso4/AM3rURln5nCQKLnalM9unblaXNl4roi81Hrbdtg1q0B1TOvUGdIZgP8Kimlomh3j6gOWVuBK1K8Hi8F23fdJoHkLQ1f3L+6GNXwrMHAgTYhIWEtXQt8TDTz8iEN3mbBwJT+qArlo/GQqYAbs29xGvbMeqErRbtSQx8qrWYe7DXc3q1M32DUqwfX+x9A746mM9xulKx3qcBKcXK/WbABvvzP3aJmDJm09dfPNDJm0hJr0JUVuF1TSMaqMON6OjEqfimvoK4OHyS8lV7YZY7HLhgMHqO1tasm774bihQ/UutE0cCcfg31LfVjt2hv5d6cmw65dFapFG3KfjdTI0rC63MMcQ27FREo3rAd32eJQ3brBasRVli24ze2cYAOoHbugz5wiYR6AGvwqEbAYj+cOVLs6LOY5KkkRrl2HnEdi7ImBPrQfqFfPEFbd3oF1z8NdlSLeIRqqKkXn3u7Em3WolN097ofudAdfaNAQQjxEUofF85mYGQMH4EoECVejKlztOb+WLaEvcgejaaIf7QF322bQvIhsNW5muNJxNcz0hUpceTEIiWw6UKaNXSIFkqkqPJNCG0VWWeqKspQ6JgSa9l3sGAFRoiLbtLAzZXiJ/ZTx5d5iNwmk90d7xXP5V8RflLIHPPhQjGGxf7H6pa7gnn6GT9wEBA957ulXysRw9Iwt45r+OQ+Zl3CkzF1YTc7ihIuNLyYNr4NXCmRgFa/Pcy8UN0Xuux7niYNwlS9I4colJAC8YZypnrQ/RL0hz8Ta9sApit9+irrcCvQFkuZCMwPSt4wdE+PgIuZIgKBgBBJE5I7r8DdMcjhkC/eAsHwGPHXMPuDVIeamjccRNFWTL8Ce8CF0f94H4R0uIyoUV81kc/T+LXTMdqdMKmfsU77LGx1+35dEEeJSXHrRIh/+WmaRFBwy4GHG9OMfCnE+gKulTyVRsdEqZZqcRYULGl1adiDRSRcYMz5+1ChFVbkadRG3fd7NV9t38n0eDTNzUEQpWK1uA976p7kVrTp0oW8XxtxCGnO0n1yNWjhvhDjMrZivq1ERtIVoHxk9wjv4co9EyxUGDq1+5O7IW0SSGaaFgMnnjakhetDgIXoyJy73Qgr/CUQn0pjtUybDOk8EbqpPYp3g4nJnInHce7bC9S+u/oE4GmHh0J25y/T8lUM4UYBZV1OQrlUHKMOJnzgNLYZewgFYZ8/AvrezeUWNHvcR1MIlnDDFrVx52kP3QT/Sg/pV+svSoef3bi7auHFQ+2gpU0nrTh2gHnuc49Ao9QP8F7HERKihr3G1uHKNG/FM6hBTdilmArxeqf76PPSs2dB3d+b2ShvqzXeYDvc1dxQucSYTzLRwVrR6VboGD9OG2Qa9hxObNYP9HmBfA7gBkvOGDAGOUYweecjoGzXmQ6gtW0gcH+ifoW4aNZILuQy69a2MCjDCMGqUcxKSFudJGz3XPz5G8NGO26aOj2OuDm2YB+6FeuFF6Gf+QHvlBrOSev9uWItWwt3iZ/R96sC+uY7ZgtVOTjqFYuALaEWr9h3pk22GxbczGB+OIRJVnzYQucT+bCL0U30dH466xtwOOsJNwcMtGfsV8RcnlIskRqXdtCFSW9OmEbeJN7qVhDz8gDA/6hq7wlxOIafo+nWhylcAmt5CV6IScSWrJ1LvEKyD5CjJxKAfpGvWoG9Unj4R7QpfQCLoKlXI/jxAOBxPK5ii1vs3jtjxOol66UVYx0/DbtvCiLFhxJx0STJ1YxK5aBfv3n40nrYP9WNkRSLmHz8Iuv4RiAaeWKCKW6+1L46tqfxiKQo8DkaNG2E3uQlU0dBdO1IPjafSToV771ZYZYncgUQZzzvIZMW87/lLc6cL5xkWWbjYvJAp9cO3UGzrbqSuX4KwNtHQX3xmogneO2KpLBRFyl29HKye1FNv/8NUdcft4DPiJsEyP8A/AnEFVPWavJFDx2/SVL4MJZa2R6xxG9AsCq5KN8Bu3wquT7+EfZE2DQkXtmgZNDkAHTtxN+MKehMLQbgCxax2PRL7LOxKdCEk/EvCqcrVzXSskWM4Lv26sbwUZ9GVEZC+TJiFfz3A36pGLahevYEvJsEmjrKArrX050aPoB57lDudLGPeIN0Xy1t11ipbhhHE1hSnw2Zg+9cPGjlHo8bALU1MFFGdJUdt380Fo+g83w/qyaeoA67Q6KPoNKdXT92Snd2pO2xmqIZzi/7tb6Da3W7ezGA1ag77+EFYe2k00vHUjGBKnFlFRUGXLwVbMabTpZvBy95PM6JNK1hd7wEaUA+SDibOLCHa/s9CPUQO9fNlc/lzNdJXjgSTAzX5LWLiMRRl63YUhfNcrGWRf7GRMtbLuioZ64h/JXUFKMriPCvL4SoznvHVOK608Ywrvp+MKzFwg6OMJ36hcBg/goe3nZSlviB/BPLV2/9guf9q/X+QCDlNif9/MbKhsP51yE4BimcYVqzgKcICR0yzV/m/LtEd70CY3rUd1pgxjlL7vyZHlslzg9Dl+KpSo/HlLXjXITsF6An8F8pjnbtNVmNnAAAAAElFTkSuQmCC"
-          alt="Universidad del Valle" />
-        <div class="header-brand-text">
-          <span class="course-code">CÓDIGO 610036</span>
-          <span class="course-name">Epidemiología e Investigación</span>
-        </div>
-      </a>
-      <nav>
-        <a href="#acerca">Acerca</a>
-        <a href="#objetivos">Objetivos</a>
-        <a href="#experiencia">Experiencia</a>
-        <a href="#sesiones">Sesiones</a>
-        <a href="#evaluacion">Evaluación</a>
-        <a href="#herramientas">Herramientas</a>
-        <a href="#recursos">Recursos</a>
-      </nav>
+  <header id="page-header">
+    <div class="ph-inner">
+      <a href="index.html" class="ph-back">← Volver al curso</a>
+      <h1>Plantillas</h1>
+      <p>Epidemiología e Investigación · Especialización en Urología · Universidad del Valle</p>
     </div>
   </header>
 
+  <nav id="jump-nav" aria-label="Ir a plantilla">
+    <div class="jump-nav-inner">
+      <a href="#tmpl-diario" class="jump-link">Diario</a>
+      <a href="#tmpl-banco" class="jump-link">Banco PICO</a>
+      <a href="#tmpl-protocolo" class="jump-link">Protocolo</a>
+      <a href="#tmpl-appraisal" class="jump-link">Lectura crítica</a>
+      <a href="#tmpl-reflexion" class="jump-link">Reflexión</a>
+      <a href="#tmpl-revision-pares" class="jump-link">Rev. Pares</a>
+    </div>
+  </nav>
 
-  <!-- ══════════════════════════════════════════════════════════
-     HERO
-══════════════════════════════════════════════════════════ -->
-  <section id="hero">
-    <div class="hero-inner">
-      <h1 class="hero-title">Epidemiología<br>e Investigación</h1>
-      <p class="hero-subtitle">De la Duda Clínica a la Publicación</p>
-      <div class="hero-meta">
-        <div class="hero-pill">
-          <span class="pill-icon">🔢</span>
-          <span>
-            <span class="pill-label">Código</span>
-            <span class="pill-value">610036</span>
-          </span>
+  <main id="content">
+
+    <div class="tmpl-card" id="tmpl-diario">
+      <div class="tmpl-tab" style="background:#2A7F8C">
+        <span class="tmpl-icon">◈</span>
+        <span class="tmpl-tab-title">Diario de Experiencia</span>
+      </div>
+      <div class="tmpl-body">
+        <div class="tmpl-subtitle">Portafolio personal continuo — S1 a S16</div>
+        <p class="tmpl-desc">Documento de vida individual que el residente mantiene durante los cuatro meses. Registra
+          la evolución del proyecto, las reflexiones semanales y la totalidad de entregables del curso.</p>
+        <div class="tmpl-structure">
+          <div class="struct-label">Estructura</div>
+          <div class="sec-list">
+            <div class="sec-row">
+              <div class="sec-label">Mi Pregunta de Investigación</div>
+              <div class="sec-desc">PICO actual + tipo de producto + revista objetivo</div>
+            </div>
+            <div class="sec-row">
+              <div class="sec-label">Historial de Evolución del PICO</div>
+              <div class="sec-desc">Tabla v1 → vFinal con fecha y justificación de cada cambio</div>
+            </div>
+            <div class="sec-row">
+              <div class="sec-label">Micro-reflexiones Semanales</div>
+              <div class="sec-desc">~300 palabras antes de cada sesión — duda clínica de la semana</div>
+            </div>
+            <div class="sec-row">
+              <div class="sec-label">Diario de Herramientas</div>
+              <div class="sec-desc">Qué usé · qué aprendí · qué me sorprendió · ¿volvería a usar?</div>
+            </div>
+            <div class="sec-row">
+              <div class="sec-label">Notas de las Sesiones</div>
+              <div class="sec-desc">Lo más valioso · preguntas surgidas · conexión con práctica</div>
+            </div>
+            <div class="sec-row">
+              <div class="sec-label">Galería de Trabajos</div>
+              <div class="sec-desc">16 entregables del portafolio — desde la S1 hasta el simposio</div>
+            </div>
+          </div>
         </div>
-        <div class="hero-pill">
-          <span class="pill-icon">📅</span>
-          <span>
-            <span class="pill-label">Duración</span>
-            <span class="pill-value">4 meses · 16 sesiones</span>
-          </span>
-        </div>
-        <div class="hero-pill">
-          <span class="pill-icon">🕑</span>
-          <span>
-            <span class="pill-label">Horario</span>
-            <span class="pill-value">Viernes 10:00 – 12:00 m</span>
-          </span>
-        </div>
-        <div class="hero-pill">
-          <span class="pill-icon">🔀</span>
-          <span>
-            <span class="pill-label">Modalidad</span>
-            <span class="pill-value">Híbrido</span>
-          </span>
-        </div>
-        <div class="hero-pill">
-          <span class="pill-icon">👤</span>
-          <span>
-            <span class="pill-label">Coordinador</span>
-            <span class="pill-value">Herney A. García Perdomo</span>
-          </span>
+        <div class="tmpl-footer-row">
+          <div class="tmpl-sessions">Todas las sesiones · S1–S16</div>
+
         </div>
       </div>
     </div>
-  </section>
-
-
-  <!-- ══════════════════════════════════════════════════════════
-     ACERCA DEL CURSO
-══════════════════════════════════════════════════════════ -->
-  <section id="acerca">
-    <div class="container">
-      <p class="section-label">Presentación</p>
-      <h2 class="section-title">Acerca del Curso</h2>
-      <div class="acerca-grid">
-        <div class="narrative">
-          <p>Este microcurrículo transforma el curso de Epidemiología e Investigación desde un formato magistral a una
-            <strong>experiencia de aprendizaje significativo</strong>. Cada residente termina el curso con un protocolo
-            de investigación.
-          </p>
-          <br>
-          <p>Todo el aprendizaje está anclado en <strong>preguntas clínicas reales de urología</strong> que los propios
-            residentes traen al curso.</p>
-          <br>
-          <p>El curso es una <strong>experiencia</strong>. Los residentes llegan con intuiciones clínicas sin respuesta.
-            Semana a semana aprenden a:</p>
-          <br>
-          <ul style="padding-left:20px; display:flex; flex-direction:column; gap:8px;">
-            <li>Leer algoritmos existentes → lectura crítica de literatura</li>
-            <li>Evaluar su exactitud → crítica metodológica</li>
-            <li>Entender cómo se hacen los diseños de estudio</li>
-            <li>Usar instrumentos modernos → IA y estadística</li>
-            <li>Crear un protocolo propio</li>
-          </ul>
+    <div class="tmpl-card" id="tmpl-banco">
+      <div class="tmpl-tab" style="background:#C4902E">
+        <span class="tmpl-icon">◇</span>
+        <span class="tmpl-tab-title">Banco Compartido de Preguntas PICO</span>
+      </div>
+      <div class="tmpl-body">
+        <div class="tmpl-subtitle">Documento colectivo de la cohorte — S1, S4, S9</div>
+        <p class="tmpl-desc">Base de datos compartida visible para todos los residentes y el instructor. Permite
+          detectar sinergias entre proyectos y registrar los compromisos de publicación al final del curso.</p>
+        <div class="tmpl-structure">
+          <div class="struct-label">Estructura</div>
+          <div class="sec-list">
+            <div class="sec-row">
+              <div class="sec-label">Entrada por residente</div>
+              <div class="sec-desc">Área temática · tabla PICO · diseño más apropiado · tipo de producto</div>
+            </div>
+            <div class="sec-row">
+              <div class="sec-label">Historial de versiones del PICO</div>
+              <div class="sec-desc">v1 (S1) → v2 (S4) → vFinal (S9) con justificación de cada cambio</div>
+            </div>
+            <div class="sec-row">
+              <div class="sec-label">Comentarios del profesor</div>
+              <div class="sec-desc">Retroalimentación directa sobre la pregunta y el diseño elegido</div>
+            </div>
+            <div class="sec-row">
+              <div class="sec-label">Estado del pre-registro</div>
+              <div class="sec-desc">Número OSF / PROSPERO — se completa en S15</div>
+            </div>
+            <div class="sec-row">
+              <div class="sec-label">Mapa de Sinergias</div>
+              <div class="sec-desc">El profesor identifica proyectos relacionados que pueden colaborar</div>
+            </div>
+            <div class="sec-row">
+              <div class="sec-label">Compromisos de Publicación</div>
+              <div class="sec-desc">Registro colectivo de revista objetivo y fecha de sometimiento (S16)</div>
+            </div>
+          </div>
         </div>
-        <div class="acerca-img-col">
-          <img src="logos/epi.png" alt="Epidemiología e Investigación" class="acerca-epi-img" />
+        <div class="tmpl-footer-row">
+          <div class="tmpl-sessions">Carga inicial: S1 · Actualización: S4 · Versión definitiva: S9</div>
+
         </div>
       </div>
     </div>
-  </section>
-
-
-  <!-- ══════════════════════════════════════════════════════════
-     OBJETIVOS
-══════════════════════════════════════════════════════════ -->
-  <section id="objetivos">
-    <div class="container">
-      <h2 class="section-title">Competencias</h2>
-      <p class="section-intro">Al finalizar el curso, el residente será capaz de:</p>
-      <div class="objectives-grid">
-        <div class="obj-card">
-          <div class="obj-num">01</div>
-          <p>Formular preguntas de investigación rigurosas utilizando el marco PICO, diferenciando preguntas clínicas de
-            preguntas de investigación.</p>
+    <div class="tmpl-card" id="tmpl-protocolo">
+      <div class="tmpl-tab" style="background:#002855">
+        <span class="tmpl-icon">▣</span>
+        <span class="tmpl-tab-title">Plantilla de Protocolo de Investigación</span>
+      </div>
+      <div class="tmpl-body">
+        <div class="tmpl-subtitle">Documento final — S9, S12, S13, S15, S16</div>
+        <p class="tmpl-desc">Protocolo completo en formato compatible con las normas para someter.</p>
+        <div class="tmpl-structure">
+          <div class="struct-label">Estructura</div>
+          <div class="sec-list">
+            <div class="sec-row">
+              <div class="sec-label">1 · Magnitud del problema</div>
+              <div class="sec-desc">Epidemiología · carga de la enfermedad · relevancia clínica</div>
+            </div>
+            <div class="sec-row">
+              <div class="sec-label">2–4 · Justificación, Marco Teórico, Estado del Arte</div>
+              <div class="sec-desc">Vacío en el conocimiento + síntesis crítica</div>
+            </div>
+            <div class="sec-row">
+              <div class="sec-label">5 · Pregunta y Objetivos</div>
+              <div class="sec-desc">PICO completo · objetivo primario · objetivos secundarios · hipótesis</div>
+            </div>
+            <div class="sec-row">
+              <div class="sec-label">6 · Metodología</div>
+              <div class="sec-desc">Diseño · ámbito · población · variables · tamaño de muestra · plan de análisis</div>
+            </div>
+            <div class="sec-row">
+              <div class="sec-label">7 · Aspectos Éticos</div>
+              <div class="sec-desc">Aval comité · consentimiento · confidencialidad · declaración de IA</div>
+            </div>
+            <div class="sec-row">
+              <div class="sec-label">8–10 · Cronograma, Presupuesto, Referencias</div>
+              <div class="sec-desc">Vancouver numerado · control de versiones del protocolo</div>
+            </div>
+          </div>
         </div>
-        <div class="obj-card">
-          <div class="obj-num">02</div>
-          <p>Seleccionar y justificar diseños de estudio apropiados según el tipo de pregunta clínica y los recursos
-            disponibles en el contexto local.</p>
-        </div>
-        <div class="obj-card">
-          <div class="obj-num">03</div>
-          <p>Aplicar herramientas validadas de lectura crítica (CASP, CONSORT, QUADAS-2, PRISMA) para evaluar la validez
-            y aplicabilidad de la evidencia.</p>
-        </div>
-        <div class="obj-card">
-          <div class="obj-num">04</div>
-          <p>Ejecutar análisis estadístico básico-intermedio en R: estadística descriptiva, bivariada, regresión
-            logística, curvas ROC y forest plots.</p>
-        </div>
-        <div class="obj-card">
-          <div class="obj-num">05</div>
-          <p>Integrar críticamente herramientas de inteligencia artificial en el proceso de investigación, documentando
-            su uso con transparencia y evaluando sus limitaciones.</p>
-        </div>
-        <div class="obj-card">
-          <div class="obj-num">06</div>
-          <p>Generar un protocolo de investigación con calidad suficiente para someterse a
-            revisión por pares.</p>
+        <div class="tmpl-footer-row">
+          <div class="tmpl-sessions">Sprint inicial: S9 · Escritura: S12–S13 · Pre-registro: S15 · Versión final: S16
+          </div>
+          <div class="tmpl-peso">Peso en la nota: 35% (Producto Final)</div>
         </div>
       </div>
     </div>
-  </section>
-
-
-  <!-- ══════════════════════════════════════════════════════════
-     ESTRATEGIAS PEDAGÓGICAS
-══════════════════════════════════════════════════════════ -->
-  <section id="estrategias">
-    <div class="container">
-      <p class="section-label">Metodología</p>
-      <h2 class="section-title">Estrategias Pedagógicas</h2>
-      <p class="section-intro">El curso combina cuatro enfoques complementarios para maximizar el aprendizaje activo y
-        la transferencia al contexto clínico.</p>
-      <div class="strat-grid">
-        <div class="strat-card">
-          <div class="strat-icon">🔄</div>
-          <h4>Aula Invertida</h4>
-          <p>Videos (8–12 min) antes de cada sesión. El tiempo presencial se dedica a aplicación, debate y
-            producción, no a exposición magistral.</p>
+    <div class="tmpl-card" id="tmpl-appraisal">
+      <div class="tmpl-tab" style="background:#8B3A3A">
+        <span class="tmpl-icon">◉</span>
+        <span class="tmpl-tab-title">Carpeta de Lectura Crítica</span>
+      </div>
+      <div class="tmpl-body">
+        <div class="tmpl-subtitle">3 críticas formales — S5, S6/S7, S8</div>
+        <p class="tmpl-desc">Tres entradas de evaluación crítica de artículos reales de la literatura urológica, usando
+          las herramientas validadas internacionalmente. Cada entrada incluye declaración obligatoria del uso de IA.</p>
+        <div class="tmpl-structure">
+          <div class="struct-label">Estructura</div>
+          <div class="sec-list">
+            <div class="sec-row">
+              <div class="sec-label">Entrada 1 · Estudio Observacional</div>
+              <div class="sec-desc">CASP adaptado — 10 preguntas: validez · resultados · utilidad</div>
+            </div>
+            <div class="sec-row">
+              <div class="sec-label">Sección A: ¿Son válidos los resultados?</div>
+              <div class="sec-desc">Pregunta, método, reclutamiento, medición, confusores, seguimiento</div>
+            </div>
+            <div class="sec-row">
+              <div class="sec-label">Sección B: ¿Cuáles son los resultados?</div>
+              <div class="sec-desc">Medida de efecto · IC 95% · valor p · significancia clínica</div>
+            </div>
+            <div class="sec-row">
+              <div class="sec-label">Entrada 2 · ECA</div>
+              <div class="sec-desc">CONSORT adaptado — aleatorización · cegamiento · ITT · baseline · NNT</div>
+            </div>
+            <div class="sec-row">
+              <div class="sec-label">Entrada 3 · Diagnóstico o RS</div>
+              <div class="sec-desc">QUADAS-2 (4 dominios + VPP/VPN) o AMSTAR-2 abreviada (7 ítems)</div>
+            </div>
+            <div class="sec-row">
+              <div class="sec-label">Valoración global por entrada</div>
+              <div class="sec-desc">Validez interna · fortalezas · limitaciones · ¿cambiaría mi práctica?</div>
+            </div>
+          </div>
         </div>
-        <div class="strat-card">
-          <div class="strat-icon">🎯</div>
-          <h4>Aprendizaje Basado en Proyectos</h4>
-          <p>Cada residente trabaja en su propia pregunta de investigación durante todo el curso. Cada sesión produce un
-            entregable que construye el producto final.</p>
-        </div>
-        <div class="strat-card">
-          <div class="strat-icon">🔬</div>
-          <h4>Aprendizaje Basado en Problemas</h4>
-          <p>Las sesiones se anclan en casos clínicos reales de urología que plantean dilemas diagnósticos, terapéuticos
-            o de screening con evidencia contradictoria.</p>
-        </div>
-        <div class="strat-card">
-          <div class="strat-icon">👥</div>
-          <h4>Aprendizaje entre Pares</h4>
-          <p>Revisores metodológicos asignados en S9 para revisión continua. Sesión S14 de arbitraje científico simulado
-            y
-            sesión S16 de docencia entre pares.</p>
-        </div>
-        <div class="strat-card">
-          <div class="strat-icon">🤖</div>
-          <h4>IA Crítica</h4>
-          <p>Principio rector: <em>Usar IA → Criticar IA → Documentar lo correcto e incorrecto</em>. La IA es un
-            interlocutor, no es la panacea.</p>
-        </div>
-        <div class="strat-card">
-          <div class="strat-icon">📢</div>
-          <h4>Producto Público</h4>
-          <p>La sesión final (S16) es un Simposio de Investigación con evaluadores.</p>
+        <div class="tmpl-footer-row">
+          <div class="tmpl-sessions">Observacional: S5 · ECA: S6 · Diagnóstico/RS: S7–S8</div>
+          <div class="tmpl-peso">Peso en la nota: 20% (Carpeta de crítica)</div>
         </div>
       </div>
     </div>
-  </section>
-
-
-  <!-- ══════════════════════════════════════════════════════════
-     EXPERIENCIA — ARCOS MENSUALES
-══════════════════════════════════════════════════════════ -->
-  <section id="experiencia">
-    <div class="container">
-      <p class="section-label">Estructura del Curso</p>
-      <h2 class="section-title">La Experiencia: cuatro ambientes</h2>
-      <p class="section-intro">El curso se articula en cuatro módulos, cada uno con una misión epistémica
-        distinta que construye progresivamente sobre el anterior.</p>
-      <div class="arcos-track">
-        <div class="arco">
-          <div class="arco-dot"></div>
-          <div class="arco-mes">Mes 1</div>
-          <div class="arco-title">La Pregunta<br>y el Contexto</div>
-          <div class="arco-sessions">
-            <div class="arco-session-item"><span class="sn">S01</span><span class="st">La Duda que Cambia Todo</span>
+    <div class="tmpl-card" id="tmpl-reflexion">
+      <div class="tmpl-tab" style="background:#3A6B5C">
+        <span class="tmpl-icon">◌</span>
+        <span class="tmpl-tab-title">Reflexión Semanal</span>
+      </div>
+      <div class="tmpl-body">
+        <div class="tmpl-subtitle">Micro-reflexión ≤300 palabras — antes de cada sesión</div>
+        <p class="tmpl-desc">Formato breve de reflexión clínica que conecta cada semana de práctica hospitalaria con los
+          conceptos del curso. Entrega obligatoria los viernes antes del mediodía.</p>
+        <div class="tmpl-structure">
+          <div class="struct-label">Estructura</div>
+          <div class="sec-list">
+            <div class="sec-row">
+              <div class="sec-label">Pregunta principal</div>
+              <div class="sec-desc">¿Qué duda clínica surgió esta semana que no pude responder con certeza?</div>
             </div>
-            <div class="arco-session-item"><span class="sn">S02</span><span class="st">Anatomía de la Evidencia</span>
+            <div class="sec-row">
+              <div class="sec-label">Reflexión libre</div>
+              <div class="sec-desc">Conexiones con el tema de la sesión · tensiones teoría-práctica · sorpresas</div>
             </div>
-            <div class="arco-session-item"><span class="sn">S03</span><span class="st">Hablar el Idioma de los
-                Números</span></div>
-            <div class="arco-session-item"><span class="sn">S04</span><span class="st">Mapeando el Territorio</span>
+            <div class="sec-row">
+              <div class="sec-label">Una acción concreta</div>
+              <div class="sec-desc">Una cosa específica que haré en mi práctica clínica la próxima semana</div>
+            </div>
+            <div class="sec-row">
+              <div class="sec-label">Pregunta para el grupo</div>
+              <div class="sec-desc">Opcional — algo a debatir o aclarar en la sesión</div>
             </div>
           </div>
         </div>
-        <div class="arco">
-          <div class="arco-dot"></div>
-          <div class="arco-mes">Mes 2</div>
-          <div class="arco-title">Los<br>Instrumentos</div>
-          <div class="arco-sessions">
-            <div class="arco-session-item"><span class="sn">S05</span><span class="st">Autopsia de un Artículo:
-                Observacionales</span></div>
-            <div class="arco-session-item"><span class="sn">S06</span><span class="st">El Experimento Perfecto (y Sus
-                Límites)</span></div>
-            <div class="arco-session-item"><span class="sn">S07</span><span class="st">Ver sin Tocar: Diagnóstico y
-                Pronóstico</span></div>
-            <div class="arco-session-item"><span class="sn">S08</span><span class="st">La Síntesis: RS y
-                Meta-análisis</span></div>
-          </div>
-        </div>
-        <div class="arco">
-          <div class="arco-dot"></div>
-          <div class="arco-mes">Mes 3</div>
-          <div class="arco-title">Construyendo<br>el Mapa</div>
-          <div class="arco-sessions">
-            <div class="arco-session-item"><span class="sn">S09</span><span class="st">Decisión del Producto + Sprint de
-                Protocolo</span></div>
-            <div class="arco-session-item"><span class="sn">S10</span><span class="st">R para Urólogos: Análisis en
-                Vivo</span></div>
-            <div class="arco-session-item"><span class="sn">S11</span><span class="st">Calidad de Evidencia: GRADE en
-                Urología</span></div>
-            <div class="arco-session-item"><span class="sn">S12</span><span class="st">Escritura Científica I:
-                Introducción y Métodos</span></div>
-          </div>
-        </div>
-        <div class="arco">
-          <div class="arco-dot"></div>
-          <div class="arco-mes">Mes 4</div>
-          <div class="arco-title">Publicando<br>con integridad</div>
-          <div class="arco-sessions">
-            <div class="arco-session-item"><span class="sn">S13</span><span class="st">Escritura Científica II:
-                Resultados y Discusión</span></div>
-            <div class="arco-session-item"><span class="sn">S14</span><span class="st">Simulación de Arbitraje
-                Científico</span></div>
-            <div class="arco-session-item"><span class="sn">S15</span><span class="st">Ética e Integridad en
-                Investigación</span></div>
-            <div class="arco-session-item"><span class="sn">S16</span><span class="st">Simposio de Investigación</span>
-            </div>
-          </div>
+        <div class="tmpl-footer-row">
+          <div class="tmpl-sessions">Antes de cada sesión · S1–S15 · Publicar en Notion viernes 12:00 pm</div>
+          <div class="tmpl-peso">Componente formativo — sin nota, obligatorio</div>
         </div>
       </div>
     </div>
-  </section>
-
-
-  <!-- ══════════════════════════════════════════════════════════
-     SESIONES
-══════════════════════════════════════════════════════════ -->
-  <section id="sesiones">
-    <div class="container">
-      <p class="section-label">Programa Detallado</p>
-      <h2 class="section-title">Las 16 Sesiones</h2>
-      <p class="section-intro">Haz clic en cada sesión para ver la agenda completa, actividades y el uso específico de
-        IA. Viernes, 10:00–12:00 m.</p>
-      <div class="sesiones-grid">
-
-        <!-- S01 -->
-        <div class="sesion-card s-m1">
-          <div class="sesion-stripe"></div>
-          <div class="sesion-header" onclick="toggleSesion(this)">
-            <div class="sesion-num">01</div>
-            <div class="sesion-meta">
-              <div class="sesion-title">La Duda que Cambia Todo</div>
-              <div class="sesion-tags">
-                <span class="tag tag-teal">90 min</span>
-                <span class="tag tag-navy">Presencial</span>
-                <span class="tag tag-grey">Mes 1</span>
-              </div>
+    <div class="tmpl-card" id="tmpl-revision-pares">
+      <div class="tmpl-tab" style="background:#4A3F7A">
+        <span class="tmpl-icon">◎</span>
+        <span class="tmpl-tab-title">Revisión Formal de Pares</span>
+      </div>
+      <div class="tmpl-body">
+        <div class="tmpl-subtitle">Par metodólogo + simulación de arbitraje — S5, S9, S14</div>
+        <p class="tmpl-desc">Formato de revisión estructurada basado en los estándares de las revistas científicas. Se
+          usa tanto en la revisión continua entre pares (S5, S9) como en la simulación de arbitraje ciego (S14).</p>
+        <div class="tmpl-structure">
+          <div class="struct-label">Estructura</div>
+          <div class="sec-list">
+            <div class="sec-row">
+              <div class="sec-label">Resumen del documento</div>
+              <div class="sec-desc">5 oraciones max — verifica que el revisor entendió el trabajo</div>
             </div>
-            <span class="sesion-chevron">▼</span>
-          </div>
-          <div class="sesion-body">
-            <h5>Actividades</h5>
-            <ul>
-              <li>Gancho: 3 casos que cambiaron la urología (SUSPEND, ERSPC, PLCO)</li>
-              <li>Padlet lluvia de ideas: preguntas clínicas vs. preguntas de investigación</li>
-              <li>Cosecha de preguntas: agrupación por tema clínico</li>
-              <li>Construcción de PICO en tiempo real con casos propios</li>
-              <li>Demo comparativa: Elicit vs. PubMed</li>
-              <li>Onboarding del workspace Notion del curso</li>
-            </ul>
-            <div class="ia-note"><strong>IA:</strong> Comparación Elicit vs. PubMed para la misma pregunta PICO</div>
-            <a href="sesiones.html#sesion-01" class="sesion-link">Ver guía completa →</a>
+            <div class="sec-row">
+              <div class="sec-label">Comentarios Mayores (≤5)</div>
+              <div class="sec-desc">Problemas que invalidan el trabajo si no se resuelven · ubicación exacta ·
+                sugerencia</div>
+            </div>
+            <div class="sec-row">
+              <div class="sec-label">Comentarios Menores</div>
+              <div class="sec-desc">Claridad · formato · referencias · ortografía científica · sin límite</div>
+            </div>
+            <div class="sec-row">
+              <div class="sec-label">Preguntas al Autor</div>
+              <div class="sec-desc">Dudas genuinas del revisor — no críticas, sino preguntas</div>
+            </div>
+            <div class="sec-row">
+              <div class="sec-label">Fortalezas (≥2)</div>
+              <div class="sec-desc">Aspectos bien ejecutados — la revisión constructiva reconoce lo que está bien</div>
+            </div>
+            <div class="sec-row">
+              <div class="sec-label">Recomendación</div>
+              <div class="sec-desc">Solo S14: aceptar / revisiones menores / mayores / rechazar + justificación</div>
+            </div>
           </div>
         </div>
-
-        <!-- S02 -->
-        <div class="sesion-card s-m1">
-          <div class="sesion-stripe"></div>
-          <div class="sesion-header" onclick="toggleSesion(this)">
-            <div class="sesion-num">02</div>
-            <div class="sesion-meta">
-              <div class="sesion-title">Anatomía de la Evidencia</div>
-              <div class="sesion-tags">
-                <span class="tag tag-teal">60 min</span>
-                <span class="tag tag-gold">Virtual</span>
-                <span class="tag tag-grey">Mes 1</span>
-              </div>
-            </div>
-            <span class="sesion-chevron">▼</span>
-          </div>
-          <div class="sesion-body">
-            <h5>Pre-trabajo</h5>
-            <ul>
-              <li>Video Loom 01: Tipos de diseño (12 min)</li>
-            </ul>
-            <h5>Actividades</h5>
-            <ul>
-              <li>Revisión del quiz diagnóstico sobre diseños de estudio (5 preguntas)</li>
-              <li>Juego de clasificación: 10 abstracts → identificar diseño</li>
-              <li>Breakout en pares: emparejar diseño con PICO propio</li>
-              <li>Ejercicio Claude: justificación del diseño con verificación de factibilidad local</li>
-            </ul>
-            <div class="ia-note"><strong>IA:</strong> Claude justifica el diseño de estudio propuesto para cada PICO
-            </div>
-            <a href="sesiones.html#sesion-02" class="sesion-link">Ver guía completa →</a>
-          </div>
+        <div class="tmpl-footer-row">
+          <div class="tmpl-sessions">Primera revisión: S5 · Segunda: S9 · Arbitraje ciego: S14 · Plazo: 72 horas</div>
+          <div class="tmpl-peso">Componente formativo · 3 revisiones obligatorias durante el semestre</div>
         </div>
-
-        <!-- S03 -->
-        <div class="sesion-card s-m1">
-          <div class="sesion-stripe"></div>
-          <div class="sesion-header" onclick="toggleSesion(this)">
-            <div class="sesion-num">03</div>
-            <div class="sesion-meta">
-              <div class="sesion-title">Hablar el Idioma de los Números</div>
-              <div class="sesion-tags">
-                <span class="tag tag-teal">90 min</span>
-                <span class="tag tag-navy">Presencial</span>
-                <span class="tag tag-grey">Mes 1</span>
-              </div>
-            </div>
-            <span class="sesion-chevron">▼</span>
-          </div>
-          <div class="sesion-body">
-            <h5>Pre-trabajo</h5>
-            <ul>
-              <li>Video Loom 02: RR, OR, ARR, NNT (12 min)</li>
-            </ul>
-            <h5>Actividades</h5>
-            <ul>
-              <li>Autopsia de la tabla de resultados de un ECA real en urología</li>
-              <li>Lab Jamovi: construcción de tabla 2×2, cálculo de RR/OR/ARR/NNT con dataset litiasis</li>
-              <li>Ejercicio de interpretación con Claude/ChatGPT</li>
-              <li>Discusión grupal: ¿qué acertó y qué falló la IA?</li>
-            </ul>
-            <div class="ia-note"><strong>IA:</strong> Interpretación de resultados estadísticos con ChatGPT — análisis
-              crítico posterior</div>
-            <a href="sesiones.html#sesion-03" class="sesion-link">Ver guía completa →</a>
-          </div>
-        </div>
-
-        <!-- S04 -->
-        <div class="sesion-card s-m1">
-          <div class="sesion-stripe"></div>
-          <div class="sesion-header" onclick="toggleSesion(this)">
-            <div class="sesion-num">04</div>
-            <div class="sesion-meta">
-              <div class="sesion-title">Mapeando el Territorio</div>
-              <div class="sesion-tags">
-                <span class="tag tag-teal">75 min</span>
-                <span class="tag tag-gold">Virtual</span>
-                <span class="tag tag-grey">Mes 1</span>
-              </div>
-            </div>
-            <span class="sesion-chevron">▼</span>
-          </div>
-          <div class="sesion-body">
-            <h5>Pre-trabajo</h5>
-            <ul>
-              <li>Video Loom 03: Estrategias de búsqueda (10 min)</li>
-            </ul>
-            <h5>Actividades</h5>
-            <ul>
-              <li>Hackathon de búsqueda: mismo PICO en PubMed vs. Elicit vs. Consensus</li>
-              <li>Mapeo visual de citas con Research Rabbit</li>
-              <li>Importación a Zotero (≥ 10 artículos por residente)</li>
-              <li>Comparación de brechas: ¿qué encontró la IA que PubMed no y viceversa?</li>
-            </ul>
-            <div class="ia-note"><strong>IA:</strong> Comparación Elicit / Consensus / Research Rabbit — cuál
-              herramienta para qué propósito</div>
-            <a href="sesiones.html#sesion-04" class="sesion-link">Ver guía completa →</a>
-          </div>
-        </div>
-
-        <!-- S05 -->
-        <div class="sesion-card s-m2">
-          <div class="sesion-stripe"></div>
-          <div class="sesion-header" onclick="toggleSesion(this)">
-            <div class="sesion-num">05</div>
-            <div class="sesion-meta">
-              <div class="sesion-title">Autopsia de un Artículo: Observacionales</div>
-              <div class="sesion-tags">
-                <span class="tag tag-teal">90 min</span>
-                <span class="tag tag-navy">Presencial</span>
-                <span class="tag tag-grey">Mes 2</span>
-              </div>
-            </div>
-            <span class="sesion-chevron">▼</span>
-          </div>
-          <div class="sesion-body">
-            <h5>Actividades</h5>
-            <ul>
-              <li>Asignación aleatoria de roles: Fiscalía vs. Defensa</li>
-              <li>Debate estructurado con argumentos basados en la herramienta CASP</li>
-              <li>Co-appraisal con Claude del resumen del artículo</li>
-              <li>Comparación: lectura crítica humana vs. IA</li>
-            </ul>
-            <div class="ia-note"><strong>IA:</strong> Claude co-appraisal del artículo observacional — comparación con
-              evaluación humana</div>
-            <a href="sesiones.html#sesion-05" class="sesion-link">Ver guía completa →</a>
-          </div>
-        </div>
-
-        <!-- S06 -->
-        <div class="sesion-card s-m2">
-          <div class="sesion-stripe"></div>
-          <div class="sesion-header" onclick="toggleSesion(this)">
-            <div class="sesion-num">06</div>
-            <div class="sesion-meta">
-              <div class="sesion-title">El Experimento Perfecto (y Sus Límites)</div>
-              <div class="sesion-tags">
-                <span class="tag tag-teal">75 min</span>
-                <span class="tag tag-gold">Virtual</span>
-                <span class="tag tag-grey">Mes 2</span>
-              </div>
-            </div>
-            <span class="sesion-chevron">▼</span>
-          </div>
-          <div class="sesion-body">
-            <h5>Pre-trabajo</h5>
-            <ul>
-              <li>Video Loom 04: Anatomía del ECA (10 min)</li>
-            </ul>
-            <h5>Actividades</h5>
-            <ul>
-              <li>Quiz: 5 componentes críticos de un ECA (aleatorización, ocultamiento, cegamiento, pérdidas, tamaño
-                muestral)</li>
-              <li>Diseño en breakout: esqueleto de ECA para el PICO propio</li>
-              <li>Presentaciones de 2 minutos por residente</li>
-              <li>ChatGPT diseña el ECA "ideal" — crítica de factibilidad en HUV</li>
-            </ul>
-            <div class="ia-note"><strong>IA:</strong> ChatGPT diseña el ECA "ideal" para cada PICO — debate de
-              factibilidad real en el HUV</div>
-            <a href="sesiones.html#sesion-06" class="sesion-link">Ver guía completa →</a>
-          </div>
-        </div>
-
-        <!-- S07 -->
-        <div class="sesion-card s-m2">
-          <div class="sesion-stripe"></div>
-          <div class="sesion-header" onclick="toggleSesion(this)">
-            <div class="sesion-num">07</div>
-            <div class="sesion-meta">
-              <div class="sesion-title">Ver sin Tocar: Diagnóstico y Pronóstico</div>
-              <div class="sesion-tags">
-                <span class="tag tag-teal">90 min</span>
-                <span class="tag tag-navy">Presencial</span>
-                <span class="tag tag-grey">Mes 2</span>
-              </div>
-            </div>
-            <span class="sesion-chevron">▼</span>
-          </div>
-          <div class="sesion-body">
-            <h5>Pre-trabajo</h5>
-            <ul>
-              <li>Video Loom 05: Sensibilidad, especificidad, VPP, VPN, LR (10 min)</li>
-            </ul>
-            <h5>Actividades</h5>
-            <ul>
-              <li>Caso clínico: PSA 5.2 en hombre de 65 años — activación del razonamiento bayesiano</li>
-              <li>Lab R: curva ROC con script sesion07-roc-diagnostico.R (dataset PSA simulado, 200 pacientes)</li>
-              <li>Lectura crítica QUADAS-2 de un estudio diagnóstico en urología</li>
-              <li>Discusión: ¿cuándo debe una prueba diagnóstica cambiar la práctica?</li>
-            </ul>
-            <div class="ia-note"><strong>IA:</strong> R + Claude para interpretar la curva ROC y el AUC — cuándo el AUC
-              es "suficientemente bueno"</div>
-            <a href="sesiones.html#sesion-07" class="sesion-link">Ver guía completa →</a>
-          </div>
-        </div>
-
-        <!-- S08 -->
-        <div class="sesion-card s-m2">
-          <div class="sesion-stripe"></div>
-          <div class="sesion-header" onclick="toggleSesion(this)">
-            <div class="sesion-num">08</div>
-            <div class="sesion-meta">
-              <div class="sesion-title">La Síntesis: Revisión Sistemática y Meta-análisis</div>
-              <div class="sesion-tags">
-                <span class="tag tag-teal">75 min</span>
-                <span class="tag tag-gold">Virtual</span>
-                <span class="tag tag-grey">Mes 2</span>
-              </div>
-            </div>
-            <span class="sesion-chevron">▼</span>
-          </div>
-          <div class="sesion-body">
-            <h5>Pre-trabajo</h5>
-            <ul>
-              <li>Video Loom 06: Forest plot (8 min)</li>
-            </ul>
-            <h5>Actividades</h5>
-            <ul>
-              <li>Desafío de 4 forest plots: interpretarlos sin explicación previa</li>
-              <li>Debate: ¿cuándo NO hacer un meta-análisis? (heterogeneidad I²)</li>
-              <li>Lab Rayyan en vivo: tamización de 30 abstracts</li>
-              <li>Comparación Elicit vs. RS publicada: ¿coinciden las conclusiones?</li>
-              <li>Decisión crítica: votación en Padlet — ¿Protocolo o Revisión Sistemática?</li>
-            </ul>
-            <div class="ia-note"><strong>IA:</strong> Elicit vs. RS publicada — debate sobre qué encontró y qué no
-              encontró la IA</div>
-            <a href="sesiones.html#sesion-08" class="sesion-link">Ver guía completa →</a>
-          </div>
-        </div>
-
-        <!-- S09 -->
-        <div class="sesion-card s-m3">
-          <div class="sesion-stripe"></div>
-          <div class="sesion-header" onclick="toggleSesion(this)">
-            <div class="sesion-num">09</div>
-            <div class="sesion-meta">
-              <div class="sesion-title">Decisión del Producto + Sprint de Protocolo</div>
-              <div class="sesion-tags">
-                <span class="tag tag-teal">90 min</span>
-                <span class="tag tag-navy">Presencial</span>
-                <span class="tag tag-grey">Mes 3</span>
-              </div>
-            </div>
-            <span class="sesion-chevron">▼</span>
-          </div>
-          <div class="sesion-body">
-            <h5>Actividades</h5>
-            <ul>
-              <li>Presentaciones de 3 minutos: tipo de producto final elegido</li>
-              <li>Validación entre pares: 2 preguntas concretas por presentación</li>
-              <li>Sprint de escritura: sección de justificación del protocolo</li>
-              <li>Marco ético: Resolución 8430, HUV, ICMJE</li>
-              <li>Asignación de buddies metodológicos para el resto del curso</li>
-            </ul>
-            <div class="ia-note"><strong>IA:</strong> Claude redacta borrador de la justificación — el residente critica
-              y mejora</div>
-            <a href="sesiones.html#sesion-09" class="sesion-link">Ver guía completa →</a>
-          </div>
-        </div>
-
-        <!-- S10 -->
-        <div class="sesion-card s-m3">
-          <div class="sesion-stripe"></div>
-          <div class="sesion-header" onclick="toggleSesion(this)">
-            <div class="sesion-num">10</div>
-            <div class="sesion-meta">
-              <div class="sesion-title">R para Urólogos: Análisis en Vivo</div>
-              <div class="sesion-tags">
-                <span class="tag tag-teal">90 min</span>
-                <span class="tag tag-gold">Virtual</span>
-                <span class="tag tag-grey">Mes 3</span>
-              </div>
-            </div>
-            <span class="sesion-chevron">▼</span>
-          </div>
-          <div class="sesion-body">
-            <h5>Actividades</h5>
-            <ul>
-              <li>Código en vivo con script sesion10-analisis-urologia.R (dataset 300 pacientes con cáncer de próstata)
-              </li>
-              <li>Análisis descriptivo, bivariado y regresión logística</li>
-              <li>Visualizaciones con ggplot2: boxplots, histogramas, gráficos de barras</li>
-              <li>Interpretación en relevo: cada residente explica 1–2 líneas del código</li>
-              <li>Demo: cómo pedirle ayuda a Claude cuando R falla</li>
-            </ul>
-            <div class="ia-note"><strong>IA:</strong> Claude como debugger de R — demostración de cómo formular
-              preguntas productivas a la IA</div>
-            <a href="sesiones.html#sesion-10" class="sesion-link">Ver guía completa →</a>
-          </div>
-        </div>
-
-        <!-- S11 -->
-        <div class="sesion-card s-m3">
-          <div class="sesion-stripe"></div>
-          <div class="sesion-header" onclick="toggleSesion(this)">
-            <div class="sesion-num">11</div>
-            <div class="sesion-meta">
-              <div class="sesion-title">Calidad de Evidencia: GRADE en Urología</div>
-              <div class="sesion-tags">
-                <span class="tag tag-teal">90 min</span>
-                <span class="tag tag-navy">Presencial</span>
-                <span class="tag tag-grey">Mes 3</span>
-              </div>
-            </div>
-            <span class="sesion-chevron">▼</span>
-          </div>
-          <div class="sesion-body">
-            <h5>Actividades</h5>
-            <ul>
-              <li>Tribunal GRADE: votación sobre calidad de evidencia antes del debate</li>
-              <li>Lab GRADEpro GDT en vivo: construir un perfil de evidencia</li>
-              <li>Deconstruir una guía AUA/EAU: encontrar las calificaciones GRADE</li>
-              <li>ChatGPT califica la evidencia: ¿aplicó correctamente los 5 dominios?</li>
-            </ul>
-            <div class="ia-note"><strong>IA:</strong> ChatGPT califica evidencia con GRADE — verificación de los 5
-              dominios (riesgo de sesgo, inconsistencia, imprecisión, evidencia indirecta, sesgo de publicación)</div>
-            <a href="sesiones.html#sesion-11" class="sesion-link">Ver guía completa →</a>
-          </div>
-        </div>
-
-        <!-- S12 -->
-        <div class="sesion-card s-m3">
-          <div class="sesion-stripe"></div>
-          <div class="sesion-header" onclick="toggleSesion(this)">
-            <div class="sesion-num">12</div>
-            <div class="sesion-meta">
-              <div class="sesion-title">Escritura Científica I: Introducción y Métodos</div>
-              <div class="sesion-tags">
-                <span class="tag tag-teal">75 min</span>
-                <span class="tag tag-gold">Virtual</span>
-                <span class="tag tag-grey">Mes 3</span>
-              </div>
-            </div>
-            <span class="sesion-chevron">▼</span>
-          </div>
-          <div class="sesion-body">
-            <h5>Actividades</h5>
-            <ul>
-              <li>Anatomía de una introducción científica en 3 párrafos</li>
-              <li>Revisión rápida entre pares (1 elogio + 1 aclaración + 1 sugerencia)</li>
-              <li>Ejercicio de completitud: ¿qué le falta a estos métodos?</li>
-              <li>Claude critica el borrador: ¿qué falta para que otro pueda replicarlo?</li>
-              <li>Sprint de escritura: sección de métodos propia</li>
-            </ul>
-            <div class="ia-note"><strong>IA:</strong> Claude revisa la sección de métodos — evaluación de replicabilidad
-              y completitud</div>
-            <a href="sesiones.html#sesion-12" class="sesion-link">Ver guía completa →</a>
-          </div>
-        </div>
-
-        <!-- S13 -->
-        <div class="sesion-card s-m4">
-          <div class="sesion-stripe"></div>
-          <div class="sesion-header" onclick="toggleSesion(this)">
-            <div class="sesion-num">13</div>
-            <div class="sesion-meta">
-              <div class="sesion-title">Escritura Científica II: Resultados y Discusión</div>
-              <div class="sesion-tags">
-                <span class="tag tag-teal">90 min</span>
-                <span class="tag tag-navy">Presencial</span>
-                <span class="tag tag-grey">Mes 4</span>
-              </div>
-            </div>
-            <span class="sesion-chevron">▼</span>
-          </div>
-          <div class="sesion-body">
-            <h5>Actividades</h5>
-            <ul>
-              <li>Regla de resultados: solo hechos, sin interpretación</li>
-              <li>Esquema inverso: deconstruir la discusión de un artículo publicado</li>
-              <li>Los 5 errores de discusión más comunes en urología</li>
-              <li>Sprint de escritura: sección de discusión propia</li>
-              <li>Masterclass de limitaciones: cómo escribirlas con honestidad y precisión</li>
-            </ul>
-            <div class="ia-note"><strong>IA:</strong> Claude revisa la discusión — identifica si se sobrepasan los datos
-              o se introducen afirmaciones sin soporte</div>
-            <a href="sesiones.html#sesion-13" class="sesion-link">Ver guía completa →</a>
-          </div>
-        </div>
-
-        <!-- S14 -->
-        <div class="sesion-card s-m4">
-          <div class="sesion-stripe"></div>
-          <div class="sesion-header" onclick="toggleSesion(this)">
-            <div class="sesion-num">14</div>
-            <div class="sesion-meta">
-              <div class="sesion-title">Simulación de Arbitraje Científico</div>
-              <div class="sesion-tags">
-                <span class="tag tag-teal">90 min</span>
-                <span class="tag tag-gold">Virtual</span>
-                <span class="tag tag-grey">Mes 4</span>
-              </div>
-            </div>
-            <span class="sesion-chevron">▼</span>
-          </div>
-          <div class="sesion-body">
-            <h5>Actividades</h5>
-            <ul>
-              <li>Calibración: ¿qué hace una buena revisión de pares?</li>
-              <li>Presentaciones ciegas (3 min cada residente sin identificación)</li>
-              <li>Revisión de pares ciega usando la Plantilla de Revisión de Pares</li>
-              <li>Revisión automatizada con Claude</li>
-              <li>Plan de respuesta a revisores</li>
-              <li>Debrief: ¿fue la IA más o menos útil que la revisión humana?</li>
-            </ul>
-            <div class="ia-note"><strong>IA:</strong> Claude hace peer review automatizado — comparación directa con
-              revisión humana ciega</div>
-            <a href="sesiones.html#sesion-14" class="sesion-link">Ver guía completa →</a>
-          </div>
-        </div>
-
-        <!-- S15 -->
-        <div class="sesion-card s-m4">
-          <div class="sesion-stripe"></div>
-          <div class="sesion-header" onclick="toggleSesion(this)">
-            <div class="sesion-num">15</div>
-            <div class="sesion-meta">
-              <div class="sesion-title">Ética e Integridad en Investigación</div>
-              <div class="sesion-tags">
-                <span class="tag tag-teal">90 min</span>
-                <span class="tag tag-navy">Presencial</span>
-                <span class="tag tag-grey">Mes 4</span>
-              </div>
-            </div>
-            <span class="sesion-chevron">▼</span>
-          </div>
-          <div class="sesion-body">
-            <h5>Actividades</h5>
-            <ul>
-              <li>Tribunal de ética: 3 casos (fabricación de datos, autoría fantasma, outcome switching)</li>
-              <li>Implicaciones de la Resolución 8430 para el HUV</li>
-              <li>Debate ICMJE: ¿puede Claude ser autor de un artículo?</li>
-              <li>Pre-registro en vivo: OSF/PROSPERO (para quien aplique)</li>
-              <li>Integración de la sección ética al protocolo propio</li>
-            </ul>
-            <div class="ia-note"><strong>IA:</strong> Debate sobre autoría y ética: ¿cumple Claude los criterios ICMJE
-              de autoría?</div>
-            <a href="sesiones.html#sesion-15" class="sesion-link">Ver guía completa →</a>
-          </div>
-        </div>
-
-        <!-- S16 -->
-        <div class="sesion-card s-m4">
-          <div class="sesion-stripe"></div>
-          <div class="sesion-header" onclick="toggleSesion(this)">
-            <div class="sesion-num">16</div>
-            <div class="sesion-meta">
-              <div class="sesion-title">Simposio de Investigación</div>
-              <div class="sesion-tags">
-                <span class="tag tag-teal">120 min</span>
-                <span class="tag tag-navy">Presencial</span>
-                <span class="tag tag-grey">Mes 4</span>
-              </div>
-            </div>
-            <span class="sesion-chevron">▼</span>
-          </div>
-          <div class="sesion-body">
-            <h5>Actividades</h5>
-            <ul>
-              <li>Presentaciones públicas: 10 min + 5 min preguntas por residente</li>
-              <li>Invitados: jefe de departamento, profesor externo y (opcionalmente) editor de revista</li>
-              <li>Votación grupal: Premio a la Mejor Pregunta Clínica</li>
-              <li>Compromisos públicos de publicación documentados</li>
-              <li>Retroalimentación anónima del curso</li>
-              <li>Ceremonia de certificados</li>
-            </ul>
-            <div class="ia-note"><strong>Producto:</strong> Protocolo de investigación o revisión sistemática listo para
-              someter a publicación</div>
-            <a href="sesiones.html#sesion-16" class="sesion-link">Ver guía completa →</a>
-          </div>
-        </div>
-
       </div>
     </div>
-  </section>
+  </main>
 
-
-  <!-- ══════════════════════════════════════════════════════════
-     EVALUACIÓN
-══════════════════════════════════════════════════════════ -->
-  <section id="evaluacion">
-    <div class="container">
-      <p class="section-label">Calificación</p>
-      <h2 class="section-title">Componentes de Evaluación</h2>
-      <p class="section-intro">Cada componente evalúa una competencia distinta del investigador clínico. El producto
-        final representa el mayor peso porque integra todos los aprendizajes del curso.</p>
-      <div class="eval-grid">
-
-        <div class="eval-card">
-          <div class="eval-pct">15<span>%</span></div>
-          <div class="eval-title">Portafolio de Evolución PICO</div>
-          <div class="eval-bar">
-            <div class="eval-fill" style="width:15%"></div>
-          </div>
-          <p>Documenta la evolución de la pregunta de investigación desde la versión inicial (S1) hasta la versión final
-            (S16), con reflexiones sobre cada cambio.</p>
-          <div class="eval-rubric-detail">
-            <h5>Criterios (100 pts)</h5>
-            <div class="rubric-row"><span>Completitud (≥4 versiones documentadas)</span><span class="rr-pts">25
-                pts</span></div>
-            <div class="rubric-row"><span>Calidad de reflexión (¿por qué cambió?)</span><span class="rr-pts">35
-                pts</span></div>
-            <div class="rubric-row"><span>PICO final — Población (P)</span><span class="rr-pts">10 pts</span></div>
-            <div class="rubric-row"><span>PICO final — Intervención (I)</span><span class="rr-pts">10 pts</span></div>
-            <div class="rubric-row"><span>PICO final — Comparación (C)</span><span class="rr-pts">10 pts</span></div>
-            <div class="rubric-row"><span>PICO final — Desenlace (O)</span><span class="rr-pts">10 pts</span></div>
-          </div>
-        </div>
-
-        <div class="eval-card">
-          <div class="eval-pct">20<span>%</span></div>
-          <div class="eval-title">Carpeta de Lectura Crítica</div>
-          <div class="eval-bar">
-            <div class="eval-fill" style="width:20%"></div>
-          </div>
-          <p>Tres artículos evaluados con herramientas validadas: observacional (CASP), ECA (CONSORT) o diagnóstico
-            (QUADAS-2), y revisión sistemática (AMSTAR-2).</p>
-          <div class="eval-rubric-detail">
-            <h5>Criterios por entrada (100 pts c/u)</h5>
-            <div class="rubric-row"><span>Comprensión del estudio</span><span class="rr-pts">25 pts</span></div>
-            <div class="rubric-row"><span>Aplicación correcta de la herramienta</span><span class="rr-pts">40 pts</span>
-            </div>
-            <div class="rubric-row"><span>Interpretación clínica y contexto Colombia/HUV</span><span class="rr-pts">35
-                pts</span></div>
-          </div>
-        </div>
-
-        <div class="eval-card">
-          <div class="eval-pct">20<span>%</span></div>
-          <div class="eval-title">Informe de Análisis Estadístico en R</div>
-          <div class="eval-bar">
-            <div class="eval-fill" style="width:20%"></div>
-          </div>
-          <p>Script reproducible en R con análisis descriptivo, bivariado y multivariado, visualizaciones y tabla de
-            resultados en formato publicación.</p>
-          <div class="eval-rubric-detail">
-            <h5>Criterios (100 pts)</h5>
-            <div class="rubric-row"><span>Script R (ejecutabilidad + reproducibilidad)</span><span class="rr-pts">35
-                pts</span></div>
-            <div class="rubric-row"><span>Presentación de resultados (tablas + figuras)</span><span class="rr-pts">30
-                pts</span></div>
-            <div class="rubric-row"><span>Interpretación clínica (significancia clínica vs. estadística)</span><span
-                class="rr-pts">35 pts</span></div>
-          </div>
-        </div>
-
-        <div class="eval-card">
-          <div class="eval-pct">35<span>%</span></div>
-          <div class="eval-title">Producto Final</div>
-          <div class="eval-bar">
-            <div class="eval-fill" style="width:35%; background: linear-gradient(90deg, var(--red), var(--navy));">
-            </div>
-          </div>
-          <p>Protocolo de investigación original con calidad suficiente para someter a
-            revisión por pares. ≥75/100 → el coordinador ofrece co-autoría.</p>
-          <div class="eval-rubric-detail">
-            <h5>Criterios (100 pts)</h5>
-            <div class="rubric-row"><span>Pregunta y justificación</span><span class="rr-pts">20 pts</span></div>
-            <div class="rubric-row"><span>Metodología (6 aspectos × 5 pts c/u)</span><span class="rr-pts">30 pts</span>
-            </div>
-            <div class="rubric-row"><span>Escritura y presentación (IMRAD)</span><span class="rr-pts">20 pts</span>
-            </div>
-            <div class="rubric-row"><span>Integración de evidencia</span><span class="rr-pts">15 pts</span></div>
-            <div class="rubric-row"><span>Implicaciones clínicas y factibilidad</span><span class="rr-pts">15 pts</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="eval-card">
-          <div class="eval-pct">10<span>%</span></div>
-          <div class="eval-title">Sesión de Docencia entre Pares</div>
-          <div class="eval-bar">
-            <div class="eval-fill" style="width:10%; background: var(--gold);"></div>
-          </div>
-          <p>Presentación didáctica de 10 min en el Simposio Final (S16), evaluada por el docente (70%) y por los pares
-            (30%).</p>
-          <div class="eval-rubric-detail">
-            <h5>Criterios (100 pts)</h5>
-            <div class="rubric-row"><span>Dominio del contenido</span><span class="rr-pts">35 pts</span></div>
-            <div class="rubric-row"><span>Claridad pedagógica (estructura + ejemplos)</span><span class="rr-pts">35
-                pts</span></div>
-            <div class="rubric-row"><span>Compromiso del grupo (participación)</span><span class="rr-pts">30 pts</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ══════════════════════════════════════════════════════════
-     HERRAMIENTAS E IA
-══════════════════════════════════════════════════════════ -->
-  <section id="herramientas">
-    <div class="container">
-      <p class="section-label">Tecnología del Curso</p>
-      <h2 class="section-title">Herramientas e Inteligencia Artificial</h2>
-      <p class="section-intro">Todas las herramientas son gratuitas. El estudiante puede continuar usándolas después de
-        graduarse.</p>
-
-      <div class="ia-principle">
-        <div class="ia-principle-icon">⚡</div>
-        <div class="ia-principle-text">
-          <h3>Principio Rector de IA en el Curso</h3>
-          <p><strong>Usar IA → Criticar IA → Documentar lo correcto e incorrecto.</strong> La IA es un interlocutor
-            activo que debe ser evaluado con el mismo rigor que cualquier fuente bibliográfica. Todo uso de IA debe
-            declararse en los entregables.</p>
-        </div>
-      </div>
-
-      <table class="tools-table">
-        <thead>
-          <tr>
-            <th>Herramienta</th>
-            <th>Función</th>
-            <th>Cuándo usarla</th>
-            <th>Limitaciones clave</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><span class="tool-name"><a href="https://elicit.org" target="_blank" rel="noopener">Elicit</a></span>
-            </td>
-            <td>Búsqueda de literatura con lenguaje natural</td>
-            <td>Explorar temas, encontrar artículos semilla, S1 y S4</td>
-            <td><span class="tool-limit">No cubre toda la literatura; puede alucinar citas</span></td>
-          </tr>
-          <tr>
-            <td><span class="tool-name"><a href="https://consensus.app" target="_blank"
-                  rel="noopener">Consensus</a></span></td>
-            <td>Muestra el "medidor de consenso" sobre preguntas clínicas</td>
-            <td>Verificar consenso en la literatura, S4</td>
-            <td><span class="tool-limit">El medidor es estimativo, no equivale a RS formal</span></td>
-          </tr>
-          <tr>
-            <td><span class="tool-name"><a href="https://www.perplexity.ai" target="_blank"
-                  rel="noopener">Perplexity</a></span></td>
-            <td>Síntesis narrativa con referencias</td>
-            <td>Panorama rápido de un tema, S4</td>
-            <td><span class="tool-limit">Referencias no siempre correctas; no apto para RS</span></td>
-          </tr>
-          <tr>
-            <td><span class="tool-name"><a href="https://www.researchrabbit.ai" target="_blank" rel="noopener">Research
-                  Rabbit</a></span></td>
-            <td>Mapeo visual de citas (IA no generativa)</td>
-            <td>Ampliar búsquedas a partir de artículos semilla, S4</td>
-            <td><span class="tool-limit">Cobertura limitada de idiomas y bases de datos</span></td>
-          </tr>
-          <tr>
-            <td><span class="tool-name"><a href="https://claude.ai" target="_blank" rel="noopener">Claude</a> / <a
-                  href="https://chatgpt.com" target="_blank" rel="noopener">ChatGPT</a></span></td>
-            <td>Conversación, borradores, depuración de código R</td>
-            <td>Escribir borradores para criticar, debug de R, explicar conceptos</td>
-            <td><span class="tool-limit">Fecha de corte de conocimiento; puede inventar referencias; sin acceso a
-                artículos de pago</span></td>
-          </tr>
-          <tr>
-            <td><span class="tool-name"><a href="https://www.rayyan.ai" target="_blank" rel="noopener">Rayyan</a></span>
-            </td>
-            <td>Tamización de títulos y abstracts para RS</td>
-            <td>Fase de selección en revisión sistemática, S8</td>
-            <td><span class="tool-limit">Las sugerencias de IA pueden activarse o desactivarse</span></td>
-          </tr>
-          <tr>
-            <td><span class="tool-name"><a href="https://gradepro.org" target="_blank" rel="noopener">GRADEpro
-                  GDT</a></span></td>
-            <td>Calificación de calidad de evidencia (herramienta estructurada)</td>
-            <td>Construir perfiles de evidencia GRADE, S11</td>
-            <td><span class="tool-limit">Herramienta estructurada, no IA generativa</span></td>
-          </tr>
-          <tr>
-            <td><span class="tool-name"><a href="https://posit.cloud" target="_blank" rel="noopener">R /
-                  RStudio</a></span></td>
-            <td>Análisis estadístico completo</td>
-            <td>S3, S7, S10 — estadística descriptiva, bivariada, regresión, ROC</td>
-            <td><span class="tool-limit">Curva de aprendizaje; usar IA para debug, no para escribir código sin
-                entenderlo</span></td>
-          </tr>
-          <tr>
-            <td><span class="tool-name"><a href="https://www.jamovi.org" target="_blank"
-                  rel="noopener">Jamovi</a></span></td>
-            <td>Estadística con interfaz gráfica</td>
-            <td>S3 — primera aproximación a tablas 2×2 y estadísticos básicos</td>
-            <td><span class="tool-limit">Menos flexible que R para análisis avanzados</span></td>
-          </tr>
-          <tr>
-            <td><span class="tool-name"><a href="https://www.zotero.org" target="_blank"
-                  rel="noopener">Zotero</a></span></td>
-            <td>Gestión de referencias bibliográficas</td>
-            <td>S4 en adelante — importar, organizar y citar literatura</td>
-            <td><span class="tool-limit">Requiere instalación del plugin del navegador</span></td>
-          </tr>
-          <tr>
-            <td><span class="tool-name"><a href="https://www.notion.so" target="_blank" rel="noopener">Notion</a></span>
-            </td>
-            <td>Workspace colaborativo del curso</td>
-            <td>Todas las sesiones — diario, banco de preguntas, protocolo, deliverables</td>
-            <td><span class="tool-limit">Requiere cuenta (gratuita para estudiantes)</span></td>
-          </tr>
-          <tr>
-            <td><span class="tool-name"><a href="https://osf.io" target="_blank" rel="noopener">OSF</a> / <a
-                  href="https://www.crd.york.ac.uk/prospero/" target="_blank" rel="noopener">PROSPERO</a></span></td>
-            <td>Pre-registro de protocolos</td>
-            <td>S15 — pre-registro del protocolo o revisión sistemática</td>
-            <td><span class="tool-limit">PROSPERO solo acepta RS; OSF acepta cualquier diseño</span></td>
-          </tr>
-        </tbody>
-      </table>
-
-      <div class="ia-sessions-title">Uso de IA por Sesión</div>
-      <table class="ia-session-table">
-        <thead>
-          <tr>
-            <th>S</th>
-            <th>Herramienta</th>
-            <th>Actividad específica</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="ia-session-num">S01</td>
-            <td>Elicit</td>
-            <td>Comparación Elicit vs. PubMed para la misma pregunta PICO</td>
-          </tr>
-          <tr>
-            <td class="ia-session-num">S02</td>
-            <td>Claude</td>
-            <td>Claude justifica el diseño de estudio propuesto para el PICO propio</td>
-          </tr>
-          <tr>
-            <td class="ia-session-num">S03</td>
-            <td>ChatGPT/Jamovi</td>
-            <td>Interpretación de resultados estadísticos y análisis crítico del output de IA</td>
-          </tr>
-          <tr>
-            <td class="ia-session-num">S04</td>
-            <td>Elicit / Consensus / Research Rabbit</td>
-            <td>Hackathon de comparación de herramientas para el mismo PICO</td>
-          </tr>
-          <tr>
-            <td class="ia-session-num">S05</td>
-            <td>Claude</td>
-            <td>Co-appraisal con CASP de artículo observacional — comparación humano vs. IA</td>
-          </tr>
-          <tr>
-            <td class="ia-session-num">S06</td>
-            <td>ChatGPT</td>
-            <td>ChatGPT diseña el ECA "ideal" — debate de factibilidad en el HUV</td>
-          </tr>
-          <tr>
-            <td class="ia-session-num">S07</td>
-            <td>R + Claude</td>
-            <td>Interpretación de curva ROC y AUC con asistencia de Claude</td>
-          </tr>
-          <tr>
-            <td class="ia-session-num">S08</td>
-            <td>Elicit</td>
-            <td>Comparación Elicit vs. RS publicada — ¿coinciden las conclusiones?</td>
-          </tr>
-          <tr>
-            <td class="ia-session-num">S09</td>
-            <td>Claude</td>
-            <td>Claude redacta borrador de justificación — residente critica y mejora</td>
-          </tr>
-          <tr>
-            <td class="ia-session-num">S10</td>
-            <td>Claude</td>
-            <td>Claude como debugger de R — cómo formular preguntas productivas</td>
-          </tr>
-          <tr>
-            <td class="ia-session-num">S11</td>
-            <td>ChatGPT/Kimi</td>
-            <td>ChatGPT califica evidencia con GRADE — verificación de 5 dominios</td>
-          </tr>
-          <tr>
-            <td class="ia-session-num">S12</td>
-            <td>Claude</td>
-            <td>Claude revisa métodos — evaluación de replicabilidad y completitud</td>
-          </tr>
-          <tr>
-            <td class="ia-session-num">S13</td>
-            <td>Claude</td>
-            <td>Claude revisa la discusión — detecta afirmaciones sin soporte en los datos</td>
-          </tr>
-          <tr>
-            <td class="ia-session-num">S14</td>
-            <td>Claude</td>
-            <td>Peer review automatizado — comparación directa con revisión humana ciega</td>
-          </tr>
-          <tr>
-            <td class="ia-session-num">S15</td>
-            <td>Claude/Kimi</td>
-            <td>Debate ético: ¿cumple la IA los criterios ICMJE de autoría?</td>
-          </tr>
-          <tr>
-            <td class="ia-session-num">S16</td>
-            <td>Integrar todas las herramientas</td>
-            <td>Simposio final — producto publicable</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-
-  <!-- ══════════════════════════════════════════════════════════
-     RECURSOS
-══════════════════════════════════════════════════════════ -->
-  <section id="recursos">
-    <div class="container">
-      <p class="section-label">Materiales del Curso</p>
-      <h2 class="section-title">Recursos y Plantillas</h2>
-      <p class="section-intro">Todos los recursos están disponibles en el workspace Notion del curso desde el primer
-        día.</p>
-      <div class="recursos-cols">
-
-        <div class="resource-group">
-          <h3>Plantillas Notion</h3>
-          <div class="resource-list">
-            <div class="resource-item">
-              <div class="resource-item-icon">📓</div>
-              <div class="resource-item-text">
-                <h5><a href="plantillas.html#tmpl-diario">Diario de Experiencia</a></h5>
-                <p>Versiones de PICO, historia de evolución, reflexiones semanales, diario de herramientas, notas de
-                  sesión y galería de 14 entregables del portafolio.</p>
-              </div>
-            </div>
-            <div class="resource-item">
-              <div class="resource-item-icon">❓</div>
-              <div class="resource-item-text">
-                <h5><a href="plantillas.html#tmpl-banco">Banco Compartido de Preguntas PICO</a></h5>
-                <p>Base de datos compartida con todos los residentes. Incluye versionado PICO, recomendación de diseño,
-                  tipo de producto final, número de pre-registro y mapeo de sinergias entre proyectos.</p>
-              </div>
-            </div>
-            <div class="resource-item">
-              <div class="resource-item-icon">📋</div>
-              <div class="resource-item-text">
-                <h5><a href="plantillas.html#tmpl-protocolo">Plantilla de Protocolo de Investigación</a></h5>
-                <p>10 secciones: magnitud del problema, justificación, marco teórico, estado del arte, pregunta y
-                  objetivos, metodología completa, aspectos éticos, cronograma, presupuesto y referencias.</p>
-              </div>
-            </div>
-            <div class="resource-item">
-              <div class="resource-item-icon">🔍</div>
-              <div class="resource-item-text">
-                <h5><a href="plantillas.html#tmpl-appraisal">Carpeta de Lectura Crítica</a></h5>
-                <p>3 entradas (33.3% c/u) con herramientas CASP, CONSORT, QUADAS-2 y AMSTAR-2. Incluye declaración
-                  obligatoria de uso de IA.</p>
-              </div>
-            </div>
-            <div class="resource-item">
-              <div class="resource-item-icon">💭</div>
-              <div class="resource-item-text">
-                <h5><a href="plantillas.html#tmpl-reflexion">Reflexión Semanal</a></h5>
-                <p>Micro-reflexión (≤300 palabras) antes de cada sesión: pregunta clínica generada, reflexión libre,
-                  acción concreta en práctica clínica y pregunta opcional para el grupo.</p>
-              </div>
-            </div>
-            <div class="resource-item">
-              <div class="resource-item-icon">📝</div>
-              <div class="resource-item-text">
-                <h5><a href="plantillas.html#tmpl-revision-pares">Plantilla de Revisión de Pares</a></h5>
-                <p>Resumen del trabajo, comentarios mayores (≤5) y menores, preguntas genuinas al autor, fortalezas (≥2)
-                  y recomendación (aceptar/revisiones menores/mayores/rechazar — solo S14).</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="resource-group">
-          <h3>Rúbricas de Calificación</h3>
-          <div class="resource-list">
-            <div class="resource-item">
-              <div class="resource-item-icon">📊</div>
-              <div class="resource-item-text">
-                <h5><a href="rubricas.html#rubrica-portafolio">Rúbrica — Portafolio PICO</a></h5>
-                <p>Escala de 100 puntos. Evalúa completitud (25), calidad de reflexión (35) y PICO final P-I-C-O (40).
-                </p>
-                <div class="ri-meta">Peso: 15% de la nota final</div>
-              </div>
-            </div>
-            <div class="resource-item">
-              <div class="resource-item-icon">📊</div>
-              <div class="resource-item-text">
-                <h5><a href="rubricas.html#rubrica-dossier">Rúbrica — Carpeta de Lectura Crítica</a></h5>
-                <p>3 entradas × 100 pts. Comprensión (25), aplicación de herramienta (40), interpretación clínica y
-                  contexto local (35).</p>
-                <div class="ri-meta">Peso: 20% de la nota final</div>
-              </div>
-            </div>
-            <div class="resource-item">
-              <div class="resource-item-icon">📊</div>
-              <div class="resource-item-text">
-                <h5><a href="rubricas.html#rubrica-analisis">Rúbrica — Análisis Estadístico en R</a></h5>
-                <p>Script R (35), presentación de resultados (30), interpretación clínica — significancia estadística
-                  vs. relevancia clínica (35).</p>
-                <div class="ri-meta">Peso: 20% de la nota final</div>
-              </div>
-            </div>
-            <div class="resource-item">
-              <div class="resource-item-icon">📊</div>
-              <div class="resource-item-text">
-                <h5><a href="rubricas.html#rubrica-producto">Rúbrica — Producto Final</a></h5>
-                <p>Pregunta y justificación (20), metodología (30), escritura IMRAD (20), integración de evidencia (15),
-                  factibilidad clínica (15). ≥75/100 → oferta de co-autoría.</p>
-                <div class="ri-meta">Peso: 35% de la nota final</div>
-              </div>
-            </div>
-            <div class="resource-item">
-              <div class="resource-item-icon">📊</div>
-              <div class="resource-item-text">
-                <h5><a href="rubricas.html#rubrica-docencia">Rúbrica — Docencia entre Pares</a></h5>
-                <p>Dominio del contenido (35), claridad pedagógica con ≥2 ejemplos urológicos (35), compromiso del grupo
-                  (30). Evaluado por docente (70%) + pares (30%).</p>
-                <div class="ri-meta">Peso: 10% de la nota final</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="resource-group">
-          <h3>Videos (Pre-trabajo)</h3>
-          <div class="resource-list">
-            <div class="resource-item">
-              <div class="resource-item-icon">🎥</div>
-              <div class="resource-item-text">
-                <h5>Video 01 — Tipos de Diseño de Estudio</h5>
-                <p>Árbol de decisión experimental vs. observacional. Ejemplos urológicos: reporte de caso, cohorte,
-                  caso-control, ECA, RS.</p>
-                <div class="ri-meta">12 min · Para S02</div>
-              </div>
-            </div>
-            <div class="resource-item">
-              <div class="resource-item-icon">🎥</div>
-              <div class="resource-item-text">
-                <h5>Video 02 — RR, OR, RAR y NNT</h5>
-                <p>Construcción de tabla 2×2 con caso de tamsulosina vs. placebo en litiasis ureteral. Contraste de
-                  escenarios clínicos: oncología vs. suplemento vitamínico.</p>
-                <div class="ri-meta">12 min · Para S03</div>
-              </div>
-            </div>
-            <div class="resource-item">
-              <div class="resource-item-icon">🎥</div>
-              <div class="resource-item-text">
-                <h5>Video 03 — Estrategias de Búsqueda</h5>
-                <p>PICO → términos clave → operadores booleanos → MeSH → filtros. Ejemplo: cáncer de próstata. Énfasis
-                  en reproducibilidad.</p>
-                <div class="ri-meta">10 min · Para S04</div>
-              </div>
-            </div>
-            <div class="resource-item">
-              <div class="resource-item-icon">🎥</div>
-              <div class="resource-item-text">
-                <h5>Video 04 — Anatomía del ECA</h5>
-                <p>5 componentes críticos: aleatorización, ocultamiento de asignación, cegamiento, pérdidas y tamaño
-                  muestral. Diagrama CONSORT. Outcome switching.</p>
-                <div class="ri-meta">10 min · Para S06</div>
-              </div>
-            </div>
-            <div class="resource-item">
-              <div class="resource-item-icon">🎥</div>
-              <div class="resource-item-text">
-                <h5>Video 05 — Sensibilidad, Especificidad y Razones de Verosimilitud</h5>
-                <p>Caso PSA 5.2. Tabla 2×2 diagnóstica. VPP y VPN dependen de la prevalencia. LR+ y LR- son
-                  independientes de la prevalencia.</p>
-                <div class="ri-meta">10 min · Para S07</div>
-              </div>
-            </div>
-            <div class="resource-item">
-              <div class="resource-item-icon">🎥</div>
-              <div class="resource-item-text">
-                <h5>Video 06 — Cómo Leer un Forest Plot</h5>
-                <p>Cada línea = 1 estudio (estimación puntual + IC). Diamante = resultado agrupado. I² y heterogeneidad.
-                  ¿Cuándo no tiene sentido agrupar?</p>
-                <div class="ri-meta">8 min · Para S08</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="resource-group">
-          <h3>Scripts R y Dataset</h3>
-          <div class="resource-list">
-            <div class="resource-item">
-              <div class="resource-item-icon">💻</div>
-              <div class="resource-item-text">
-                <h5><a href="scripts-r/sesion07-roc-diagnostico.R" download>sesion07-roc-diagnostico.R</a></h5>
-                <p>228 líneas. Simula dataset de PSA (200 pacientes, 80 con cáncer de próstata). Calcula sensibilidad,
-                  especificidad, VPP, VPN, LR. Compara puntos de corte (2.5, 4.0, 10.0 ng/mL). Genera curva ROC con AUC.
-                </p>
-                <div class="ri-meta">Paquetes: pROC, ggplot2, dplyr · Para S07</div>
-              </div>
-            </div>
-            <div class="resource-item">
-              <div class="resource-item-icon">💻</div>
-              <div class="resource-item-text">
-                <h5><a href="scripts-r/sesion10-analisis-urologia.R" download>sesion10-analisis-urologia.R</a></h5>
-                <p>311 líneas. Simula dataset de cáncer de próstata (300 pacientes: edad, PSA, Gleason, estadio,
-                  tratamiento, recurrencia 5 años). Análisis descriptivo, bivariado, regresión logística, OR con IC 95%,
-                  AUC.</p>
-                <div class="ri-meta">Paquetes: ggplot2, dplyr, gtsummary, broom, pROC · Para S10</div>
-              </div>
-            </div>
-            <div class="resource-item">
-              <div class="resource-item-icon">🗄️</div>
-              <div class="resource-item-text">
-                <h5><a href="datasets/litiasis_urovalle_2024.csv" download>litiasis_urovalle_2024.csv</a></h5>
-                <p>Dataset urológico de 200 pacientes con 22 variables: datos demográficos, comorbilidades,
-                  características del cálculo (tamaño mm, localización, densidad UHU), tratamiento
-                  (LEOC/FURS/observación), libre de cálculo, recurrencia 12 m, complicaciones, dolor VAS pre/post,
-                  estancia, creatinina.</p>
-                <div class="ri-meta">N=200 · 22 variables · Usado en S03, S07, S10</div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ══════════════════════════════════════════════════════════
-     FOOTER
-══════════════════════════════════════════════════════════ -->
   <footer id="site-footer">
     <div class="footer-inner">
       <div class="footer-left">
@@ -2600,29 +682,8 @@
     </div>
   </footer>
 
+</body>
 
-  <script>
-    function toggleSesion(header) {
-      const card = header.closest('.sesion-card');
-      const isOpen = card.classList.contains('open');
-      card.classList.toggle('open', !isOpen);
-    }
-
-    // Active nav highlight on scroll
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('nav a');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const id = entry.target.id;
-          navLinks.forEach(a => {
-            a.classList.toggle('active', a.getAttribute('href') === '#' + id);
-          });
-        }
-      });
-    }, { threshold: 0.3 });
-    sections.forEach(s => observer.observe(s));
-  </script>
 
 </body>
 
