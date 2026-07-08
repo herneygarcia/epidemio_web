@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz: Tipos de Diseño de Investigación | UniValle</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Sans+3:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --navy: #002855;
+      --red: #C8102E;
+      --parch: #F5F0E8;
+      --dark: #1A2A40;
+      --teal: #2A7F8C;
+      --gold: #C4902E;
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body: 'Source Sans 3', system-ui, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--parch);
+      color: var(--dark);
+      font-size: 16px;
+      line-height: 1.65;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #topnav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--navy);
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 56px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, .25);
+    }
+
+    .back-link {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: rgba(255, 255, 255, .65);
+      text-decoration: none;
+      padding: 6px 10px;
+      border-radius: 4px;
+      border: 1px solid rgba(255, 255, 255, .2);
+      transition: all .15s;
+      white-space: nowrap;
+    }
+
+    .back-link:hover {
+      color: #fff;
+      border-color: rgba(255, 255, 255, .5);
+    }
+
+    #page-header {
+      background: linear-gradient(135deg, #9b0c22 0%, var(--red) 70%);
+      color: #fff;
+      padding: 48px 24px 36px;
+      text-align: center;
+    }
+
+    #page-header h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 900;
+      letter-spacing: -.01em;
+      margin-bottom: 10px;
+    }
+
+    #page-header p {
+      font-size: 14px;
+      opacity: .8;
+      font-family: var(--font-mono);
+      letter-spacing: .04em;
+    }
+
+    #content {
+      flex: 1;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 44px 24px 72px;
+      width: 100%;
+    }
+
+    #quiz-meta {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: .05em;
+      color: var(--teal);
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    .q-card {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 24px 28px;
+      margin-bottom: 22px;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, .05);
+    }
+
+    .q-num {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      color: #fff;
+      background: var(--navy);
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+    }
+
+    .q-text {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      color: var(--dark);
+    }
+
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .q-option {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all .12s;
+      font-size: 14.5px;
+    }
+
+    .q-option:hover {
+      border-color: var(--teal);
+      background: #f4faf9;
+    }
+
+    .q-option input {
+      margin-top: 3px;
+      accent-color: var(--navy);
+      flex-shrink: 0;
+    }
+
+    .q-option.correct {
+      border-color: #2f8f4f;
+      background: #eefaf1;
+    }
+
+    .q-option.incorrect {
+      border-color: var(--red);
+      background: #fdeeef;
+    }
+
+    .q-explain {
+      display: none;
+      margin-top: 14px;
+      padding: 12px 16px;
+      border-left: 4px solid var(--gold);
+      background: #fdf8ee;
+      font-size: 13.5px;
+      border-radius: 0 6px 6px 0;
+    }
+
+    .q-explain.show {
+      display: block;
+    }
+
+    .q-explain .verdict {
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .q-explain .verdict.ok { color: #2f8f4f; }
+    .q-explain .verdict.no { color: var(--red); }
+
+    .q-explain .source {
+      display: block;
+      margin-top: 6px;
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      color: var(--teal);
+    }
+
+    #actions {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 8px;
+    }
+
+    #submit-btn, #retry-btn {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      font-weight: 600;
+      padding: 12px 28px;
+      border-radius: 30px;
+      border: none;
+      cursor: pointer;
+      transition: all .15s;
+    }
+
+    #submit-btn {
+      background: var(--red);
+      color: #fff;
+    }
+
+    #submit-btn:hover {
+      background: #9b0c22;
+    }
+
+    #submit-btn:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+
+    #retry-btn {
+      background: transparent;
+      color: var(--navy);
+      border: 1px solid var(--navy);
+      display: none;
+    }
+
+    #retry-btn:hover {
+      background: var(--navy);
+      color: #fff;
+    }
+
+    #score-banner {
+      display: none;
+      text-align: center;
+      background: var(--navy);
+      color: #fff;
+      padding: 22px 24px;
+      border-radius: 10px;
+      margin-bottom: 24px;
+    }
+
+    #score-banner.show {
+      display: block;
+    }
+
+    #score-banner .score-num {
+      font-family: var(--font-display);
+      font-size: 2.4rem;
+      font-weight: 900;
+      color: var(--gold);
+    }
+
+    #score-banner .score-label {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: .05em;
+      opacity: .8;
+      margin-top: 4px;
+    }
+
+    #site-footer {
+      background: var(--red);
+      padding: 14px 32px;
+      text-align: center;
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      color: rgba(255, 255, 255, .85);
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav id="topnav">
+    <a href="sesiones.html" class="back-link">← Volver a sesiones</a>
+  </nav>
+
+  <header id="page-header">
+    <h1>Quiz: Tipos de Diseño de Investigación</h1>
+    <p>5 preguntas de opción múltiple · autoevaluación</p>
+  </header>
+
+  <main id="content">
+    <div id="quiz-meta"></div>
+    <div id="score-banner">
+      <div class="score-num" id="score-num">0/5</div>
+      <div class="score-label">RESPUESTAS CORRECTAS</div>
+    </div>
+    <form id="quiz-form"></form>
+    <div id="actions">
+      <button type="button" id="submit-btn">Calificar</button>
+      <button type="button" id="retry-btn">Intentar otro quiz →</button>
+    </div>
+  </main>
+
+  <footer id="site-footer">
+    Especialización en Urología · Universidad del Valle · Epidemiología e Investigación
+  </footer>
+
+  <script>
+    const QUIZZES = [
+      {
+        questions: [
+          {
+            q: "¿Cuál es la principal diferencia entre un estudio observacional y un ensayo clínico aleatorizado (ECA)?",
+            options: [
+              "Los estudios observacionales son más costosos que los ECA.",
+              "En un ECA, el investigador asigna activamente la intervención, mientras que en estudios observacionales se observan las exposiciones que ocurren naturalmente.",
+              "Los estudios observacionales siempre tienen mayor validez externa que los ECA.",
+              "Los ECA no pueden estudiar enfermedades crónicas."
+            ],
+            correct: 1,
+            rationale: "Definición fundamental: los ECA asignan activamente la intervención de forma aleatoria, mientras que los estudios observacionales documentan exposiciones que ocurren naturalmente sin intervención.",
+            source: "Hulley, S. B., et al. Designing Clinical Research. 4th ed. Wolters Kluwer; 2013."
+          },
+          {
+            q: "Un investigador identifica todos los pacientes diagnosticados con cáncer de próstata durante 2020 en un hospital y compara su historia de infecciones urinarias previas con un grupo de control sin cáncer. ¿Qué tipo de estudio es este?",
+            options: ["Estudio de cohortes.", "Estudio transversal.", "Estudio de casos y controles.", "Ensayo clínico aleatorizado."],
+            correct: 2,
+            rationale: "Este es un estudio de casos y controles retrospectivo: identifica casos con la enfermedad (cáncer de próstata) y busca retrospectivamente una exposición pasada (infecciones urinarias).",
+            source: "Fletcher, R. H., & Fletcher, S. W. Clinical Epidemiology: The Essentials. 5th ed. Wolters Kluwer; 2014."
+          },
+          {
+            q: "¿En cuál de los siguientes escenarios sería más apropiado usar un estudio de casos y controles en lugar de un estudio de cohortes prospectivo?",
+            options: [
+              "Cuando se estudia una enfermedad muy frecuente en la población.",
+              "Cuando se investiga una enfermedad rara con un largo período de latencia entre exposición y desenlace.",
+              "Cuando se requiere asignación aleatoria de la intervención.",
+              "Cuando es importante asegurar la representatividad poblacional."
+            ],
+            correct: 1,
+            rationale: "Los estudios de casos y controles son más eficientes para enfermedades raras y tiempos de latencia largos porque requieren menos participantes y tiempo de seguimiento que un estudio de cohortes prospectivo. El estudio PLCO ilustra los desafíos de los estudios prospectivos de cáncer con períodos de latencia prolongados.",
+            source: "Rothman, K. J., Lash, T. L., & Greenland, S. Modern Epidemiology. 3rd ed. Wolters Kluwer; 2012."
+          },
+          {
+            q: "Un estudio examina la prevalencia de diabetes, hipertensión y obesidad en una muestra representativa de adultos en un único punto en el tiempo. ¿Qué tipo de diseño es este?",
+            options: ["Estudio de cohortes.", "Estudio transversal.", "Estudio de casos y controles.", "Serie de casos."],
+            correct: 1,
+            rationale: "Definición de estudio transversal: evalúa la prevalencia de múltiples características en una población en un único momento específico.",
+            source: "Fletcher, R. H., & Fletcher, S. W. Clinical Epidemiology: The Essentials. 5th ed. Wolters Kluwer; 2014."
+          },
+          {
+            q: "En la jerarquía de la evidencia, ¿cuál de los siguientes diseños proporciona el nivel más alto de evidencia para evaluar la eficacia de una intervención?",
+            options: [
+              "Un estudio observacional con gran tamaño muestral.",
+              "Una serie de casos clínicos.",
+              "Un ensayo clínico aleatorizado controlado con doble ciego.",
+              "Un estudio de casos y controles retrospectivo."
+            ],
+            correct: 2,
+            rationale: "En la jerarquía de la evidencia, los ensayos clínicos aleatorizados controlados con doble ciego ocupan el nivel más alto para preguntas sobre intervenciones porque minimizan sesgos de selección y de medición.",
+            source: "Greenland, S. Evolution of epidemiologic ideas. Oxford University Press; 2006."
+          }
+        ]
+      },
+      {
+        questions: [
+          {
+            q: "Un investigador quiere evaluar si el consumo de café está asociado con el riesgo de infarto miocárdico. Identifica a 2,000 personas sin infarto y las clasifica según su consumo de café (alto, bajo, ninguno), luego las sigue durante 10 años. ¿Qué tipo de estudio es este?",
+            options: ["Estudio de casos y controles.", "Estudio de cohortes prospectivo.", "Estudio transversal.", "Serie de casos."],
+            correct: 1,
+            rationale: "Este es un estudio de cohortes prospectivo: se identifica una cohorte sin enfermedad, se clasifica por exposición (café), y se sigue hacia adelante en el tiempo para observar la incidencia de enfermedad.",
+            source: "Hulley, S. B., et al. Designing Clinical Research. 4th ed. Wolters Kluwer; 2013."
+          },
+          {
+            q: "¿Cuál es una ventaja clave de los estudios transversales en comparación con los estudios de cohortes?",
+            options: [
+              "Pueden establecer relaciones de causa-efecto más claramente.",
+              "Son más rápidos y económicos para obtener información sobre la prevalencia de una enfermedad o exposición en un momento específico.",
+              "Proporcionan una estimación más precisa del riesgo relativo.",
+              "Pueden incluir períodos de seguimiento de 20 años."
+            ],
+            correct: 1,
+            rationale: "Los estudios transversales son rápidos y económicos para estimar la prevalencia de enfermedades u exposiciones en un punto del tiempo; los estudios de cohortes requieren seguimiento prolongado y mayores recursos.",
+            source: "Fletcher, R. H., & Fletcher, S. W. Clinical Epidemiology: The Essentials. 5th ed. Wolters Kluwer; 2014."
+          },
+          {
+            q: "En un estudio de casos y controles sobre factores de riesgo para cáncer de pulmón, se comparan pacientes con diagnóstico confirmado de cáncer (casos) con individuos sin cáncer (controles) mediante un cuestionario sobre historia de tabaquismo. ¿Cuál es un sesgo que podría afectar este estudio?",
+            options: [
+              "Sesgo de selección, si los controles no son representativos de la población de la que provienen los casos.",
+              "Sesgo de información o recuerdo, si los pacientes con cáncer recuerdan o reportan su historia de tabaquismo de manera diferente a los controles.",
+              "Sesgo de confusión, si el consumo de alcohol no se mide.",
+              "Todas las anteriores son posibles sesgos."
+            ],
+            correct: 3,
+            rationale: "Todos son sesgos posibles en estudios de casos y controles: sesgo de selección en la elección de controles, sesgo de información/recuerdo diferencial entre grupos, y confusión si no se miden todas las variables relevantes.",
+            source: "Rothman, K. J., Lash, T. L., & Greenland, S. Modern Epidemiology. 3rd ed. Wolters Kluwer; 2012."
+          },
+          {
+            q: "¿Cuál de los siguientes estadísticos es la medida de asociación más apropiada para reportar en un estudio de cohortes prospectivo?",
+            options: ["Razón de momios (Odds Ratio).", "Riesgo relativo (Risk Ratio).", "Prevalencia.", "Incidencia acumulada."],
+            correct: 1,
+            rationale: "En un estudio de cohortes prospectivo, se puede calcular el riesgo relativo directamente comparando la incidencia de enfermedad entre grupos expuestos y no expuestos. La razón de momios se usa típicamente en estudios de casos y controles.",
+            source: "Greenland, S., Rothman, K. J., & Lash, T. L. Modern Epidemiology. 3rd ed. Wolters Kluwer; 2012."
+          },
+          {
+            q: "Un médico documenta los síntomas, diagnósticos y resultados de 15 pacientes consecutivos con una enfermedad rara. ¿Qué tipo de estudio es este?",
+            options: ["Estudio de cohortes.", "Estudio de casos y controles.", "Serie de casos.", "Estudio transversal."],
+            correct: 2,
+            rationale: "Una serie de casos es una descripción de características clínicas de un grupo de pacientes con una enfermedad específica, sin grupo control de comparación.",
+            source: "Fletcher, R. H., & Fletcher, S. W. Clinical Epidemiology: The Essentials. 5th ed. Wolters Kluwer; 2014."
+          }
+        ]
+      },
+      {
+        questions: [
+          {
+            q: "¿Cuál de los siguientes es un requisito esencial para que un estudio sea considerado un ensayo clínico aleatorizado?",
+            options: ["Que todos los participantes sean de la misma edad.", "Asignación aleatoria de participantes a grupos de intervención y control.", "Que no exista sesgo de selección.", "Que se use un solo sitio de investigación."],
+            correct: 1,
+            rationale: "La asignación aleatoria de participantes a grupos es la característica definitoria de un ensayo clínico aleatorizado; reduce el sesgo de selección y proporciona comparabilidad de grupos basales.",
+            source: "Hulley, S. B., et al. Designing Clinical Research. 4th ed. Wolters Kluwer; 2013."
+          },
+          {
+            q: "Un estudio examina la prevalencia de síndrome metabólico en adultos mayores de 50 años en tres ciudades durante un mes. Se toman muestras de sangre y se recolectan datos demográficos en el mismo período. ¿Qué tipo de estudio es este?",
+            options: ["Estudio de cohortes.", "Ensayo clínico aleatorizado.", "Estudio transversal.", "Estudio de casos y controles."],
+            correct: 2,
+            rationale: "Este es un estudio transversal: recolecta datos sobre prevalencia de síndrome metabólico en un único punto en el tiempo en una población definida.",
+            source: "Fletcher, R. H., & Fletcher, S. W. Clinical Epidemiology: The Essentials. 5th ed. Wolters Kluwer; 2014."
+          },
+          {
+            q: "¿Cuál es la principal limitación de un estudio observacional no aleatorizado en comparación con un ensayo clínico aleatorizado para evaluar la eficacia de un tratamiento?",
+            options: [
+              "Los estudios observacionales son más costosos.",
+              "Los estudios observacionales son más susceptibles al sesgo de confusión porque no controlan activamente la asignación de la intervención.",
+              "Los estudios observacionales nunca pueden proporcionar información valiosa.",
+              "Los estudios observacionales requieren períodos de seguimiento más largos."
+            ],
+            correct: 1,
+            rationale: "Los estudios observacionales son especialmente vulnerables al sesgo de confusión porque no asignan activamente la exposición o intervención; las personas que eligen o reciben un tratamiento pueden diferir sistemáticamente de quienes no lo hacen.",
+            source: "Rothman, K. J., Lash, T. L., & Greenland, S. Modern Epidemiology. 3rd ed. Wolters Kluwer; 2012."
+          },
+          {
+            q: "En un estudio de cohortes retrospectivo, un investigador accede a registros médicos históricos para identificar a pacientes expuestos y no expuestos a un factor años atrás, y luego registra si desarrollaron la enfermedad. ¿Cuál es una desventaja de este enfoque?",
+            options: [
+              "No proporciona información sobre la incidencia de enfermedad.",
+              "La calidad y completitud de los datos pueden ser limitadas porque dependemos de registros existentes.",
+              "Es más costoso que un estudio prospectivo.",
+              "Todos los participantes deben cumplir criterios estrictos de inclusión."
+            ],
+            correct: 1,
+            rationale: "En estudios retrospectivos, la dependencia de registros históricos puede resultar en datos incompletos, mal registrados, o sesgados según lo que fue documentado en el momento.",
+            source: "Fletcher, R. H., & Fletcher, S. W. Clinical Epidemiology: The Essentials. 5th ed. Wolters Kluwer; 2014."
+          },
+          {
+            q: "¿Cuál de los siguientes escenarios sería MENOS apropiado para un estudio de casos y controles?",
+            options: [
+              "Investigar factores de riesgo de una enfermedad rara.",
+              "Evaluar la eficacia de una nueva intervención terapéutica.",
+              "Estudiar la asociación entre una exposición pasada (p. ej., radiación ocupacional) y cáncer de tiroides.",
+              "Explorar múltiples factores de riesgo para una sola enfermedad."
+            ],
+            correct: 1,
+            rationale: "Los estudios de casos y controles son más apropiados para enfermedades raras, períodos de latencia largos, y exploración de múltiples factores de riesgo; no son diseñados para evaluar la eficacia de intervenciones, para lo que se prefieren ensayos clínicos aleatorizados o cohortes prospectivas.",
+            source: "Rothman, K. J., Lash, T. L., & Greenland, S. Modern Epidemiology. 3rd ed. Wolters Kluwer; 2012."
+          }
+        ]
+      },
+      {
+        questions: [
+          {
+            q: "¿Cuál es la diferencia principal entre una estimación de riesgo relativo y una razón de momios?",
+            options: [
+              "El riesgo relativo se usa en estudios experimentales; la razón de momios, en observacionales.",
+              "El riesgo relativo compara directamente riesgos entre grupos expuestos y no expuestos (usado en cohortes); la razón de momios compara los momios de enfermedad entre grupos (usado en casos y controles).",
+              "No hay diferencia, son términos intercambiables.",
+              "La razón de momios siempre es mayor que el riesgo relativo."
+            ],
+            correct: 1,
+            rationale: "El riesgo relativo (RR) compara directamente la probabilidad de enfermedad entre expuestos y no expuestos (calculable en cohortes prospectivas); la razón de momios (OR) compara los momios de enfermedad (usada en casos y controles donde no se puede calcular riesgo directamente).",
+            source: "Rothman, K. J., Lash, T. L., & Greenland, S. Modern Epidemiology. 3rd ed. Wolters Kluwer; 2012."
+          },
+          {
+            q: "Un investigador divide aleatoriamente a 500 pacientes con hipertensión en dos grupos: uno recibe un nuevo fármaco antihipertensivo y el otro recibe un placebo. Ni los pacientes ni los médicos saben qué grupo recibe qué. ¿Qué tipo de diseño es este?",
+            options: ["Estudio observacional de cohortes.", "Ensayo clínico aleatorizado a doble ciego.", "Estudio de casos y controles.", "Estudio transversal."],
+            correct: 1,
+            rationale: "Este es un ensayo clínico aleatorizado a doble ciego: asignación aleatoria a intervención/placebo, y ni participantes ni investigadores conocen la asignación.",
+            source: "Hulley, S. B., et al. Designing Clinical Research. 4th ed. Wolters Kluwer; 2013."
+          },
+          {
+            q: "Un estudio prospectivo sigue a 1,000 mujeres posmenopáusicas, registra su consumo de calcio al inicio, y documenta la incidencia de fracturas de cadera durante 5 años. ¿Cuál de los siguientes es un sesgo que podría afectar la validez interna de este estudio?",
+            options: [
+              "Sesgo de pérdida de seguimiento diferencial: si las mujeres con osteoporosis o baja ingesta de calcio tienden a abandonar el estudio a una tasa mayor.",
+              "Sesgo de selección: si solo se incluyen mujeres de un grupo socioeconómico alto.",
+              "Sesgo de información: si la medición de consumo de calcio es imprecisa.",
+              "Todas las anteriores son posibles sesgos."
+            ],
+            correct: 3,
+            rationale: "Todos son sesgos potenciales: sesgo de pérdida diferencial si quienes abandonan difieren en la exposición o el riesgo de fractura, sesgo de selección en la definición de la cohorte, y sesgo de información si la medición de exposición es imprecisa.",
+            source: "Fletcher, R. H., & Fletcher, S. W. Clinical Epidemiology: The Essentials. 5th ed. Wolters Kluwer; 2014."
+          },
+          {
+            q: "¿Cuál de las siguientes NO es una característica de un ensayo clínico aleatorizado bien diseñado?",
+            options: [
+              "Asignación aleatoria de participantes a grupos.",
+              "Cegamiento de participantes y/o investigadores cuando es posible.",
+              "Selección intencional de participantes que probablemente responderán al tratamiento.",
+              "Protocolo especificado previamente con criterios de inclusión y exclusión claros."
+            ],
+            correct: 2,
+            rationale: "La selección intencional de participantes que probablemente respondan sería un sesgo de selección que reduciría la validez interna y la representatividad; los ECAs utilizan criterios de inclusión/exclusión objetivos y predefinidos.",
+            source: "Hulley, S. B., et al. Designing Clinical Research. 4th ed. Wolters Kluwer; 2013."
+          },
+          {
+            q: "Un epidemiólogo revisa los registros de un hospital para identificar todos los casos de apendicitis quirúrgica diagnosticada entre 2015 y 2023, y compara factores clínicos y demográficos entre casos que recibieron tratamiento conservador versus cirugía. ¿Qué tipo de estudio es este?",
+            options: ["Ensayo clínico aleatorizado.", "Estudio de cohortes prospectivo.", "Serie de casos o análisis de casos descriptivo.", "Estudio transversal."],
+            correct: 2,
+            rationale: "Este es una serie de casos o análisis descriptivo: describe características clínicas y de tratamiento de un grupo de pacientes con la misma enfermedad en un período definido, sin grupo control de comparación.",
+            source: "Fletcher, R. H., & Fletcher, S. W. Clinical Epidemiology: The Essentials. 5th ed. Wolters Kluwer; 2014."
+          }
+        ]
+      },
+      {
+        questions: [
+          {
+            q: "¿Cuál de los siguientes es un ejemplo de estudio observacional?",
+            options: [
+              "Un ensayo clínico aleatorizado donde los pacientes con diabetes reciben dos tipos diferentes de intervenciones dietéticas.",
+              "Un investigador sigue a fumadores y no fumadores durante 20 años y compara las tasas de cáncer de pulmón (sin intervención activa).",
+              "Un médico asigna aleatoriamente pacientes a recibir terapia cognitivo-conductual o medicamentos.",
+              "Un estudio donde se controla el cegamiento para pacientes."
+            ],
+            correct: 1,
+            rationale: "Los estudios observacionales simplemente documentan exposiciones y resultados sin asignar activamente la intervención; el ejemplo B es un estudio de cohortes observacional prospectivo que compara tasas de enfermedad entre expuestos y no expuestos.",
+            source: "Hulley, S. B., et al. Designing Clinical Research. 4th ed. Wolters Kluwer; 2013."
+          },
+          {
+            q: "En la jerarquía de la evidencia para la eficacia de un tratamiento, ¿dónde se encuentran típicamente las revisiones sistemáticas y metaanálisis de ensayos clínicos aleatorizados?",
+            options: ["En el nivel más bajo de la jerarquía.", "En el mismo nivel que los estudios de casos y controles.", "En el nivel más alto de la jerarquía de la evidencia.", "Por debajo de los ensayos clínicos aleatorizados individuales."],
+            correct: 2,
+            rationale: "Las revisiones sistemáticas y metaanálisis (especialmente de ensayos clínicos aleatorizados) ocupan el nivel más alto de la jerarquía de evidencia porque sintetizan múltiples ensayos de alta calidad.",
+            source: "Greenland, S., Rothman, K. J., & Lash, T. L. Modern Epidemiology. 3rd ed. Wolters Kluwer; 2012."
+          },
+          {
+            q: "Un estudio mide la prevalencia de anemia en mujeres en edad reproductiva mediante un muestreo aleatorio en una región definida en un solo momento, clasificando por estado de embarazo. ¿Qué tipo de estudio es este?",
+            options: ["Estudio de cohortes.", "Estudio de casos y controles.", "Estudio transversal analítico.", "Ensayo clínico."],
+            correct: 2,
+            rationale: "Este es un estudio transversal analítico: mide prevalencia en un punto específico en el tiempo y analiza asociaciones entre una variable (estado de embarazo) y un resultado (anemia).",
+            source: "Fletcher, R. H., & Fletcher, S. W. Clinical Epidemiology: The Essentials. 5th ed. Wolters Kluwer; 2014."
+          },
+          {
+            q: "¿Cuál de los siguientes diseños de estudio proporciona la mejor evidencia para evaluar la relación temporal entre una exposición y una enfermedad?",
+            options: ["Estudio transversal.", "Serie de casos.", "Estudio de cohortes prospectivo donde la exposición se mide antes de que ocurra la enfermedad.", "Estudio de casos y controles."],
+            correct: 2,
+            rationale: "Un estudio de cohortes prospectivo permite demostrar la relación temporal porque la exposición se mide antes de que ocurra el desenlace; los estudios transversales no permiten esto, y los de casos y controles son retrospectivos.",
+            source: "Rothman, K. J., Lash, T. L., & Greenland, S. Modern Epidemiology. 3rd ed. Wolters Kluwer; 2012."
+          },
+          {
+            q: "Un investigador compara la prevalencia de osteoporosis entre hombres con distinto consumo de leche usando datos de una encuesta nacional transversal. Si encuentra una asociación, ¿cuál es la interpretación más apropiada?",
+            options: [
+              "El consumo de leche causa osteoporosis.",
+              "La baja ingesta de leche causa osteoporosis.",
+              "Existe una asociación entre el consumo de leche y la prevalencia de osteoporosis, pero no se puede establecer causalidad directa sin un estudio prospectivo.",
+              "Definitivamente se trata de una relación causal inversa."
+            ],
+            correct: 2,
+            rationale: "Aunque se observe una asociación en un estudio transversal, no se puede inferir causalidad porque no hay información sobre la secuencia temporal o control de variables confundentes; se necesitaría un estudio prospectivo o experimental para mayor evidencia de causalidad.",
+            source: "Bradford Hill, A. The environment and disease: Association or causation? Proceedings of the Royal Society of Medicine, 1965."
+          }
+        ]
+      }
+    ];
+
+    let current = null;
+
+    function loadRandomQuiz() {
+      const idx = Math.floor(Math.random() * QUIZZES.length);
+      current = QUIZZES[idx];
+      document.getElementById('quiz-meta').textContent = `Quiz ${idx + 1} de ${QUIZZES.length} · asignado al azar`;
+      const form = document.getElementById('quiz-form');
+      form.innerHTML = '';
+      current.questions.forEach((item, qi) => {
+        const card = document.createElement('div');
+        card.className = 'q-card';
+        card.innerHTML = `
+          <span class="q-num">Pregunta ${qi + 1}</span>
+          <div class="q-text">${item.q}</div>
+          <div class="q-options">
+            ${item.options.map((opt, oi) => `
+              <label class="q-option" data-q="${qi}" data-o="${oi}">
+                <input type="radio" name="q${qi}" value="${oi}">
+                <span>${String.fromCharCode(97 + oi)}) ${opt}</span>
+              </label>
+            `).join('')}
+          </div>
+          <div class="q-explain" id="explain-${qi}"></div>
+        `;
+        form.appendChild(card);
+      });
+      document.getElementById('score-banner').classList.remove('show');
+      document.getElementById('submit-btn').disabled = false;
+      document.getElementById('submit-btn').style.display = 'inline-block';
+      document.getElementById('retry-btn').style.display = 'none';
+      document.querySelectorAll('.q-explain').forEach(e => e.classList.remove('show'));
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    document.getElementById('submit-btn').addEventListener('click', () => {
+      let score = 0;
+      current.questions.forEach((item, qi) => {
+        const selected = document.querySelector(`input[name="q${qi}"]:checked`);
+        const selectedVal = selected ? parseInt(selected.value) : null;
+        const isCorrect = selectedVal === item.correct;
+        if (isCorrect) score++;
+
+        document.querySelectorAll(`.q-option[data-q="${qi}"]`).forEach(label => {
+          const oi = parseInt(label.dataset.o);
+          label.querySelector('input').disabled = true;
+          if (oi === item.correct) label.classList.add('correct');
+          else if (oi === selectedVal) label.classList.add('incorrect');
+        });
+
+        const explainEl = document.getElementById(`explain-${qi}`);
+        explainEl.innerHTML = `
+          <div class="verdict ${isCorrect ? 'ok' : 'no'}">${isCorrect ? '✓ Correcto' : '✗ Incorrecto'} — la respuesta correcta es "${String.fromCharCode(97 + item.correct)}"</div>
+          <div>${item.rationale}</div>
+          <span class="source">${item.source}</span>
+        `;
+        explainEl.classList.add('show');
+      });
+
+      document.getElementById('score-num').textContent = `${score}/${current.questions.length}`;
+      document.getElementById('score-banner').classList.add('show');
+      document.getElementById('submit-btn').style.display = 'none';
+      document.getElementById('retry-btn').style.display = 'inline-block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    document.getElementById('retry-btn').addEventListener('click', loadRandomQuiz);
+
+    loadRandomQuiz();
+  </script>
+</body>
+
+</html>
