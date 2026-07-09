@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Juego de Clasificación: 10 Resúmenes | UniValle</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Sans+3:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --navy: #002855;
+      --red: #C8102E;
+      --parch: #F5F0E8;
+      --dark: #1A2A40;
+      --teal: #2A7F8C;
+      --gold: #C4902E;
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body: 'Source Sans 3', system-ui, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--parch);
+      color: var(--dark);
+      font-size: 16px;
+      line-height: 1.65;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #topnav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--navy);
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 56px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, .25);
+    }
+
+    .back-link {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: rgba(255, 255, 255, .65);
+      text-decoration: none;
+      padding: 6px 10px;
+      border-radius: 4px;
+      border: 1px solid rgba(255, 255, 255, .2);
+      transition: all .15s;
+      white-space: nowrap;
+    }
+
+    .back-link:hover {
+      color: #fff;
+      border-color: rgba(255, 255, 255, .5);
+    }
+
+    #page-header {
+      background: linear-gradient(135deg, #9b0c22 0%, var(--red) 70%);
+      color: #fff;
+      padding: 48px 24px 36px;
+      text-align: center;
+    }
+
+    #page-header h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 900;
+      letter-spacing: -.01em;
+      margin-bottom: 10px;
+    }
+
+    #page-header p {
+      font-size: 14px;
+      opacity: .8;
+      font-family: var(--font-mono);
+      letter-spacing: .04em;
+    }
+
+    #content {
+      flex: 1;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 44px 24px 72px;
+      width: 100%;
+    }
+
+    .intro-text {
+      font-size: 15px;
+      line-height: 1.7;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin-bottom: 32px;
+      border-left: 4px solid var(--teal);
+    }
+
+    .abstract-card {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 24px 28px;
+      margin-bottom: 22px;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, .05);
+    }
+
+    .abstract-num {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      color: #fff;
+      background: var(--navy);
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+    }
+
+    .abstract-text {
+      font-size: 15px;
+      font-weight: 500;
+      margin-bottom: 18px;
+      color: var(--dark);
+      line-height: 1.7;
+    }
+
+    .reveal-btn {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      font-weight: 600;
+      padding: 10px 18px;
+      border-radius: 6px;
+      border: 1px solid var(--teal);
+      background: transparent;
+      color: var(--teal);
+      cursor: pointer;
+      transition: all .15s;
+      margin-bottom: 14px;
+    }
+
+    .reveal-btn:hover {
+      background: var(--teal);
+      color: #fff;
+    }
+
+    .reveal-btn.revealed {
+      border-color: var(--gold);
+      color: var(--gold);
+      background: #fdf8ee;
+    }
+
+    .design-reveal {
+      display: none;
+      padding: 16px 20px;
+      background: #fdf8ee;
+      border-left: 4px solid var(--gold);
+      border-radius: 0 6px 6px 0;
+      margin-bottom: 14px;
+    }
+
+    .design-reveal.show {
+      display: block;
+    }
+
+    .design-type {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+
+    .design-justification {
+      font-size: 13.5px;
+      color: var(--dark);
+      margin-bottom: 10px;
+      line-height: 1.6;
+    }
+
+    .citation {
+      font-size: 12.5px;
+      font-family: var(--font-mono);
+      color: var(--teal);
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px solid #eee;
+    }
+
+    .citation a {
+      color: var(--teal);
+      text-decoration: none;
+      font-weight: 600;
+      transition: all .12s;
+    }
+
+    .citation a:hover {
+      color: var(--navy);
+      text-decoration: underline;
+    }
+
+    #site-footer {
+      background: var(--red);
+      padding: 14px 32px;
+      text-align: center;
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      color: rgba(255, 255, 255, .85);
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav id="topnav">
+    <a href="sesiones.html#sesion-02" class="back-link">← Volver a Sesión 02</a>
+  </nav>
+
+  <header id="page-header">
+    <h1>Juego de Clasificación: 10 Resúmenes</h1>
+    <p>Identifica el diseño de investigación de cada estudio</p>
+  </header>
+
+  <main id="content">
+    <div class="intro-text">
+      <strong>Instrucciones:</strong> Lee cada resumen de estudio. Trata de identificar qué tipo de diseño de investigación corresponde (RCT terapéutico, RCT screening, cohorte retrospectiva, cohorte prospectiva, casos y controles, transversal, revisión sistemática/metaanálisis, estudio de precisión diagnóstica, estudio cualitativo, serie de casos). Haz clic en "Revelar diseño →" para ver la respuesta y una breve justificación. Luego consulta la referencia completa en PubMed.
+    </div>
+
+    <!-- Resumen 1: RCT terapéutico -->
+    <div class="abstract-card">
+      <div class="abstract-num">1</div>
+      <div class="abstract-text">
+        Investigadores reclutaron 84 adultos con fragmentos de cálculo renal residuales de hasta 5 mm. Asignaron aleatoriamente a los participantes a recibir propulsión ultrasónica para expulsión de fragmentos o a observación solamente. Tras un seguimiento mediano de 3 años, evaluaron la tasa de recurrencia de cálculos.
+      </div>
+      <button class="reveal-btn" onclick="revealDesign(this)">Revelar diseño →</button>
+      <div class="design-reveal">
+        <div class="design-type">Ensayo Clínico Aleatorizado (RCT) — Terapéutico</div>
+        <div class="design-justification">Asignación aleatoria de pacientes a intervención activa (propulsión ultrasónica) versus control (observación), con seguimiento prospectivo para comparar desenlaces.</div>
+        <div class="citation">
+          Sorensen MD, Dunmire B, Thiel J, et al. "Randomized Controlled Trial of Ultrasonic Propulsion–Facilitated Clearance of Residual Kidney Stone Fragments vs Observation." <em>J Urol.</em> 2024.
+          <a href="https://pubmed.ncbi.nlm.nih.gov/39172807/" target="_blank" rel="noopener">PMID 39172807</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Resumen 2: RCT screening -->
+    <div class="abstract-card">
+      <div class="abstract-num">2</div>
+      <div class="abstract-text">
+        En un ensayo aleatorizado multicéntrico, se reclutó a hombres 50–69 años sin diagnóstico previo de cáncer de próstata. Se asignaron aleatoriamente a someterse a prueba de PSA y resonancia magnética (MRI) versus atención habitual. Tras 2–3 años de seguimiento, se comparó la incidencia de cáncer de próstata clínicamente significativo entre grupos.
+      </div>
+      <button class="reveal-btn" onclick="revealDesign(this)">Revelar diseño →</button>
+      <div class="design-reveal">
+        <div class="design-type">Ensayo Clínico Aleatorizado (RCT) — Screening</div>
+        <div class="design-justification">Asignación aleatoria a un protocolo de detección (PSA + MRI) versus control (atención habitual) para evaluar si la detección temprana mejora outcomes.</div>
+        <div class="citation">
+          "Repeated Prostate Cancer Screening Using Prostate-Specific Antigen Testing and Magnetic Resonance Imaging: A Secondary Analysis of the STHLM3-MRI Randomized Clinical Trial." <em>JAMA Netw Open.</em> 2024.
+          <a href="https://pubmed.ncbi.nlm.nih.gov/38324313/" target="_blank" rel="noopener">PMID 38324313</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Resumen 3: Retrospective cohort -->
+    <div class="abstract-card">
+      <div class="abstract-num">3</div>
+      <div class="abstract-text">
+        Se identificaron todos los adultos que se sometieron a nefrectomía (extirpación quirúrgica de riñón) en un centro de cirugía mínimamente invasiva de alto volumen entre enero 2015 y enero 2023 (n=408). Se recopilaron datos demográficos, quirúrgicos y de resultados oncológicos retrospectivamente. Se compararon resultados quirúrgicos y oncológicos entre procedimientos abiertos versus laparoscópicos/robóticos.
+      </div>
+      <button class="reveal-btn" onclick="revealDesign(this)">Revelar diseño →</button>
+      <div class="design-reveal">
+        <div class="design-type">Estudio de Cohortes Retrospectivo</div>
+        <div class="design-justification">Cohorte de pacientes definida histórica (todas las nefrectomías 2015–2023), exposición registrada (tipo de cirugía), y seguimiento de outcomes (resultados oncológicos) de forma retrospectiva mediante registros médicos.</div>
+        <div class="citation">
+          Alasker A, Alnafisah TR, Shafqat A, et al. "Nephrectomies in Saudi Arabia: A Comprehensive Analysis of Outcomes from a High-Volume Minimally Invasive Surgery Center." <em>J Kidney Cancer VHL.</em> 2024;11(3):1-12.
+          <a href="https://pubmed.ncbi.nlm.nih.gov/39045259/" target="_blank" rel="noopener">PMID 39045259</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Resumen 4: Prospective cohort -->
+    <div class="abstract-card">
+      <div class="abstract-num">4</div>
+      <div class="abstract-text">
+        Se reclutó a 593 hombres sin diagnóstico previo de cáncer de próstata (biopsia-naive) con sospecha clínica en 54 prácticas de urología comunitarias en Alemania. Se realizó MRI basal. Aquellos con resultados negativos (PI-RADS 1–2) fueron seguidos prospectivamente cada 6 meses durante 3 años. Se registró la tasa de detección de cáncer de próstata clínicamente significativo durante el seguimiento.
+      </div>
+      <button class="reveal-btn" onclick="revealDesign(this)">Revelar diseño →</button>
+      <div class="design-reveal">
+        <div class="design-type">Estudio de Cohortes Prospectivo</div>
+        <div class="design-justification">Cohorte de pacientes definida prospectivamente (hombres biopsia-naive), exposición basal documentada (resultado MRI negativo), y seguimiento activo hacia adelante en el tiempo para capturar outcomes (detección de cáncer).</div>
+        <div class="citation">
+          Hamm CA, Asbach P, Pöhlmann A, et al. "Oncological Safety of MRI-Informed Biopsy Decision-Making in Men With Suspected Prostate Cancer." <em>JAMA Oncol.</em> 2025;11(2):145-153.
+          <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11843366/" target="_blank" rel="noopener">PMC11843366</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Resumen 5: Case-control -->
+    <div class="abstract-card">
+      <div class="abstract-num">5</div>
+      <div class="abstract-text">
+        En Taiwán se reclutaron 143 pacientes con diagnóstico confirmado de cáncer de próstata (casos) y 135 pacientes con hiperplasia benigna de próstata sin malignidad (controles) entre 2018–2020. Se recopilaron datos sobre infección por HPV, hábitos dietéticos, historia familiar, estilo de vida y comportamiento sexual. Se comparó la prevalencia de infección por HPV y otros factores de riesgo entre casos y controles.
+      </div>
+      <button class="reveal-btn" onclick="revealDesign(this)">Revelar diseño →</button>
+      <div class="design-reveal">
+        <div class="design-type">Estudio de Casos y Controles</div>
+        <div class="design-justification">Selección basada en enfermedad: pacientes con cáncer de próstata (casos) y sin cáncer (controles), evaluación retrospectiva de exposiciones pasadas (HPV, factores de riesgo). Típico para investigar factores etiológicos de enfermedades establecidas.</div>
+        <div class="citation">
+          Chang HJ, Pong YH, Chiang CY, et al. "A matched case-control study in Taiwan to evaluate potential risk factors for prostate cancer." <em>Sci Rep.</em> 2023;13:7594.
+          <a href="https://pubmed.ncbi.nlm.nih.gov/36928374/" target="_blank" rel="noopener">PMID 36928374</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Resumen 6: Cross-sectional -->
+    <div class="abstract-card">
+      <div class="abstract-num">6</div>
+      <div class="abstract-text">
+        Se recolectaron datos de 375 hombres adultos en un único municipio mediante entrevistas cara a cara entre julio 2021 y agosto 2022. Para cada participante se aplicaron cuestionarios standarizados en un único momento para evaluación de síntomas de disfunción eréctil (IIEF-6) y síntomas del tracto urinario bajo (IPSS). Se calculó la prevalencia de ambas condiciones y su asociación con la calidad de vida.
+      </div>
+      <button class="reveal-btn" onclick="revealDesign(this)">Revelar diseño →</button>
+      <div class="design-reveal">
+        <div class="design-type">Estudio Transversal (Cross-sectional)</div>
+        <div class="design-justification">Recolección de datos en un único punto en el tiempo de una población muestra. Mide prevalencia de exposiciones y desenlaces de forma simultánea, sin seguimiento prospectivo ni grupos comparativos históricos.</div>
+        <div class="citation">
+          Kijima FJ, et al. "Prevalence and quality of life associated with erectile dysfunction and lower urinary tract symptoms: a cross-sectional study." <em>Sao Paulo Med J.</em> 2024.
+          <a href="https://pubmed.ncbi.nlm.nih.gov/39774734/" target="_blank" rel="noopener">PMID 39774734</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Resumen 7: Systematic review and meta-analysis -->
+    <div class="abstract-card">
+      <div class="abstract-num">7</div>
+      <div class="abstract-text">
+        Se realizó una búsqueda sistemática de PubMed/MEDLINE hasta septiembre 2024 para identificar todos los estudios publicados sobre diagnóstico, epidemiología y tratamiento del carcinoma uracal. Se incluyeron 50 estudios que reportaban datos de 1,901 casos. Se sintetizaron datos de forma cuantitativa (metaanálisis) y cualitativa para consolidar la evidencia sobre esta malignidad rara.
+      </div>
+      <button class="reveal-btn" onclick="revealDesign(this)">Revelar diseño →</button>
+      <div class="design-reveal">
+        <div class="design-type">Revisión Sistemática y Metaanálisis</div>
+        <div class="design-justification">Síntesis de múltiples estudios primarios mediante protocolo sistemático predefinido, búsqueda exhaustiva de literatura, selección crítica, y combinación cuantitativa/cualitativa de resultados. Nivel más alto de evidencia para preguntas clínicas.</div>
+        <div class="citation">
+          Suartz CV, Martinez LM, Silvestre MHL, et al. "Urachal Carcinomas: A Comprehensive Systematic Review and Meta-analysis." <em>Int Braz J Urol.</em> 2025;51(1).
+          <a href="https://pubmed.ncbi.nlm.nih.gov/39908206/" target="_blank" rel="noopener">PMID 39908206</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Resumen 8: Diagnostic accuracy study -->
+    <div class="abstract-card">
+      <div class="abstract-num">8</div>
+      <div class="abstract-text">
+        Se realizó una búsqueda sistemática de bases de datos (PubMed, Embase, Cochrane) hasta octubre 2023 para identificar estudios que evaluaran la precisión diagnóstica de MRI para detección de cáncer de próstata en hombres con PSA 4–10 ng/mL. Se incluyeron 19 estudios con 3,879 pacientes. Se calculó la sensibilidad y especificidad conjunta mediante metaanálisis.
+      </div>
+      <button class="reveal-btn" onclick="revealDesign(this)">Revelar diseño →</button>
+      <div class="design-reveal">
+        <div class="design-type">Estudio de Precisión Diagnóstica (Metaanálisis)</div>
+        <div class="design-justification">Síntesis de múltiples estudios que evalúan la exactitud de una prueba diagnóstica (MRI) comparándola con estándar de referencia (histología/biopsia), utilizando medidas de sensibilidad y especificidad conjuntas.</div>
+        <div class="citation">
+          Guo E, Xu L, Zhang D, et al. "Diagnostic performance of MRI in detecting prostate cancer in patients with prostate-specific antigen levels of 4–10 ng/mL: a systematic review and meta-analysis." <em>Insights Imaging.</em> 2024.
+          <a href="https://pubmed.ncbi.nlm.nih.gov/38886256/" target="_blank" rel="noopener">PMID 38886256</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Resumen 9: Qualitative study -->
+    <div class="abstract-card">
+      <div class="abstract-num">9</div>
+      <div class="abstract-text">
+        Se realizaron entrevistas semiestructuradas con 20 pacientes (edad 51–79 años) que habían recibido MRI de próstata como parte de su vigilancia activa por cáncer de próstata de bajo riesgo. Se utilizó análisis convencional de contenido para identificar temas emergentes. Se exploraron las experiencias de toma de decisiones, percepción de utilidad de MRI, y confianza en los resultados.
+      </div>
+      <button class="reveal-btn" onclick="revealDesign(this)">Revelar diseño →</button>
+      <div class="design-reveal">
+        <div class="design-type">Estudio Cualitativo</div>
+        <div class="design-justification">Recolección de datos narrativos mediante entrevistas, análisis interpretativo de contenido temático sin cuantificación numérica. Busca comprender experiencias, significados y decisiones de los participantes en profundidad.</div>
+        <div class="citation">
+          Sutherland R, et al. "'It Just Makes Sense to Me': A qualitative study exploring patient decision-making and experiences with prostate MRI during active surveillance for prostate cancer." <em>BJUI Compass.</em> 2024.
+          <a href="https://pubmed.ncbi.nlm.nih.gov/38873351/" target="_blank" rel="noopener">PMID 38873351</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Resumen 10: Case series -->
+    <div class="abstract-card">
+      <div class="abstract-num">10</div>
+      <div class="abstract-text">
+        Se presentan 8 casos clínicos de cirugías urológicas concurrentes robóticas (nefrectomía parcial asistida por robot + prostatectomía radical asistida por robot) realizadas en un solo centro entre 2021–2024 en pacientes con cáncer síncrono de próstata y riñón. Se describen características operatorias, complicaciones y resultados oncológicos.
+      </div>
+      <button class="reveal-btn" onclick="revealDesign(this)">Revelar diseño →</button>
+      <div class="design-reveal">
+        <div class="design-type">Serie de Casos</div>
+        <div class="design-justification">Descripción detallada de un grupo de casos consecutivos con características similares (cirugías robóticas concurrentes), sin grupo control. Documenta técnica, factibilidad y resultados iniciales sin comparación comparativa.</div>
+        <div class="citation">
+          Drobot RB, Lipa M, Zahorska WA, Ludwiczak D, Antoniewicz AA. "Optimizing Urological Concurrent Robotic Multisite Surgery: Juxtaposing a Single-Center Experience and a Literature Review." <em>J Pers Med.</em> 2024;14(10):1053.
+          <a href="https://pubmed.ncbi.nlm.nih.gov/39452560/" target="_blank" rel="noopener">PMID 39452560</a>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer id="site-footer">
+    Especialización en Urología · Universidad del Valle · Epidemiología e Investigación
+  </footer>
+
+  <script>
+    function revealDesign(button) {
+      const card = button.closest('.abstract-card');
+      const reveal = card.querySelector('.design-reveal');
+      const isRevealed = reveal.classList.contains('show');
+
+      if (isRevealed) {
+        reveal.classList.remove('show');
+        button.classList.remove('revealed');
+        button.textContent = 'Revelar diseño →';
+      } else {
+        reveal.classList.add('show');
+        button.classList.add('revealed');
+        button.textContent = 'Ocultar diseño';
+      }
+    }
+  </script>
+
+</body>
+
+</html>
