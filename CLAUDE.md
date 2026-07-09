@@ -10,8 +10,9 @@ Static website for the course **Epidemiología e Investigación** (Especializaci
 
 | File | Purpose |
 |---|---|
-| `index.html` | Main course page — all sections: hero, acerca, sesiones, evaluación, herramientas, recursos |
-| `sesiones.html` | 16 individual sessions with sidebar nav, expandable content |
+| `index.html` | Main course page — all sections: hero, acerca, sesiones, evaluación, herramientas, recursos; includes videos, rubrics, templates, scripts, dataset downloads |
+| `sesiones.html` | 16 individual sessions with sidebar nav, expandable content; links to Entregable forms, materials, and related resources |
+| `abstracts-clasificacion.html` | Interactive exercise: classify 10 abstracts by research design type; linked from sesiones.html (Sesión 02) |
 | `rubricas.html` | 5 grading rubrics with color-coded criteria tables |
 | `plantillas.html` | 6 Notion workspace templates with folder-tab card design |
 | `quiz-disenos.html` | Self-graded quiz page — randomly assigns 1 of 5 quizzes on research design types, grades via Submit button; linked from `sesiones.html` |
@@ -32,9 +33,10 @@ The HTML pages are generated from markdown source files — do not edit the mark
 |---|---|
 | `rubricas/*.md` | `rubricas.html` |
 | `notion-workspace/*.md` | `plantillas.html` |
-| `sesiones/` | `sesiones.html` |
+| `sesiones/*.md` | `sesiones.html` |
 | `quizzes/*.md` | `quiz-disenos.html` (data transcribed into embedded JS) |
 | `microcurriculum.md` | `index.html` |
+| `guiones-loom/*.md` | Source scripts for Loom videos (referenced in `index.html` Videos section); video numbering (01–07) corresponds to session pre-work |
 
 ## Assets
 
@@ -48,6 +50,13 @@ Use `/frontend-design` when creating a new page or making significant visual cha
 
 ## Files to deploy to GitHub
 
-`index.html`, `sesiones.html`, `rubricas.html`, `plantillas.html`, `quiz-disenos.html`, `logos/`, `scripts-r/`, `datasets/`
+`index.html`, `sesiones.html`, `abstracts-clasificacion.html`, `rubricas.html`, `plantillas.html`, `quiz-disenos.html`, `logos/`, `scripts-r/`, `datasets/`
 
 The folders `rubricas/`, `notion-workspace/`, `sesiones/`, `quizzes/`, `guiones-loom/`, `herramientas-ia/` are source content only — not needed on the web server.
+
+## Notes for editors
+
+- **Google Forms links:** Entregables in `sesiones.html` link to Google Forms for submission tracking (lines ~794, ~870). Update URLs in both HTML and plan documentation if forms change.
+- **Dataset links:** `datasets/litiasis_urovalle_2024.csv` is linked from `index.html` (S03 activity) and available as a resource download.
+- **Video numbering:** Videos 01–07 in `index.html` (`resources` section) are pre-class materials. Script source is in `guiones-loom/`; update both locations if video titles or durations change.
+- **Branches:** Main branch (`main`) is the production default. All deployable files should be pushed to `main`.
