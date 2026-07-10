@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Desafío: 4 Forest Plots | UniValle</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Sans+3:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --navy: #002855;
+      --red: #C8102E;
+      --parch: #F5F0E8;
+      --dark: #1A2A40;
+      --teal: #2A7F8C;
+      --gold: #C4902E;
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body: 'Source Sans 3', system-ui, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--parch);
+      color: var(--dark);
+      font-size: 16px;
+      line-height: 1.65;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #topnav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--navy);
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 56px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, .25);
+    }
+
+    .back-link {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: rgba(255, 255, 255, .65);
+      text-decoration: none;
+      padding: 6px 10px;
+      border-radius: 4px;
+      border: 1px solid rgba(255, 255, 255, .2);
+      transition: all .15s;
+      white-space: nowrap;
+    }
+
+    .back-link:hover {
+      color: #fff;
+      border-color: rgba(255, 255, 255, .5);
+    }
+
+    #page-header {
+      background: linear-gradient(135deg, #9b0c22 0%, var(--red) 70%);
+      color: #fff;
+      padding: 48px 24px 36px;
+      text-align: center;
+    }
+
+    #page-header h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 900;
+      letter-spacing: -.01em;
+      margin-bottom: 10px;
+    }
+
+    #page-header p {
+      font-size: 14px;
+      opacity: .85;
+      font-family: var(--font-mono);
+      letter-spacing: .04em;
+    }
+
+    #content {
+      flex: 1;
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 44px 24px 72px;
+      width: 100%;
+    }
+
+    .intro-text {
+      font-size: 15px;
+      line-height: 1.7;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin-bottom: 32px;
+      border-left: 4px solid var(--teal);
+    }
+
+    .plot-card {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 28px;
+    }
+
+    .plot-head {
+      background: var(--navy);
+      color: #fff;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .plot-num {
+      font-family: var(--font-mono);
+      font-weight: 700;
+      background: var(--gold);
+      color: var(--navy);
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .plot-head h2 {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .plot-img-wrap {
+      background: #fafafa;
+      padding: 18px;
+      text-align: center;
+      border-bottom: 1px solid #eee;
+    }
+
+    .plot-img-wrap img {
+      max-width: 100%;
+      height: auto;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+    }
+
+    .plot-body {
+      padding: 20px 24px;
+    }
+
+    .plot-question {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .reveal-btn {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: .04em;
+      background: var(--teal);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 9px 16px;
+      cursor: pointer;
+      transition: background .15s;
+    }
+
+    .reveal-btn:hover {
+      background: #23606a;
+    }
+
+    .plot-answer {
+      display: none;
+      margin-top: 16px;
+      padding: 14px 18px;
+      background: #F0F7F1;
+      border-left: 4px solid var(--gold);
+      border-radius: 6px;
+      font-size: 14.5px;
+    }
+
+    .plot-answer.show {
+      display: block;
+    }
+
+    .citation {
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      color: #666;
+      margin-top: 10px;
+      line-height: 1.5;
+    }
+
+    .citation a {
+      color: var(--teal);
+    }
+
+    footer {
+      background: var(--navy);
+      color: rgba(255, 255, 255, .6);
+      text-align: center;
+      padding: 20px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="topnav">
+    <a href="sesiones.html#sesion-08" class="back-link">← Volver a Sesión 08</a>
+  </div>
+
+  <div id="page-header">
+    <h1>Desafío: 4 Forest Plots</h1>
+    <p>Interprétalos sin explicación previa — Sesión 08</p>
+  </div>
+
+  <div id="content">
+    <div class="intro-text">
+      Estos 4 forest plots provienen de revisiones sistemáticas y meta-análisis <strong>reales y de acceso
+        abierto</strong> en urología. Antes de leer la explicación de cada uno, intenta responder: ¿qué mide el eje
+      X?, ¿el efecto favorece la intervención o el control?, ¿hay heterogeneidad (I²) relevante?, ¿el resultado es
+      estadísticamente significativo?
+    </div>
+
+    <div class="plot-card">
+      <div class="plot-head">
+        <div class="plot-num">1</div>
+        <h2>Precisión diagnóstica de RM multiparamétrica en cáncer vesical</h2>
+      </div>
+      <div class="plot-img-wrap">
+        <img src="forest-plots-assets/fp1-bladder-mri.jpg"
+          alt="Forest plot de sensibilidad, especificidad y OR diagnóstico para RM multiparamétrica en estadificación de cáncer vesical">
+      </div>
+      <div class="plot-body">
+        <p class="plot-question">¿Qué está midiendo este forest plot y qué tan consistentes son los estudios
+          incluidos?</p>
+        <button class="reveal-btn" onclick="toggleAnswer(this)">Mostrar interpretación</button>
+        <div class="plot-answer">
+          Este panel agrupa sensibilidad, especificidad y odds ratio diagnóstico de estudios que evalúan RM
+          multiparamétrica para estadificar cáncer vesical músculo-invasivo. Cada línea horizontal es un estudio
+          individual; el rombo inferior es el efecto combinado. Presta atención al I² reportado: valores altos
+          indican que los estudios primarios no son directamente comparables (diferentes protocolos de RM, lectores,
+          umbrales de estadificación).
+        </div>
+        <div class="citation">
+          Zhang N, Wang X, Wang C, et al. Diagnostic Accuracy of Multi-Parametric Magnetic Resonance Imaging for
+          Tumor Staging of Bladder Cancer: Meta-Analysis. <em>Frontiers in Oncology</em>. 2019;9:981.
+          doi:10.3389/fonc.2019.00981 — <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6788297/" target="_blank"
+            rel="noopener">PMC6788297</a> (CC BY, acceso abierto)
+        </div>
+      </div>
+    </div>
+
+    <div class="plot-card">
+      <div class="plot-head">
+        <div class="plot-num">2</div>
+        <h2>Polimorfismo VDR y riesgo de litiasis renal</h2>
+      </div>
+      <div class="plot-img-wrap">
+        <img src="forest-plots-assets/fp2-vdr-stones.jpg"
+          alt="Forest plot de OR para el polimorfismo del gen VDR y riesgo de litiasis renal">
+      </div>
+      <div class="plot-body">
+        <p class="plot-question">¿El intervalo de confianza del efecto combinado cruza la línea de no efecto? ¿Qué
+          implica eso?</p>
+        <button class="reveal-btn" onclick="toggleAnswer(this)">Mostrar interpretación</button>
+        <div class="plot-answer">
+          Este es un meta-análisis genético clásico: cada estudio caso-control aporta un OR con su IC95% para la
+          asociación entre un polimorfismo del gen VDR y litiasis renal. Si el rombo del efecto combinado cruza el 1
+          (línea de no efecto), la asociación global no es estadísticamente significativa, aun si algunos estudios
+          individuales sí muestran significancia — un ejemplo útil para discutir por qué no basta con mirar un solo
+          estudio.
+        </div>
+        <div class="citation">
+          Mohammadi A, Shabestari AN, Baghdadabad LZ, et al. Genetic Polymorphisms and Kidney Stones Around the
+          Globe: A Systematic Review and Meta-Analysis. <em>Frontiers in Genetics</em>. 2022;13:913908.
+          doi:10.3389/fgene.2022.913908 — <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9280078/" target="_blank"
+            rel="noopener">PMC9280078</a> (CC BY, acceso abierto)
+        </div>
+      </div>
+    </div>
+
+    <div class="plot-card">
+      <div class="plot-head">
+        <div class="plot-num">3</div>
+        <h2>Polimorfismo CASR y riesgo de litiasis renal</h2>
+      </div>
+      <div class="plot-img-wrap">
+        <img src="forest-plots-assets/fp3-casr-stones.jpg"
+          alt="Forest plot de OR para el polimorfismo del gen CASR y riesgo de litiasis renal">
+      </div>
+      <div class="plot-body">
+        <p class="plot-question">Compara este plot con el #2 (mismo artículo, gen distinto): ¿cuál tiene menos
+          estudios y por qué eso afecta la interpretación?</p>
+        <button class="reveal-btn" onclick="toggleAnswer(this)">Mostrar interpretación</button>
+        <div class="plot-answer">
+          Del mismo meta-análisis genético, pero para el gen CASR (receptor sensor de calcio). Con menos estudios
+          incluidos, los intervalos de confianza individuales tienden a ser más anchos y el resultado combinado es
+          menos preciso — un buen ejemplo para enseñar que el ancho del rombo depende tanto del tamaño del efecto
+          como del número y tamaño de los estudios disponibles.
+        </div>
+        <div class="citation">
+          Mohammadi A, Shabestari AN, Baghdadabad LZ, et al. Genetic Polymorphisms and Kidney Stones Around the
+          Globe: A Systematic Review and Meta-Analysis. <em>Frontiers in Genetics</em>. 2022;13:913908.
+          doi:10.3389/fgene.2022.913908 — <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9280078/" target="_blank"
+            rel="noopener">PMC9280078</a> (CC BY, acceso abierto)
+        </div>
+      </div>
+    </div>
+
+    <div class="plot-card">
+      <div class="plot-head">
+        <div class="plot-num">4</div>
+        <h2>Anatomía de un forest plot (figura didáctica)</h2>
+      </div>
+      <div class="plot-img-wrap">
+        <img src="forest-plots-assets/fp4-howtoread.jpg"
+          alt="Figura didáctica mostrando los ejes y elementos estructurales de un forest plot">
+      </div>
+      <div class="plot-body">
+        <p class="plot-question">Usa esta figura para verificar tus respuestas de los 3 plots anteriores: ¿identificaste
+          correctamente cada elemento (eje X, línea de no efecto, IC, rombo)?</p>
+        <button class="reveal-btn" onclick="toggleAnswer(this)">Mostrar interpretación</button>
+        <div class="plot-answer">
+          Esta figura, tomada de un artículo educativo sobre meta-análisis en urología, etiqueta explícitamente los
+          componentes de un forest plot: eje vertical (lista de estudios), eje horizontal (medida de efecto — OR, RR,
+          diferencia de medias), línea de no efecto, intervalos de confianza de cada estudio y el rombo del efecto
+          combinado. Úsala como referencia para autocorregir tus interpretaciones de los plots #1–3.
+        </div>
+        <div class="citation">
+          Favorito LA. Systematic review and metanalysis in urology: how to interpret the forest plot. <em>International
+            Brazilian Journal of Urology</em>. 2024;49(6):775–778. doi:10.1590/S1677-5538.IBJU.2023.9911 — <a
+            href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10947628/" target="_blank" rel="noopener">PMC10947628</a>
+          (CC BY, acceso abierto)
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>Epidemiología e Investigación · Especialización en Urología · Universidad del Valle</footer>
+
+  <script>
+    function toggleAnswer(btn) {
+      var answer = btn.nextElementSibling;
+      answer.classList.toggle('show');
+      btn.textContent = answer.classList.contains('show') ? 'Ocultar interpretación' : 'Mostrar interpretación';
+    }
+  </script>
+</body>
+
+</html>
