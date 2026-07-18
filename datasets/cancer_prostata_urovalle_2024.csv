@@ -1,0 +1,301 @@
+"ID","Edad","PSA_inicial","Gleason","Estadio","Tratamiento","Recurrencia_5a","Recurrencia_etiqueta","Tiempo_meses"
+1,74,17.1,7,"cT2","Radioterapia",0,"Sin recurrencia",51
+2,70,5.1,7,"cT2","Radioterapia",0,"Sin recurrencia",65
+3,65,6.8,9,"cT1","Prostatectomía radical",1,"Con recurrencia",39
+4,64,23.5,6,"cT1","Prostatectomía radical",0,"Sin recurrencia",65
+5,75,37.7,6,"cT3","Prostatectomía radical",0,"Sin recurrencia",58
+6,76,13.5,9,"cT3","Prostatectomía radical",0,"Sin recurrencia",67
+7,70,8.2,8,"cT1","Radioterapia",0,"Sin recurrencia",67
+8,65,17.1,6,"cT2","Prostatectomía radical",0,"Sin recurrencia",68
+9,56,10.6,8,"cT3","Radioterapia",0,"Sin recurrencia",59
+10,57,29.5,9,"cT1","Radioterapia",0,"Sin recurrencia",72
+11,53,12.8,7,"cT2","Prostatectomía radical",0,"Sin recurrencia",56
+12,70,2.7,9,"cT2","Radioterapia",1,"Con recurrencia",47
+13,73,2.1,8,"cT1","Prostatectomía radical",1,"Con recurrencia",28
+14,68,4.1,8,"cT2","Prostatectomía radical",0,"Sin recurrencia",72
+15,50,100,7,"cT1","Prostatectomía radical",0,"Sin recurrencia",55
+16,65,6.2,8,"cT3","Prostatectomía radical",0,"Sin recurrencia",58
+17,59,8.7,8,"cT2","Prostatectomía radical",0,"Sin recurrencia",51
+18,70,9.3,8,"cT1","Radioterapia",0,"Sin recurrencia",64
+19,53,23,7,"cT3","Radioterapia",0,"Sin recurrencia",65
+20,50,5.1,9,"cT1","Prostatectomía radical",0,"Sin recurrencia",53
+21,75,3.4,7,"cT2","Prostatectomía radical",0,"Sin recurrencia",72
+22,69,10.8,7,"cT2","Radioterapia",0,"Sin recurrencia",56
+23,74,12.8,9,"cT2","Prostatectomía radical",0,"Sin recurrencia",50
+24,64,4.9,6,"cT1","Radioterapia",1,"Con recurrencia",52
+25,69,98.4,7,"cT2","Prostatectomía radical",1,"Con recurrencia",6
+26,54,7.8,8,"cT1","Prostatectomía radical",0,"Sin recurrencia",49
+27,65,3.6,9,"cT2","Radioterapia",0,"Sin recurrencia",51
+28,71,16.7,8,"cT3","Prostatectomía radical",1,"Con recurrencia",48
+29,50,1.6,6,"cT2","Prostatectomía radical",0,"Sin recurrencia",65
+30,65,6.5,9,"cT1","Radioterapia",0,"Sin recurrencia",54
+31,54,9.7,7,"cT2","Prostatectomía radical",0,"Sin recurrencia",70
+32,63,5.1,7,"cT3","Prostatectomía radical",0,"Sin recurrencia",63
+33,62,30,9,"cT2","Radioterapia",0,"Sin recurrencia",71
+34,76,5.9,7,"cT1","Radioterapia",0,"Sin recurrencia",67
+35,62,24.9,10,"cT1","Radioterapia",0,"Sin recurrencia",63
+36,69,2.3,6,"cT3","Prostatectomía radical",0,"Sin recurrencia",56
+37,69,30.9,8,"cT2","Prostatectomía radical",0,"Sin recurrencia",53
+38,62,1.4,7,"cT2","Prostatectomía radical",0,"Sin recurrencia",58
+39,61,9.1,8,"cT2","Radioterapia",0,"Sin recurrencia",63
+40,69,13.4,8,"cT2","Radioterapia",0,"Sin recurrencia",63
+41,59,5,6,"cT2","Radioterapia",0,"Sin recurrencia",57
+42,66,2.1,7,"cT3","Radioterapia",0,"Sin recurrencia",52
+43,70,12.1,7,"cT1","Radioterapia",0,"Sin recurrencia",61
+44,82,9.3,8,"cT1","Prostatectomía radical",0,"Sin recurrencia",54
+45,56,17.3,8,"cT2","Radioterapia",1,"Con recurrencia",23
+46,67,35.1,8,"cT1","Prostatectomía radical",0,"Sin recurrencia",70
+47,69,3.2,7,"cT1","Prostatectomía radical",0,"Sin recurrencia",68
+48,71,13.8,8,"cT1","Prostatectomía radical",0,"Sin recurrencia",65
+49,71,3.2,8,"cT2","Prostatectomía radical",0,"Sin recurrencia",58
+50,82,28.9,7,"cT1","Prostatectomía radical",0,"Sin recurrencia",64
+51,62,6.2,9,"cT3","Prostatectomía radical",0,"Sin recurrencia",71
+52,60,18.4,8,"cT1","Radioterapia",0,"Sin recurrencia",56
+53,61,17.3,8,"cT2","Prostatectomía radical",0,"Sin recurrencia",69
+54,58,4.5,7,"cT1","Prostatectomía radical",0,"Sin recurrencia",62
+55,61,1.4,7,"cT2","Radioterapia",0,"Sin recurrencia",61
+56,55,5.7,6,"cT2","Radioterapia",0,"Sin recurrencia",69
+57,73,17.3,8,"cT1","Radioterapia",0,"Sin recurrencia",60
+58,64,18.7,9,"cT1","Prostatectomía radical",0,"Sin recurrencia",49
+59,74,25.9,8,"cT1","Radioterapia",0,"Sin recurrencia",68
+60,66,3.3,7,"cT1","Prostatectomía radical",0,"Sin recurrencia",51
+61,79,7.2,7,"cT1","Prostatectomía radical",0,"Sin recurrencia",53
+62,73,14.8,8,"cT1","Prostatectomía radical",0,"Sin recurrencia",59
+63,70,4.6,7,"cT3","Radioterapia",0,"Sin recurrencia",62
+64,67,5,8,"cT3","Prostatectomía radical",1,"Con recurrencia",26
+65,79,13.4,7,"cT2","Prostatectomía radical",0,"Sin recurrencia",56
+66,65,5.6,6,"cT3","Radioterapia",1,"Con recurrencia",37
+67,50,10.5,8,"cT2","Radioterapia",0,"Sin recurrencia",52
+68,72,10,7,"cT3","Radioterapia",0,"Sin recurrencia",71
+69,70,15.3,7,"cT1","Radioterapia",0,"Sin recurrencia",51
+70,50,4.7,9,"cT1","Radioterapia",0,"Sin recurrencia",63
+71,75,43.2,9,"cT2","Radioterapia",0,"Sin recurrencia",70
+72,56,6.1,6,"cT1","Radioterapia",0,"Sin recurrencia",56
+73,68,6.2,7,"cT2","Radioterapia",0,"Sin recurrencia",53
+74,67,7.9,6,"cT3","Prostatectomía radical",0,"Sin recurrencia",55
+75,68,9.4,6,"cT1","Radioterapia",0,"Sin recurrencia",65
+76,63,8,7,"cT3","Radioterapia",1,"Con recurrencia",21
+77,77,7.5,8,"cT1","Prostatectomía radical",0,"Sin recurrencia",67
+78,71,5.9,6,"cT3","Radioterapia",1,"Con recurrencia",29
+79,58,73,9,"cT2","Prostatectomía radical",0,"Sin recurrencia",67
+80,66,4.2,8,"cT1","Radioterapia",0,"Sin recurrencia",61
+81,56,10.5,7,"cT1","Prostatectomía radical",0,"Sin recurrencia",56
+82,74,7.2,7,"cT3","Prostatectomía radical",0,"Sin recurrencia",56
+83,73,11.4,7,"cT2","Radioterapia",0,"Sin recurrencia",50
+84,52,9.3,7,"cT1","Prostatectomía radical",0,"Sin recurrencia",64
+85,67,35.6,6,"cT3","Prostatectomía radical",1,"Con recurrencia",19
+86,75,12.8,9,"cT1","Prostatectomía radical",0,"Sin recurrencia",68
+87,65,2.1,6,"cT1","Prostatectomía radical",0,"Sin recurrencia",67
+88,64,18.8,9,"cT2","Radioterapia",1,"Con recurrencia",44
+89,64,8,8,"cT2","Radioterapia",0,"Sin recurrencia",68
+90,73,26.6,9,"cT3","Prostatectomía radical",1,"Con recurrencia",27
+91,56,9.1,7,"cT3","Radioterapia",0,"Sin recurrencia",69
+92,62,17.6,6,"cT2","Prostatectomía radical",0,"Sin recurrencia",58
+93,60,20.1,7,"cT3","Prostatectomía radical",0,"Sin recurrencia",59
+94,71,3.2,8,"cT2","Prostatectomía radical",0,"Sin recurrencia",52
+95,70,32.3,10,"cT3","Radioterapia",1,"Con recurrencia",28
+96,50,14.8,9,"cT1","Radioterapia",0,"Sin recurrencia",56
+97,57,6.2,7,"cT2","Prostatectomía radical",0,"Sin recurrencia",66
+98,57,7.8,8,"cT2","Radioterapia",0,"Sin recurrencia",56
+99,66,2.7,7,"cT3","Radioterapia",1,"Con recurrencia",40
+100,75,7.6,7,"cT2","Prostatectomía radical",0,"Sin recurrencia",64
+101,84,54.5,9,"cT2","Radioterapia",0,"Sin recurrencia",71
+102,70,18.3,7,"cT3","Radioterapia",0,"Sin recurrencia",57
+103,74,10.7,7,"cT2","Radioterapia",0,"Sin recurrencia",71
+104,67,4.3,9,"cT1","Prostatectomía radical",0,"Sin recurrencia",59
+105,56,21.3,7,"cT3","Prostatectomía radical",0,"Sin recurrencia",49
+106,69,1.4,8,"cT3","Prostatectomía radical",1,"Con recurrencia",20
+107,64,11.2,8,"cT2","Radioterapia",0,"Sin recurrencia",51
+108,75,8.2,8,"cT2","Prostatectomía radical",0,"Sin recurrencia",56
+109,62,12,6,"cT2","Prostatectomía radical",0,"Sin recurrencia",71
+110,57,17,8,"cT3","Prostatectomía radical",0,"Sin recurrencia",57
+111,56,31.7,9,"cT3","Prostatectomía radical",1,"Con recurrencia",18
+112,75,9.6,6,"cT1","Radioterapia",0,"Sin recurrencia",71
+113,60,18.8,7,"cT2","Radioterapia",0,"Sin recurrencia",54
+114,66,17.4,6,"cT1","Radioterapia",0,"Sin recurrencia",51
+115,61,17.5,8,"cT2","Prostatectomía radical",0,"Sin recurrencia",67
+116,51,9.6,6,"cT1","Prostatectomía radical",0,"Sin recurrencia",60
+117,81,3.4,8,"cT1","Prostatectomía radical",0,"Sin recurrencia",68
+118,70,4.4,9,"cT2","Radioterapia",1,"Con recurrencia",33
+119,64,2.2,8,"cT3","Radioterapia",0,"Sin recurrencia",68
+120,73,15.6,8,"cT1","Prostatectomía radical",0,"Sin recurrencia",64
+121,64,1.9,6,"cT2","Radioterapia",1,"Con recurrencia",39
+122,63,37.1,7,"cT2","Prostatectomía radical",0,"Sin recurrencia",53
+123,56,8.2,7,"cT3","Prostatectomía radical",0,"Sin recurrencia",62
+124,64,6.1,7,"cT3","Radioterapia",0,"Sin recurrencia",60
+125,60,19.4,8,"cT2","Radioterapia",0,"Sin recurrencia",70
+126,66,6.9,8,"cT3","Radioterapia",1,"Con recurrencia",25
+127,57,33.5,9,"cT2","Prostatectomía radical",1,"Con recurrencia",13
+128,57,2.6,8,"cT3","Radioterapia",0,"Sin recurrencia",60
+129,61,18.6,7,"cT1","Prostatectomía radical",0,"Sin recurrencia",54
+130,70,32.2,7,"cT2","Radioterapia",0,"Sin recurrencia",69
+131,58,59.5,6,"cT2","Prostatectomía radical",0,"Sin recurrencia",63
+132,67,33,6,"cT1","Radioterapia",0,"Sin recurrencia",53
+133,61,21.8,7,"cT1","Prostatectomía radical",0,"Sin recurrencia",56
+134,66,3.9,8,"cT1","Prostatectomía radical",0,"Sin recurrencia",56
+135,80,22,9,"cT2","Radioterapia",0,"Sin recurrencia",48
+136,59,21.9,8,"cT1","Radioterapia",0,"Sin recurrencia",65
+137,56,2.1,8,"cT2","Prostatectomía radical",0,"Sin recurrencia",67
+138,70,4,7,"cT1","Prostatectomía radical",0,"Sin recurrencia",69
+139,69,5.3,7,"cT2","Prostatectomía radical",0,"Sin recurrencia",64
+140,64,8.9,7,"cT3","Radioterapia",0,"Sin recurrencia",63
+141,70,5.2,6,"cT2","Radioterapia",0,"Sin recurrencia",60
+142,56,36.7,7,"cT2","Prostatectomía radical",0,"Sin recurrencia",56
+143,60,7.4,8,"cT2","Prostatectomía radical",0,"Sin recurrencia",49
+144,80,6,8,"cT1","Prostatectomía radical",0,"Sin recurrencia",53
+145,73,14.9,8,"cT1","Prostatectomía radical",0,"Sin recurrencia",55
+146,72,6.3,7,"cT2","Prostatectomía radical",0,"Sin recurrencia",59
+147,80,3,7,"cT1","Prostatectomía radical",0,"Sin recurrencia",67
+148,67,5.6,7,"cT2","Radioterapia",0,"Sin recurrencia",63
+149,73,10.7,7,"cT2","Radioterapia",0,"Sin recurrencia",58
+150,74,6.2,6,"cT3","Radioterapia",0,"Sin recurrencia",52
+151,57,3.3,7,"cT3","Radioterapia",0,"Sin recurrencia",66
+152,66,20.1,6,"cT2","Prostatectomía radical",0,"Sin recurrencia",62
+153,85,4.2,8,"cT2","Radioterapia",0,"Sin recurrencia",71
+154,76,1.2,7,"cT1","Prostatectomía radical",0,"Sin recurrencia",70
+155,60,17.9,8,"cT2","Radioterapia",0,"Sin recurrencia",61
+156,50,21.4,9,"cT1","Prostatectomía radical",0,"Sin recurrencia",62
+157,69,13.7,6,"cT2","Prostatectomía radical",0,"Sin recurrencia",58
+158,64,17.5,7,"cT1","Radioterapia",0,"Sin recurrencia",70
+159,60,3,7,"cT2","Prostatectomía radical",0,"Sin recurrencia",57
+160,68,27.3,8,"cT1","Radioterapia",0,"Sin recurrencia",52
+161,80,16.2,8,"cT1","Prostatectomía radical",0,"Sin recurrencia",68
+162,66,15.9,6,"cT2","Radioterapia",1,"Con recurrencia",38
+163,66,14.6,6,"cT2","Radioterapia",0,"Sin recurrencia",65
+164,78,26,10,"cT2","Radioterapia",0,"Sin recurrencia",59
+165,63,2.2,6,"cT2","Prostatectomía radical",0,"Sin recurrencia",58
+166,61,8.7,9,"cT2","Prostatectomía radical",0,"Sin recurrencia",52
+167,67,10.2,10,"cT3","Prostatectomía radical",0,"Sin recurrencia",55
+168,52,28.9,7,"cT2","Prostatectomía radical",0,"Sin recurrencia",72
+169,76,47.6,6,"cT2","Prostatectomía radical",1,"Con recurrencia",15
+170,84,5.3,8,"cT1","Radioterapia",0,"Sin recurrencia",50
+171,63,18.1,8,"cT1","Radioterapia",0,"Sin recurrencia",66
+172,73,7.5,7,"cT2","Radioterapia",0,"Sin recurrencia",59
+173,62,6.8,6,"cT2","Prostatectomía radical",0,"Sin recurrencia",66
+174,68,8.7,8,"cT1","Radioterapia",0,"Sin recurrencia",55
+175,69,7.4,8,"cT2","Prostatectomía radical",1,"Con recurrencia",33
+176,75,8.7,9,"cT2","Prostatectomía radical",0,"Sin recurrencia",49
+177,76,8.5,7,"cT3","Prostatectomía radical",0,"Sin recurrencia",50
+178,67,4.6,7,"cT2","Prostatectomía radical",1,"Con recurrencia",43
+179,72,5.5,7,"cT2","Prostatectomía radical",0,"Sin recurrencia",54
+180,63,16.3,9,"cT3","Radioterapia",1,"Con recurrencia",10
+181,72,11.9,8,"cT2","Prostatectomía radical",0,"Sin recurrencia",51
+182,68,5.2,7,"cT1","Prostatectomía radical",0,"Sin recurrencia",56
+183,71,4.8,8,"cT3","Radioterapia",0,"Sin recurrencia",58
+184,61,15.2,9,"cT1","Radioterapia",1,"Con recurrencia",44
+185,63,4,6,"cT3","Prostatectomía radical",0,"Sin recurrencia",65
+186,72,12.3,7,"cT2","Prostatectomía radical",0,"Sin recurrencia",57
+187,74,7.3,9,"cT2","Prostatectomía radical",0,"Sin recurrencia",59
+188,63,11.1,7,"cT2","Radioterapia",0,"Sin recurrencia",65
+189,61,5.8,6,"cT3","Radioterapia",0,"Sin recurrencia",50
+190,70,22.1,8,"cT2","Prostatectomía radical",0,"Sin recurrencia",71
+191,61,8.8,7,"cT3","Radioterapia",0,"Sin recurrencia",60
+192,58,8,7,"cT2","Prostatectomía radical",0,"Sin recurrencia",64
+193,70,12.7,7,"cT3","Prostatectomía radical",0,"Sin recurrencia",48
+194,75,7.5,8,"cT2","Prostatectomía radical",0,"Sin recurrencia",54
+195,76,4.2,10,"cT1","Prostatectomía radical",0,"Sin recurrencia",56
+196,71,10.3,6,"cT1","Prostatectomía radical",0,"Sin recurrencia",72
+197,76,5.3,10,"cT3","Prostatectomía radical",1,"Con recurrencia",13
+198,70,21.1,7,"cT3","Prostatectomía radical",0,"Sin recurrencia",60
+199,84,2.3,7,"cT2","Radioterapia",0,"Sin recurrencia",65
+200,51,14.8,6,"cT3","Radioterapia",0,"Sin recurrencia",63
+201,66,18.1,7,"cT1","Prostatectomía radical",0,"Sin recurrencia",67
+202,70,4.7,7,"cT3","Radioterapia",0,"Sin recurrencia",54
+203,60,18.5,9,"cT1","Prostatectomía radical",0,"Sin recurrencia",71
+204,68,9.1,6,"cT2","Prostatectomía radical",0,"Sin recurrencia",50
+205,74,67.2,8,"cT3","Prostatectomía radical",0,"Sin recurrencia",60
+206,58,4.3,6,"cT2","Radioterapia",0,"Sin recurrencia",65
+207,60,1.4,7,"cT2","Prostatectomía radical",1,"Con recurrencia",47
+208,67,44.1,8,"cT1","Prostatectomía radical",0,"Sin recurrencia",54
+209,73,8.4,7,"cT2","Prostatectomía radical",0,"Sin recurrencia",58
+210,69,3.4,6,"cT2","Radioterapia",0,"Sin recurrencia",64
+211,60,9.6,7,"cT1","Prostatectomía radical",0,"Sin recurrencia",57
+212,70,13.4,8,"cT2","Prostatectomía radical",0,"Sin recurrencia",62
+213,61,3.9,8,"cT3","Prostatectomía radical",0,"Sin recurrencia",55
+214,50,20,8,"cT2","Radioterapia",0,"Sin recurrencia",50
+215,71,5.4,7,"cT2","Prostatectomía radical",1,"Con recurrencia",31
+216,69,4.2,7,"cT1","Prostatectomía radical",0,"Sin recurrencia",71
+217,72,4.9,6,"cT2","Radioterapia",0,"Sin recurrencia",65
+218,70,6.4,6,"cT2","Prostatectomía radical",0,"Sin recurrencia",50
+219,61,7.3,6,"cT2","Prostatectomía radical",0,"Sin recurrencia",55
+220,75,1.3,7,"cT2","Radioterapia",0,"Sin recurrencia",59
+221,61,4.4,7,"cT2","Radioterapia",0,"Sin recurrencia",63
+222,78,6,8,"cT1","Prostatectomía radical",0,"Sin recurrencia",70
+223,67,4.5,7,"cT2","Radioterapia",0,"Sin recurrencia",52
+224,65,1.5,6,"cT2","Radioterapia",0,"Sin recurrencia",50
+225,66,6.5,8,"cT2","Prostatectomía radical",0,"Sin recurrencia",72
+226,68,41,8,"cT2","Radioterapia",0,"Sin recurrencia",61
+227,65,3.2,6,"cT1","Prostatectomía radical",1,"Con recurrencia",51
+228,70,18.3,7,"cT1","Radioterapia",1,"Con recurrencia",36
+229,64,17.4,9,"cT1","Prostatectomía radical",0,"Sin recurrencia",55
+230,71,12.1,8,"cT2","Prostatectomía radical",0,"Sin recurrencia",51
+231,77,4.2,8,"cT2","Prostatectomía radical",0,"Sin recurrencia",59
+232,71,3.2,8,"cT2","Prostatectomía radical",0,"Sin recurrencia",65
+233,64,7.2,8,"cT3","Radioterapia",0,"Sin recurrencia",51
+234,63,15.9,7,"cT3","Prostatectomía radical",0,"Sin recurrencia",70
+235,66,11.1,10,"cT1","Prostatectomía radical",0,"Sin recurrencia",50
+236,67,55.8,7,"cT3","Prostatectomía radical",0,"Sin recurrencia",56
+237,65,7.9,6,"cT2","Prostatectomía radical",0,"Sin recurrencia",58
+238,62,4.2,6,"cT2","Prostatectomía radical",0,"Sin recurrencia",66
+239,67,1.7,8,"cT1","Radioterapia",0,"Sin recurrencia",69
+240,59,10.4,8,"cT2","Radioterapia",0,"Sin recurrencia",51
+241,68,3.3,9,"cT3","Prostatectomía radical",0,"Sin recurrencia",66
+242,75,5.8,7,"cT2","Prostatectomía radical",0,"Sin recurrencia",54
+243,77,12.1,7,"cT1","Prostatectomía radical",0,"Sin recurrencia",53
+244,75,3.4,8,"cT1","Prostatectomía radical",0,"Sin recurrencia",65
+245,59,6.3,7,"cT2","Prostatectomía radical",0,"Sin recurrencia",59
+246,81,37.2,8,"cT2","Radioterapia",0,"Sin recurrencia",62
+247,61,16.6,8,"cT2","Prostatectomía radical",0,"Sin recurrencia",51
+248,68,4.9,7,"cT1","Radioterapia",0,"Sin recurrencia",53
+249,57,6.4,7,"cT3","Prostatectomía radical",0,"Sin recurrencia",51
+250,67,9.3,6,"cT2","Radioterapia",0,"Sin recurrencia",55
+251,80,17.2,9,"cT3","Prostatectomía radical",1,"Con recurrencia",33
+252,67,13,6,"cT3","Prostatectomía radical",1,"Con recurrencia",28
+253,74,13.3,6,"cT2","Prostatectomía radical",0,"Sin recurrencia",64
+254,64,7.5,7,"cT3","Prostatectomía radical",1,"Con recurrencia",25
+255,68,7.4,9,"cT1","Radioterapia",0,"Sin recurrencia",57
+256,53,11.2,9,"cT2","Prostatectomía radical",0,"Sin recurrencia",55
+257,67,2,9,"cT1","Radioterapia",1,"Con recurrencia",19
+258,65,35.6,7,"cT1","Prostatectomía radical",1,"Con recurrencia",24
+259,70,6.9,8,"cT2","Prostatectomía radical",0,"Sin recurrencia",50
+260,57,14.3,7,"cT1","Prostatectomía radical",0,"Sin recurrencia",72
+261,64,30.1,7,"cT1","Prostatectomía radical",0,"Sin recurrencia",62
+262,63,52.7,10,"cT2","Radioterapia",0,"Sin recurrencia",51
+263,70,5.1,9,"cT2","Prostatectomía radical",1,"Con recurrencia",20
+264,60,8.2,6,"cT1","Radioterapia",0,"Sin recurrencia",53
+265,50,2,7,"cT2","Radioterapia",0,"Sin recurrencia",59
+266,71,11.4,6,"cT2","Prostatectomía radical",0,"Sin recurrencia",66
+267,62,8.4,8,"cT1","Prostatectomía radical",0,"Sin recurrencia",58
+268,72,14.4,7,"cT2","Prostatectomía radical",0,"Sin recurrencia",50
+269,70,10.5,7,"cT1","Prostatectomía radical",0,"Sin recurrencia",53
+270,73,1.7,7,"cT1","Prostatectomía radical",0,"Sin recurrencia",54
+271,73,3.7,8,"cT1","Prostatectomía radical",0,"Sin recurrencia",61
+272,65,3.8,9,"cT1","Radioterapia",0,"Sin recurrencia",68
+273,55,18.7,9,"cT1","Radioterapia",0,"Sin recurrencia",61
+274,59,2.4,8,"cT2","Prostatectomía radical",0,"Sin recurrencia",63
+275,71,18.9,6,"cT3","Prostatectomía radical",0,"Sin recurrencia",71
+276,66,35.8,8,"cT2","Radioterapia",0,"Sin recurrencia",69
+277,61,5.4,10,"cT1","Radioterapia",0,"Sin recurrencia",63
+278,53,7.7,8,"cT1","Radioterapia",0,"Sin recurrencia",61
+279,59,25.2,7,"cT3","Prostatectomía radical",1,"Con recurrencia",39
+280,65,2.5,7,"cT3","Prostatectomía radical",0,"Sin recurrencia",52
+281,71,3,8,"cT2","Prostatectomía radical",0,"Sin recurrencia",58
+282,68,19,6,"cT3","Prostatectomía radical",1,"Con recurrencia",24
+283,77,1.7,7,"cT3","Radioterapia",1,"Con recurrencia",25
+284,68,4,8,"cT1","Prostatectomía radical",0,"Sin recurrencia",56
+285,71,18.3,9,"cT2","Prostatectomía radical",0,"Sin recurrencia",52
+286,63,10.5,8,"cT3","Radioterapia",0,"Sin recurrencia",63
+287,60,10.2,7,"cT2","Prostatectomía radical",0,"Sin recurrencia",61
+288,67,3.8,9,"cT2","Radioterapia",0,"Sin recurrencia",54
+289,75,45.9,7,"cT3","Radioterapia",0,"Sin recurrencia",48
+290,85,34.3,7,"cT2","Prostatectomía radical",0,"Sin recurrencia",67
+291,60,9.1,8,"cT2","Radioterapia",0,"Sin recurrencia",71
+292,72,3,6,"cT2","Prostatectomía radical",0,"Sin recurrencia",63
+293,79,2.6,8,"cT1","Radioterapia",0,"Sin recurrencia",62
+294,63,13.9,8,"cT3","Prostatectomía radical",0,"Sin recurrencia",60
+295,69,7,8,"cT3","Prostatectomía radical",0,"Sin recurrencia",69
+296,72,6.8,7,"cT1","Prostatectomía radical",0,"Sin recurrencia",71
+297,77,6.7,9,"cT3","Prostatectomía radical",1,"Con recurrencia",15
+298,56,34.3,9,"cT2","Prostatectomía radical",0,"Sin recurrencia",70
+299,56,14.3,7,"cT1","Prostatectomía radical",0,"Sin recurrencia",69
+300,67,6.8,7,"cT2","Radioterapia",0,"Sin recurrencia",59
