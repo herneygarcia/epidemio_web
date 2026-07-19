@@ -2064,7 +2064,7 @@
             (S16), con reflexiones sobre cada cambio.</p>
           <div class="eval-rubric-detail">
             <h5>Criterios (100 pts)</h5>
-            <div class="rubric-row"><span>Completitud (≥4 versiones documentadas)</span><span class="rr-pts">25
+            <div class="rubric-row"><span>Completitud (≥2 versiones documentadas)</span><span class="rr-pts">25
                 pts</span></div>
             <div class="rubric-row"><span>Calidad de reflexión (¿por qué cambió?)</span><span class="rr-pts">35
                 pts</span></div>
@@ -2380,7 +2380,7 @@
     <div class="container">
       <p class="section-label">Materiales del Curso</p>
       <h2 class="section-title">Recursos y Plantillas</h2>
-      <p class="section-intro">Todos los recursos están disponibles en el workspace Notion del curso desde el primer
+      <p class="section-intro">Todos los recursos están disponibles desde el primer
         día.</p>
       <div class="recursos-cols">
 
@@ -2391,8 +2391,7 @@
               <div class="resource-item-icon">📓</div>
               <div class="resource-item-text">
                 <h5><a href="plantillas.html#tmpl-diario">Diario de Experiencia</a></h5>
-                <p>Versiones de PICO, historia de evolución, reflexiones semanales, diario de herramientas, notas de
-                  sesión y galería de entregables del portafolio.</p>
+                <p>Historia de evolución, reflexiones semanales y diario de herramientas.</p>
               </div>
             </div>
             <div class="resource-item">
@@ -2407,7 +2406,7 @@
               <div class="resource-item-icon">📋</div>
               <div class="resource-item-text">
                 <h5><a href="plantillas.html#tmpl-protocolo">Plantilla de Protocolo de Investigación</a></h5>
-                <p>10 secciones: magnitud del problema, justificación, marco teórico, estado del arte, pregunta y
+                <p>Secciones: magnitud del problema, justificación, marco teórico, estado del arte, pregunta y
                   objetivos, metodología completa, aspectos éticos, cronograma, presupuesto y referencias.</p>
               </div>
             </div>
@@ -2425,6 +2424,53 @@
                 <h5><a href="plantillas.html#tmpl-revision-pares">Plantilla de Revisión de Pares</a></h5>
                 <p>Resumen del trabajo, comentarios mayores (≤5) y menores, preguntas genuinas al autor, fortalezas (≥2)
                   y recomendación (aceptar/revisiones menores/mayores/rechazar — solo S14).</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="resource-group">
+          <h3>Scripts R y Dataset</h3>
+          <div class="resource-list">
+            <div class="resource-item">
+              <div class="resource-item-icon">💻</div>
+              <div class="resource-item-text">
+                <h5><a href="scripts-r/sesion07-roc-diagnostico.R" download>sesion07-roc-diagnostico.R</a></h5>
+                <p>228 líneas. Simula dataset de PSA (200 pacientes, 80 con cáncer de próstata). Calcula sensibilidad,
+                  especificidad, VPP, VPN, LR. Compara puntos de corte (2.5, 4.0, 10.0 ng/mL). Genera curva ROC con AUC.
+                </p>
+                <div class="ri-meta">Paquetes: pROC, ggplot2, dplyr · Para S07</div>
+              </div>
+            </div>
+            <div class="resource-item">
+              <div class="resource-item-icon">💻</div>
+              <div class="resource-item-text">
+                <h5><a href="scripts-r/sesion10-analisis-urologia.R" download>sesion10-analisis-urologia.R</a></h5>
+                <p>311 líneas. Simula dataset de cáncer de próstata (300 pacientes: edad, PSA, Gleason, estadio,
+                  tratamiento, recurrencia 5 años). Análisis descriptivo, bivariado, regresión logística, OR con IC 95%,
+                  AUC.</p>
+                <div class="ri-meta">Paquetes: ggplot2, dplyr, gtsummary, broom, pROC · Para S10</div>
+              </div>
+            </div>
+            <div class="resource-item">
+              <div class="resource-item-icon">🗄️</div>
+              <div class="resource-item-text">
+                <h5><a href="datasets/cancer_prostata_urovalle_2024.csv" download>cancer_prostata_urovalle_2024.csv</a></h5>
+                <p>Dataset de cáncer de próstata localizado con 300 pacientes: edad, PSA inicial, Gleason score, estadio clínico
+                  (cT1–cT3), tratamiento (prostatectomía radical/radioterapia), recurrencia bioquímica a 5 años y tiempo de
+                  seguimiento en meses.</p>
+                <div class="ri-meta">N=300 · 9 variables · Usado en S10</div>
+              </div>
+            </div>
+            <div class="resource-item">
+              <div class="resource-item-icon">🗄️</div>
+              <div class="resource-item-text">
+                <h5><a href="datasets/litiasis_urovalle_2024.csv" download>litiasis_urovalle_2024.csv</a></h5>
+                <p>Dataset urológico de 200 pacientes con 22 variables: datos demográficos, comorbilidades,
+                  características del cálculo (tamaño mm, localización, densidad UHU), tratamiento
+                  (LEOC/FURS/observación), libre de cálculo, recurrencia 12 m, complicaciones, dolor VAS pre/post,
+                  estancia, creatinina.</p>
+                <div class="ri-meta">N=200 · 22 variables · Usado en S03, S07, S10</div>
               </div>
             </div>
           </div>
@@ -2464,8 +2510,9 @@
               <div class="resource-item-icon">📊</div>
               <div class="resource-item-text">
                 <h5><a href="rubricas.html#rubrica-producto">Rúbrica — Producto Final</a></h5>
-                <p>Pregunta y justificación (20), metodología (30), escritura IMRAD (20), integración de evidencia (15),
-                  factibilidad clínica (15). ≥75/100 → oferta de co-autoría.</p>
+                <p>Problema, justificación y objetivos (20), metodología (30), escritura IMRAD (20), integración de
+                  evidencia (15),
+                  factibilidad clínica (15). </p>
                 <div class="ri-meta">Peso: 35% de la nota final</div>
               </div>
             </div>
@@ -2554,44 +2601,6 @@
               </div>
             </div>
           </div>
-        </div>
-
-        <div class="resource-group">
-          <h3>Scripts R y Dataset</h3>
-          <div class="resource-list">
-            <div class="resource-item">
-              <div class="resource-item-icon">💻</div>
-              <div class="resource-item-text">
-                <h5><a href="scripts-r/sesion07-roc-diagnostico.R" download>sesion07-roc-diagnostico.R</a></h5>
-                <p>228 líneas. Simula dataset de PSA (200 pacientes, 80 con cáncer de próstata). Calcula sensibilidad,
-                  especificidad, VPP, VPN, LR. Compara puntos de corte (2.5, 4.0, 10.0 ng/mL). Genera curva ROC con AUC.
-                </p>
-                <div class="ri-meta">Paquetes: pROC, ggplot2, dplyr · Para S07</div>
-              </div>
-            </div>
-            <div class="resource-item">
-              <div class="resource-item-icon">💻</div>
-              <div class="resource-item-text">
-                <h5><a href="scripts-r/sesion10-analisis-urologia.R" download>sesion10-analisis-urologia.R</a></h5>
-                <p>311 líneas. Simula dataset de cáncer de próstata (300 pacientes: edad, PSA, Gleason, estadio,
-                  tratamiento, recurrencia 5 años). Análisis descriptivo, bivariado, regresión logística, OR con IC 95%,
-                  AUC.</p>
-                <div class="ri-meta">Paquetes: ggplot2, dplyr, gtsummary, broom, pROC · Para S10</div>
-              </div>
-            </div>
-            <div class="resource-item">
-              <div class="resource-item-icon">🗄️</div>
-              <div class="resource-item-text">
-                <h5><a href="datasets/litiasis_urovalle_2024.csv" download>litiasis_urovalle_2024.csv</a></h5>
-                <p>Dataset urológico de 200 pacientes con 22 variables: datos demográficos, comorbilidades,
-                  características del cálculo (tamaño mm, localización, densidad UHU), tratamiento
-                  (LEOC/FURS/observación), libre de cálculo, recurrencia 12 m, complicaciones, dolor VAS pre/post,
-                  estancia, creatinina.</p>
-                <div class="ri-meta">N=200 · 22 variables · Usado en S03, S07, S10</div>
-              </div>
-            </div>
-          </div>
-
         </div>
 
       </div>
